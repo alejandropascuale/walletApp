@@ -140,6 +140,9 @@ header .icons #menu-bars {
 /* search form ends */
 
 
+
+/* media queries */
+
 @media (min-width: 769px) {
   header {
     padding: 1rem 7%;
@@ -180,10 +183,5 @@ header .icons #menu-bars {
   }
   .home .home-slider .slide .content h3 {
     font-size: 7rem;
-  }
-}
-@media (min-width: 991px) {
-  html {
-    font-size: 50%;
   }
 }
