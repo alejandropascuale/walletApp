@@ -18,27 +18,10 @@
     <title>Wallet App</title>
   </head>
   <body>
-    <header>
-      <a href="#" class="logo"><i class="fas fa-wallet"></i>Wallet App</a>
-      <nav class="navbar">
-        <a class="active" href="#home">home</a> 
-        <a href="#Balance">balance</a>
-        <a href="#Last operation">last operations</a>
-        <a href="#Register">register</a>
-        <a href="#Login">login</a>
-      </nav>
-      <div class="icons">
-        <i class="fas fa-bars" id="menu-bars"></i>
-        <i class="fas fa-search" id="search-icon"></i>
-        <a href="#" class="fas fa-heart"></a>
-        <!-- <a href="#" class="fas fa-shopping-cart"></a> -->
-      </div>
-    </header>
-    <form action="" id="search-form">
-      <input type="search" placeholder="Search by ammount, date, type..." name="" id="search-box">
-      <label for="search-box" class="fas fa-search"></label>
-      <i class="fas fa-times" id="close"></i>
-    </form>
+    <%- include partials/header %>
+
+    
+
     <script src="/javascripts/index.js"></script>
   </body>
 </html>
