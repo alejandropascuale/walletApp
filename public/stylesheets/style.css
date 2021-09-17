@@ -1,8 +1,189 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root {
+    --blue: #5060ee;
+    --black: #192a56;
+    --light-color: #666;
+    --box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1)
+}
+* {
+    font-family: 'Amatic SC', cursive;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* similar a border pero no ocupa espacio en el html ya que se dibuja sobre el elemento */
+    outline: none; border: none;
+    /* transforma todas las palabras para que sea la primer letra en mayuscula */
+    text-transform: capitalize;
+    transition: all .2s linear;
 }
 
-a {
-  color: #00B7FF;
+/* header section starts */
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+}
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+header .logo {
+    color: var(--black);
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+header .logo i {
+    color: var(--blue);
+}
+header .navbar {
+  position: absolute;
+  display: inline-block;
+  top: 100%; left: 0; right: 0;
+  background-color: #fff;
+  border-top: .1rem solid rgba(0, 0, 0, .2);
+  border-bottom: .1rem solid rgba(0, 0, 0, .2);
+  padding: 1rem;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+header .navbar.active {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+header .navbar a{
+    display: block;
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 2rem;
+    background-color: #eee;
+}
+header .navbar a.active, header .navbar a:hover {
+    color: #fff;
+    background: var(--blue);
+}
+header .icons i, 
+header .icons a {
+    cursor: pointer;
+    margin-left: .5rem;
+    height: 4rem;
+    line-height: 4rem;
+    width: 4rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--black);
+    border-radius: 50%;
+    background: #eee;
+}
+header .icons i:hover, 
+header .icons a:hover {
+    color: #fff;
+    background: var(--blue);
+    transform: rotate(360deg);
+}
+header .icons #menu-bars {
+    display: inline-block;
+}
+/* header section ends */
+
+/* search form starts */
+#search-form {
+    position: fixed;
+    top: -110%; left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0 1rem;
+    z-index: 1004;
+    background:rgba(0, 0, 0, .8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+#search-form.active {
+    top: 0;
+}
+#search-form #search-box {
+    width: 50rem;
+    border-bottom: .1rem solid #fff;
+    padding: 1rem 0;
+    color: #fff;
+    font-size: 2.6rem;
+    text-transform: none;
+    background: none;
+}
+#search-form #search-box:placeholder {
+    color: #eee;
+} 
+#search-form #search-box::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+} 
+#search-form label {
+    color: #fff;
+    cursor: pointer;
+    font-size: 3rem;
+}
+#search-form label:hover {
+    color: var(--blue);
+}
+#search-form #close {
+    position: absolute;
+    color: #fff;
+    cursor: pointer;
+    top: 2rem; right: 3rem;
+    font-size: 5rem;
+}
+/* search form ends */
+
+
+@media (min-width: 769px) {
+  header {
+    padding: 1rem 7%;
+  }
+  header .icons #menu-bars{
+    display: none;
+  }
+  header .icons i, 
+  header .icons a {
+    height: 4.5rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    text-align: center;
+    font-size: 1.7rem;
+  }
+  header .navbar {
+  position: static;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+  background-color: #fff;
+  border-top: none;
+  border-bottom: none;
+  clip-path: none;
+  }
+  header .navbar a {
+    font-size: 2.3rem;
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    color: var(--light-color);
+    background-color: #fff;
+  }
+  #search-form #search-box {
+    width: 90%;
+    max-width: 70rem;
+    margin: 0;
+    font-size: 3rem;
+  }
+  .home .home-slider .slide .content h3 {
+    font-size: 7rem;
+  }
+}
+@media (min-width: 991px) {
+  html {
+    font-size: 50%;
+  }
 }
