@@ -2,12 +2,20 @@
 <html lang="en">
   <head>
     <%- include partials/head %>
-    <title>Wallet App</title>
+    <title>Register</title>
   </head>
   <body>
     <%- include partials/header %>
-    <form action="/users/register" method="POST" enctype="multipart/form-data">
-
+    <form class="register-form" action="/users/register" method="POST" enctype="multipart/form-data">
+      <h2 class="title-form">Register</h2>
+      <div class="format-form">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="example@email.com">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="my password">
+      </div>
+      <input class="btn" type="button" value="Back">
+      <button class="btn" type="submit">Send</button>
     </form>
     <script src="/javascripts/index.js"></script>
   </body>
