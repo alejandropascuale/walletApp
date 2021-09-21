@@ -7,15 +7,17 @@
   <body>
     <%- include partials/header %>
     <form class="register-form" action="/users/register" method="POST" enctype="multipart/form-data">
-      <h2 class="title-form">Register</h2>
+      <div class="top-form">
+        <h2 class="title-form">Login</h2>
+        <a href="/"><i class="fas fa-times"></i></a>
+      </div>
       <div class="format-form">
         <label for="email">Email</label>
         <input class="style-input" type="email" name="email" id="email" placeholder="example@email.com">
         <label for="password">Password</label>
         <input class="style-input" type="password" name="password" id="password" placeholder="my password">
       </div>
-      <a class="btn" href="/">Back</a>
-      <button class="btn" type="submit">Send</button>
+      <button class="btn" type="submit"><i class="fas fa-sign-in-alt"></i></button>
     </form>
     <script src="/javascripts/index.js"></script>
   </body>

@@ -4,6 +4,9 @@ const router = express.Router ();
 const controller = {
     registerForm: (req, res) => {
         return res.render ('register-form');
+    },
+    loginForm: (req, res) => {
+        return res.render ('login-form');
     }
 }
 
