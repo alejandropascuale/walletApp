@@ -17,7 +17,7 @@
 
 /* header section starts */
 html {
-    font-size: 62.5%;
+    font-size: 50%;
     overflow-x: hidden;
     scroll-padding-top: 5.5rem;
     scroll-behavior: smooth;
@@ -198,9 +198,7 @@ body form .remember {
 
 section {
     padding: 2rem 9%;
-}
-section:nth-child(even) {
-    background: #eee;
+    background-color: #eee;
 }
 /* .btn {
     margin-top: 1rem;
@@ -213,7 +211,7 @@ section:nth-child(even) {
     padding: .8rem 3rem;
 }
 .btn:hover {
-    background: var(--green);
+    background: var(--blue);
     letter-spacing: .1rem;
 } */
 .home .home-slider .slide {
@@ -233,7 +231,7 @@ section:nth-child(even) {
     width: 100%;
 }
 .home .home-slider .slide .content span {
-    color: var(--green);
+    color: var(--blue);
     font-size: 2.5rem;
 }
 .home .home-slider .slide .content h3 {
@@ -247,10 +245,31 @@ section:nth-child(even) {
     line-height: 1.5rem;
 }
 .swiper-pagination-bullet-active {
-    background: var(--green);
+    background: var(--blue);
 }
 
 /* home section ends */
+
+/* balance section starts */
+
+.balance {
+    background-color: #fff;
+}
+.sub-heading {
+    text-align: center;
+    color: var(--blue);
+    font-size: 2rem;
+    padding-top: 1rem;
+}
+.heading {
+    text-align: center;
+    color: var(--black);
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+/* balance section ends */
 
 /* media queries */
 
@@ -312,6 +331,9 @@ section:nth-child(even) {
 }
 
 @media (min-width: 1024px) {
+    html {
+        font-size: 62.5%;
+    }
     header .navbar a{
         margin: 1rem;
     }
