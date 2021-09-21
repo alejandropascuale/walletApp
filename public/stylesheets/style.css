@@ -158,6 +158,9 @@ body form .top-form i {
     font-size: 3rem;
     color: #fff;
 }
+body form .top-form i:hover {
+    font-size: 4rem;
+}
 body form h2 {
     width: 100%;
     font-size: 3rem;
@@ -172,15 +175,27 @@ body form div label {
     color: #eee;
     font-size: 1.7rem;
 }
-body form .btn {
+body form .btn-check, body form .btn-cancel{
+    display: inline-block;
     margin-top: 1rem;
     margin-left: 1rem;
-    padding: .5rem 1rem;
-    background-color: #eee;
+    padding: .8rem 3rem;
+    color: var(--black);
+    background-color: #fff;
     border-radius: .5rem;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
     text-align: center;
+}
+.btn-check:hover {
+    background: rgb(1, 207, 1);
+    color:#fff;
+    letter-spacing: .1rem;
+}
+.btn-cancel:hover {
+    background: red;
+    color:#fff;
+    letter-spacing: .1rem;
 }
 body form div .style-input {
     padding: .2rem;
@@ -200,20 +215,6 @@ section {
     padding: 2rem 9%;
     background-color: #eee;
 }
-/* .btn {
-    margin-top: 1rem;
-    display: inline-block;
-    font-size: 1.7rem;
-    color: #fff;
-    background: var(--black);
-    border-radius: .5rem;
-    cursor: pointer;
-    padding: .8rem 3rem;
-}
-.btn:hover {
-    background: var(--blue);
-    letter-spacing: .1rem;
-} */
 .home .home-slider .slide {
     display: flex;
     align-items: center;
