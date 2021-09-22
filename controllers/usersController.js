@@ -75,7 +75,33 @@ const controller = {
 		res.clearCookie('userEmail');
 		req.session.destroy();
 		return res.redirect('/');
-	}
+	},
+    userAccountForm: async (req, res) => {
+        const user = await db.User.findOne({
+            where: {idUser: req.params.idUser}
+        }) 
+        return res.render ('user-account',{user});
+    },
+    userEditAccount: async (req, res) => {    
+        if (req.file) {
+            await db.User.update({
+            email: req.body.email,   
+            password: bcrypt.hashSync(req.body.password, 10),
+            avatar: '/img/avatars/'+req.file.filename
+            },
+            { where: {idUser: req.session.userLogged.idUser}
+            })
+            return res.redirect (303, '/');
+        } else {
+            await db.User.update({
+                email: req.body.email,   
+                password: bcrypt.hashSync(req.body.password, 10),
+            },
+            { where: {idUser: req.session.userLogged.idUser}
+            })
+            return res.redirect (303, '/');
+        }
+    }
 }
 
 module.exports = controller;

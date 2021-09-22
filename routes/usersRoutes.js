@@ -16,5 +16,9 @@ router.get('/login', usersController.loginForm)
 router.post('/login', usersController.loginProcess)
 /* GET logout */
 router.get('/logout', usersController.logoutUser)
+/* GET edit account form */
+router.get('/account/:idUser', usersController.userAccountForm)
+/* POST edit account */
+router.post('/account', usersController.userEditAccount)
 
 module.exports = router;
