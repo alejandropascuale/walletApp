@@ -11,6 +11,11 @@
     <i class="fas fa-bars" id="menu-bars"></i>
     <i class="fas fa-search" id="search-icon"></i>
     <a href="#" class="fas fa-heart"></a>
+    <% if (locals.userLogged && typeof user != 'undefined') { %>
+        <a href="/user/account/" class="icon-user">
+            <img src="<%= user.avatar %>" alt="user image" class="user-image-header">
+        </a>
+    <% }; %>
     <!-- <a href="#" class="fas fa-shopping-cart"></a> -->
     </div>
 </header>
