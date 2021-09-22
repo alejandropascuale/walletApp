@@ -6,16 +6,28 @@
   </head>
   <body>
     <%- include partials/header %>
-    <form class="register-form" action="/users/register" method="POST" enctype="multipart/form-data">
+    <form class="register-form" action="/users/login" method="POST">
       <div class="top-form">
         <h2 class="title-form">Login</h2>
         <a href="/"><i class="fas fa-times"></i></a>
       </div>
       <div class="format-form">
         <label for="email">Email</label>
-        <input class="style-input" type="email" name="email" id="email" placeholder="example@email.com">
+        <input class="<%= locals.errors && errors.email? 'is-invalid style-input' : 'style-input' %>" type="email" name="email" id="email" 
+        value="<%= locals.oldData ? oldData.email : null %>">
+        <% if (locals.errors && errors.email) { %>
+          <div class="text-danger">
+            <%= errors.email.msg %>
+          </div>
+          <% } %>
         <label for="password">Password</label>
-        <input class="style-input" type="password" name="password" id="password" placeholder="my password">
+        <input class="<%= locals.errors && errors.password? 'is-invalid style-input' : 'style-input' %>" type="password" name="password" id="password" 
+        value="<%= locals.oldData ? oldData.password : null %>">
+        <% if (locals.errors && errors.password) { %>
+            <div class="text-danger">
+              <%= errors.password.msg %>
+            </div>
+          <% } %>
       </div>
       <button class="btn-check" type="submit"><i class="fas fa-sign-in-alt"></i></button>
     </form>

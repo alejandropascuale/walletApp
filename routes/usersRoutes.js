@@ -12,5 +12,7 @@ router.get('/register', usersController.registerForm)
 router.post('/register', uploadFile.single('avatar'), validateRegisterUser, usersController.createUser)
 /* GET login form */
 router.get('/login', usersController.loginForm)
+/* POST login form */
+router.post('/login', usersController.loginProcess)
 
 module.exports = router;
