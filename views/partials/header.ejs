@@ -4,17 +4,25 @@
     <a class="active" href="#home">home</a> 
     <a href="#Balance">balance</a>
     <a href="#last-operations">last operations</a>
+    <% if (!locals.userLogged) { %>
     <a href="/users/register">register</a>
     <a href="/users/login">login</a>
+    <% }; %> 
     </nav>
     <div class="icons">
     <i class="fas fa-bars" id="menu-bars"></i>
     <i class="fas fa-search" id="search-icon"></i>
     <a href="#" class="fas fa-heart"></a>
     <% if (locals.userLogged && typeof user != 'undefined') { %>
-        <a href="/user/account/" class="icon-user">
+        <div class="icon-user">
             <img src="<%= user.avatar %>" alt="user image" class="user-image-header">
-        </a>
+        </div>
+        <div class="user-menu">
+            <ul type='none'>
+                <li>Edit Account</li>
+                <li>Logout</li>
+            </ul>
+        </div>
     <% }; %>
     <!-- <a href="#" class="fas fa-shopping-cart"></a> -->
     </div>
