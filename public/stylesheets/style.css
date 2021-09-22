@@ -243,7 +243,9 @@ section {
     color: var(--light-color);
     font-size: 2.2rem;
     padding: .5rem 0;
-    line-height: 1.5rem;
+    line-height: 2.2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
 }
 .swiper-pagination-bullet-active {
     background: var(--blue);
@@ -271,6 +273,32 @@ section {
 }
 
 /* balance section ends */
+
+/* last operations section starts */
+
+th, td {
+  border-bottom: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+}
+tr:hover {
+    background-color: var(--black) !important;
+    color: #fff;
+}
+tr:nth-child(even) {
+    background-color: #eee;
+}
+th {
+  background-color: var(--blue);
+  color: #fff;
+  font-size: 1.7rem;
+}
+td {
+    font-size: 1.3rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* last operations section ends */
 
 /* media queries */
 
