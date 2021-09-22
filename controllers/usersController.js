@@ -3,6 +3,7 @@ const router = express.Router ();
 const db = require ('../database/models');
 const { Op } = require("sequelize");
 const { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
 
 const controller = {
     registerForm: (req, res) => {
@@ -28,13 +29,13 @@ const controller = {
                 }
             });
         } else {
-            const defaultImageProfile = '/img/avatars/Usuario-registro.png'
+            const defaultImageProfile = '/images/avatars/user-buisness-avatar.jpg'
             await db.User.create ({
             email: req.body.email,   
             password: bcrypt.hashSync(req.body.password, 10),
             avatar: defaultImageProfile,
         })
-            res.render('/');
+            res.render('register-ok');
         }
         }
     },
