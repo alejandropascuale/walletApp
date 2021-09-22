@@ -17,7 +17,7 @@ router.post('/login', usersController.loginProcess)
 /* GET logout */
 router.get('/logout', usersController.logoutUser)
 /* GET edit account form */
-router.get('/account/:idUser', usersController.userAccountForm)
+router.get('/account/', usersController.userAccountForm)
 /* POST edit account */
 router.put('/account/', uploadFile.single('avatar'), usersController.userEditAccount)
 

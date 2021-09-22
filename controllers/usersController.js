@@ -78,7 +78,7 @@ const controller = {
 	},
     userAccountForm: async (req, res) => {
         const user = await db.User.findOne({
-            where: {idUser: req.params.idUser}
+            where: {idUser: req.session.userLogged.idUser}
         }) 
         return res.render ('user-account',{user});
     },
