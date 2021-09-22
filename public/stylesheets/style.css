@@ -58,7 +58,7 @@ header .navbar a{
     display: block;
     padding: 1.5rem;
     font-size: 2rem;
-    background-color: #eee;
+    color: var(--black);
 }
 header .navbar a.active, header .navbar a:hover {
     color: #fff;
@@ -67,8 +67,7 @@ header .navbar a.active, header .navbar a:hover {
 header .icons {
     display: flex;
 }
-header .icons i, 
-header .icons a {
+.fa-heart, .fa-search, .fa-bars {
     cursor: pointer;
     margin-left: .5rem;
     height: 4rem;
@@ -80,8 +79,9 @@ header .icons a {
     border-radius: 50%;
     background: #eee;
 }
-header .icons i:hover, 
-header .icons a:hover {
+.fa-heart:hover, 
+.fa-search:hover,
+.fa-bars:hover {
     color: #fff;
     background: var(--blue);
     transform: rotate(360deg);
@@ -105,7 +105,6 @@ header .icons #menu-bars {
     position: absolute;
     z-index: 1000;
     background-color: #fff;
-    color: var(--black);
     padding: 1rem;
     top: 6rem;
     right: 0;
@@ -113,9 +112,9 @@ header .icons #menu-bars {
     font-size: 2rem;
     font-weight: bold;
 }
-/* .icon-user:hover ~ .user-menu{
-    display: block;
-} */
+.user-menu a {
+    color: var(--black);
+}
 /* header section ends */
 
 /* search form starts */
@@ -501,6 +500,9 @@ td {
     right: 1rem;
     font-size: 2.2rem;
   }
+  .user-menu ul li a {
+    font-size: 2.2rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -538,6 +540,10 @@ td {
     }
     .user-menu {
         top: 9rem;
+        right: 4rem;
+    }
+    .user-menu ul li a {
+        font-size: 2.4rem;
     }
 }
 
@@ -567,7 +573,10 @@ td {
         padding: .6rem 2rem;
     }
     .user-menu {
-        right: 5rem;
-        font-size: 2.2rem;
+        right: 7rem;
+        padding: 2rem;
+    }
+    .user-menu ul li a {
+        font-size: 2.4rem;
     }
 }
