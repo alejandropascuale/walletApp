@@ -271,11 +271,22 @@ section {
     padding-bottom: 2rem;
     text-transform: uppercase;
 }
-
+.wallet-balance {
+    font-size: 10rem;
+    text-align: center;
+    color: var(--blue);
+}
 /* balance section ends */
 
 /* last operations section starts */
 
+.last-operations {
+    padding: 0;
+    background-color: #fff;
+}
+table {
+    width: 100%;
+}
 th, td {
   border-bottom: 1px solid #ddd;
   padding: 15px;
@@ -384,6 +395,13 @@ td {
         margin-left: 3rem;
         font-size: 1.85rem;
         padding: .6rem 2rem;
+    }
+    .operations {
+        padding: 2rem 9%;
+    }
+    table {
+        width: 85%;
+        margin: auto;
     }
 }
 
