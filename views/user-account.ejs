@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include partials/head %>
+    <title>Register</title>
+  </head>
+  <body>
+    <%- include partials/header %>
+        <form action="/users/account/?_method=PUT" method="POST" enctype="multipart/form-data">
+            <div class="align-image-user">
+                <img src="<%= user.avatar %>" alt="user image" class="user-image">
+            </div>
+            <div class="flex-column">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" value="<%= user.email %>">
+            </div>
+            <div class="flex-column">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="flex-rowReverse">
+                
+                    <button type="submit" class="none-decoration">Edit</button>
+                </fieldset>
+                <div class="logout-button">
+                    <a href="/user/account" type="menu" class="none-decoration">Back</a>
+                </div>
+            </div>
+        </form>
+    <script src="/javascripts/index.js"></script>
+  </body>
+</html>
