@@ -41,6 +41,35 @@ const controller = {
     },
     loginForm: (req, res) => {
         return res.render ('login-form');
+    },
+    loginProcess: (req, res) => {
+        db.User.findOne ({
+            where: {email: req.body.email}
+        }).then ((userToLogin) => {
+            if(userToLogin) {
+                let isOkThePassword = bcrypt.compareSync(req.body.password, userToLogin.password);
+                if (isOkThePassword) {
+                    req.session.userLogged = userToLogin;
+                    res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
+                    return res.redirect('/');
+                } 
+                return res.render('login-form', {
+                    oldData: req.body,
+                    errors: {
+                        password: {
+                            msg: 'Wrong password'
+                        }
+                    }
+                });
+            }
+            return res.render('login-form', {
+                errors: {
+                    email: {
+                        msg: 'Check your email'
+                    }
+                }
+            });
+        })
     }
 }
 
