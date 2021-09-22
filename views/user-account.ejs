@@ -2,30 +2,37 @@
 <html lang="en">
   <head>
     <%- include partials/head %>
-    <title>Register</title>
+    <title>Account</title>
   </head>
   <body>
     <%- include partials/header %>
-        <form action="/users/account/?_method=PUT" method="POST" enctype="multipart/form-data">
+        <form class="register-form" action="/users/account/?_method=PUT" method="POST" enctype="multipart/form-data">
             <div class="align-image-user">
                 <img src="<%= user.avatar %>" alt="user image" class="user-image">
             </div>
-            <div class="flex-column">
+            <div class="top-form">
+                <h2 class="title-form">Login</h2>
+            </div>
+            <div class="format-form">
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email" value="<%= user.email %>">
-            </div>
-            <div class="flex-column">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-            </div>
-            <div class="flex-rowReverse">
-                
-                    <button type="submit" class="none-decoration">Edit</button>
-                </fieldset>
-                <div class="logout-button">
-                    <a href="/user/account" type="menu" class="none-decoration">Back</a>
+                <input class="<%= locals.errors && errors.email? 'is-invalid style-input' : 'style-input' %>" type="email" name="email" id="email" 
+                value="<%= user.email %>">
+                <% if (locals.errors && errors.email) { %>
+                <div class="text-danger">
+                    <%= errors.email.msg %>
                 </div>
+                <% } %>
+                <label for="password">Password</label>
+                <input class="<%= locals.errors && errors.password? 'is-invalid style-input' : 'style-input' %>" type="password" name="password" id="password" 
+                value="<%= locals.oldData ? oldData.password : null %>">
+                <% if (locals.errors && errors.password) { %>
+                    <div class="text-danger">
+                    <%= errors.password.msg %>
+                    </div>
+                <% } %>
             </div>
+            <a href="/user/account" type="menu" class="btn-cancel">Back</a>
+            <button class="btn-check" type="submit">Edit</button>      
         </form>
     <script src="/javascripts/index.js"></script>
   </body>

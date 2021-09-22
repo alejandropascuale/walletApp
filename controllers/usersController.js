@@ -83,6 +83,7 @@ const controller = {
         return res.render ('user-account',{user});
     },
     userEditAccount: async (req, res) => {    
+        console.log(req.body);
         if (req.file) {
             await db.User.update({
             email: req.body.email,   

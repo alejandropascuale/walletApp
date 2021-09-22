@@ -433,6 +433,18 @@ td {
 
 /* detail operations section ends */
 
+/* account user starts */
+
+body form .align-image-user img {
+    width: 10rem;
+    border-radius: 50%;
+}
+.align-image-user {
+    text-align: center;
+}
+
+ /* account user ends */
+
 /* media queries */
 
 @media (min-width: 768px) {
