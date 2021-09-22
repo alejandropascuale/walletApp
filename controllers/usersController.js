@@ -88,7 +88,7 @@ const controller = {
             await db.User.update({
             email: req.body.email,   
             password: bcrypt.hashSync(req.body.password, 10),
-            avatar: '/img/avatars/'+req.file.filename
+            avatar: '/images/avatars/'+req.file.filename
             },
             { where: {idUser: req.session.userLogged.idUser}
             })
