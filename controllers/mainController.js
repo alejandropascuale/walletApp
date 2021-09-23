@@ -7,8 +7,15 @@ const controller = {
         if (req.session.userLogged){
             const user = await db.User.findOne({
                 where: {email: req.session.userLogged.email}
-            }) 
-            return res.render ('index', {user});
+            })
+            const lastOperations = await db.Operation.findAll({
+                where: {
+                    id_user: req.session.userLogged.idUser
+                },
+                limit: 10,
+                order: [['idOperation', 'DESC']]
+            })  
+            return res.render ('index', {user, lastOperations});
         } else {
             return res.render ('index');
         }
@@ -22,6 +29,7 @@ const controller = {
                 where: {
                     id_user: req.session.userLogged.idUser
                 },
+                offset: 0,
                 limit: 10
             }) 
             return res.render ('operations', {user, lastOperations});
