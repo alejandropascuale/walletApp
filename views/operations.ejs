@@ -11,6 +11,34 @@
       <h1 class="wallet-balance">$132.456,59</h1>
     </section>
     <section class="last-operations" id="last-operations">
+      <a class="btn-check" id="add-operations-button"><i class="fas fa-plus-square"></i></a>
+      <form class="add-operations-form" id="add-operations-form" action="/operations/add">
+        <i class="fas fa-times cancel-button" id="cancel-button"></i>
+
+        <label for="detail">Detail</label>
+        <input type="text" name="detail" id="detail">
+
+        <label for="ammount">Ammount</label>
+        <input type="number" name="ammount" id="ammount">
+
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date" value="">
+
+        <label for="type">Type</label>
+        <select name="type" id="type">
+          <option value="Income">Income</option>
+          <option value="Expense">Expense</option>
+        </select>
+        
+        <label for="category">Category</label>
+        <select name="category" id="category">
+          <option value="Food">Food</option>
+          <option value="Essential Services">Essential Services</option>
+        </select>
+
+        <button type="submit" class="btn-check"><i class="fas fa-check-square"></i></button>
+
+      </form>
       <div class="card-table">
         <table aria-describedby="myOperations" id="dataTable" cellspacing="0">
           <thead>
@@ -37,7 +65,13 @@
               <td>650,00</td>
               <td>20/09/2021 13:35</td>
               <td>Gasto</td>
-              <td>Comida</td>
+              <td>
+                Comida
+                <a class="btn-cancel" href="/operations/edit">
+                  <i class="fas fa-edit"></i>
+                </a>
+                <a class="btn-cancel" href="/operations/delete/"><i class="fas fa-trash"></i></a>
+              </td>
             </tr>
             <tr>
               <td>Pago factura de luz</td>
@@ -50,6 +84,7 @@
         </table>
       </div>
     </section>
+    <script src="/javascripts/operationsMenu.js"></script>
     <%- include partials/footer %> 
   </body>
 </html>
