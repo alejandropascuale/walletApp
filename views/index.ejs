@@ -48,7 +48,11 @@
     <section class="balance" id="balance">
       <h3 class="sub-heading">See yours incomes and expenses</h3>
       <h1 class="heading">Your Balance</h1>
-      <h1 class="wallet-balance">$132.456,59</h1>
+      <% if (locals.userLogged && typeof user != 'undefined') { %>
+        <h1 class="wallet-balance">$<%= balance %></h1>
+        <% } else { %> 
+          <h1 class="wallet-balance">$132.456,59</h1>
+      <% }; %>
     </section>
     <section class="last-operations" id="last-operations">
       <% if (locals.userLogged && typeof user != 'undefined') { %>
@@ -56,15 +60,14 @@
         <a href="/operations"><h3 class="sub-heading heartbeat">Click here for see all movements</h3></a>
       <% }; %> 
       <div class="card-table">
-        <table aria-describedby="myOperations" id="dataTable" cellspacing="0">
+        <table class="home-table"aria-describedby="myOperations" id="dataTable" cellspacing="0">
           <thead>
             <tr>
               <th id="detail">Detail</th>
               <th id="amount">Amount</th>
               <th id="date">Date</th>
-              <th id="type">Type</th>
-              <th id="category">Category</th>
-              <th id="category">Edit/Delete</th>
+              <!-- <th id="type">Type</th>
+              <th id="category">Category</th> -->
             </tr>
           </thead>
           <tfoot>
@@ -72,9 +75,8 @@
               <th id="detail">Detail</th>
               <th id="amount">Amount</th>
               <th id="date">Date</th>
-              <th id="type">Type</th>
-              <th id="category">Category</th>
-              <th id="category">Edit/Delete</th>
+              <!-- <th id="type">Type</th>
+              <th id="category">Category</th> -->
             </tr>
           </tfoot>
           <tbody>
@@ -85,16 +87,6 @@
                   <td>$<%= operation.ammount %></td>
                   <td>
                     <%= `${operation.date.getDate()}/${operation.date.getMonth()}/${operation.date.getFullYear()} ${operation.date.getHours()+3}:${operation.date.getMinutes()}`%>
-                  </td>
-                  <td><%= operation.type %></td>
-                  <td><%= operation.category %></td>
-                  <td>
-                    <div class="options-container">
-                      <a href="/operations/edit/<%= operation.idOperation %>"><i class="fas fa-edit"></i></a>
-                      <form action="/operations/delete/<%= operation.idOperation %>?_method=DELETE" method="post">
-                        <button type="submit"><i class="fas fa-trash"></i></button>
-                      </form>
-                    </div>
                   </td>
                 </tr>
               <%  }); %>

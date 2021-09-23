@@ -605,6 +605,10 @@ body form .align-image-user img {
     right: 1rem;
     font-size: 2.2rem;
   }
+  .home-table {
+    width: 60%;
+    margin: auto;
+  }
   .user-menu ul li a {
     font-size: 2.2rem;
   }

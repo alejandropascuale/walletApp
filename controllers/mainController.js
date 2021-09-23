@@ -14,8 +14,21 @@ const controller = {
                 },
                 limit: 10,
                 order: [['idOperation', 'DESC']]
-            })  
-            return res.render ('index', {user, lastOperations});
+            })
+            let incomes =  await db.Operation.findAll({
+                where: {
+                    type: 'Income'
+                }
+            });
+            let expenses =  await db.Operation.findAll({
+                where: {
+                    type: 'Expense'
+                }
+            });
+            const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
+            const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
+            let balance = totalIncomes - totalExpenses;  
+            return res.render ('index', {user, lastOperations, balance});
         } else {
             return res.render ('index');
         }
@@ -31,8 +44,21 @@ const controller = {
                 },
                 offset: 0,
                 limit: 10
-            }) 
-            return res.render ('operations', {user, lastOperations});
+            })
+            let incomes =  await db.Operation.findAll({
+                where: {
+                    type: 'Income'
+                }
+            });
+            let expenses =  await db.Operation.findAll({
+                where: {
+                    type: 'Expense'
+                }
+            });
+            const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
+            const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
+            let balance = totalIncomes - totalExpenses;
+            return res.render ('operations', {user, lastOperations, balance});
         } else {
             return res.render ('operations');
         }

@@ -8,7 +8,11 @@
     <%- include partials/header %>
     <section class="balance-detail" id="balance">
       <h1 class="heading">Your Balance</h1>
-      <h1 class="wallet-balance">$132.456,59</h1>
+      <% if (locals.userLogged && typeof user != 'undefined') { %>
+        <h1 class="wallet-balance">$<%= balance %></h1>
+        <% } else { %> 
+          <h1 class="wallet-balance">$132.456,59</h1>
+      <% }; %>
     </section>
     <section class="last-operations" id="last-operations">
       <form class="add-operations-form" id="add-operations-form" action="/operations/add" method="POST">
