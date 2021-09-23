@@ -453,17 +453,33 @@ body section .add-operations-form {
     left: -110%;
     padding: 3.5rem;
 }
-body section .add-operations-form input, body section .add-operations-form select {
+body .edit-operations-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 6rem auto;
+    background-color: var(--black);
+    color: #fff;
+    font-size: 2.5rem;
+    width: 100%;
+    max-width: 380px;
+    border-radius: .5rem;
+    padding: 3.5rem;
+}
+body section .add-operations-form input, body section .add-operations-form select,
+body section .edit-operations-form input, body section .edit-operations-form select {
     width: 75%;
     border-radius: .5rem;
     font-family: 'Open Sans', sans-serif;
 }
-body section .add-operations-form .cancel-button {
+body section .add-operations-form .cancel-button,
+body section .edit-operations-form .cancel-button {
     display: flex;
     justify-content: flex-end;
     width: 100%;
 }
-body section .add-operations-form .cancel-button .fa-times {
+body section .add-operations-form .cancel-button .fa-times,
+body section .edit-operations-form .cancel-button .fa-times {
     color: #fff;
 }
 body .last-operations .flex-conteiner {
@@ -489,6 +505,20 @@ table tbody tr td .options-container {
 table tbody tr td a .fa-edit, table tbody tr td a .fa-trash{
     font-size: 1.8rem;
     color: var(--black);
+}
+tr:hover ~ table tbody tr td .options-container {
+    color: #fff;
+}
+.edit-operation-section {
+    background-color: #fff;
+}
+body section .edit-operations-form a {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+body section .edit-operations-form a .fa-times {
+    color: #fff;
 }
 
 /* detail operations section ends */
@@ -578,6 +608,9 @@ body form .align-image-user img {
   .user-menu ul li a {
     font-size: 2.2rem;
   }
+  body .edit-operations-form {
+    margin: 9rem auto;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -626,6 +659,9 @@ body form .align-image-user img {
     }
     body section .add-operations-form input, body section .add-operations-form select {
         padding: .2rem;
+    }
+    body .edit-operations-form {
+        margin: 11rem auto;
     }
 }
 

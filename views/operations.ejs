@@ -66,24 +66,22 @@
           <tbody>
             <% if (lastOperations.length >= 1) { %> 
               <% lastOperations.forEach(operation => { %>
-            <tr>
-              <td><%= operation.detail %></td>
-              <td>$<%= operation.ammount %></td>
-              <td>
-                <%= `${operation.date.getDate()+1}/${operation.date.getMonth()+1}/${operation.date.getFullYear()} ${operation.date.getHours()+3}:${operation.date.getMinutes()}`%>
-              </td>
-              <td><%= operation.type %></td>
-              <td><%= operation.category %></td>
-              <td>
-                <div class="options-container">
-                  <a class="btn-cancel" href="/operations/edit">
-                    <i class="fas fa-edit"></i>
-                  </a>
-                  <a class="btn-cancel" href="/operations/delete/"><i class="fas fa-trash"></i></a>
-                </div>
-              </td>
-            </tr>
-            <%  }); %>
+                <tr>
+                  <td><%= operation.detail %></td>
+                  <td>$<%= operation.ammount %></td>
+                  <td>
+                    <%= `${operation.date.getDate()}/${operation.date.getMonth()}/${operation.date.getFullYear()} ${operation.date.getHours()+3}:${operation.date.getMinutes()}`%>
+                  </td>
+                  <td><%= operation.type %></td>
+                  <td><%= operation.category %></td>
+                  <td>
+                    <div class="options-container">
+                      <a href="/operations/edit/<%= operation.idOperation %>"><i class="fas fa-edit"></i></a>
+                      <a href="/operations/delete/<%= operation.idOperation %>"><i class="fas fa-trash"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              <%  }); %>
             <% }; %>
           </tbody>
         </table>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include partials/head %>
+    <title>Edit Operation #<%= operation.idOperation %> </title>
+  </head>
+  <body>
+    <%- include partials/header %>
+    <body>
+      <section class="edit-operation-section">
+        <form class="edit-operations-form" id="edit-operations-form" action="/operations/edit/<%= operation.idOperation %> " method="POST">
+          <a href="/operations"><i class="fas fa-times cancel-button" id="cancel-button"></i></a>
+  
+          <label for="detail">Detail</label>
+          <input type="text" name="detail" id="detail" value="<%= operation.detail %>">
+  
+          <label for="ammount">Ammount</label>
+          <input type="number" name="ammount" id="ammount" step="any" value="<%= operation.ammount %>">
+  
+          <label for="date">Date</label>
+          <input type="datetime-local" name="date" id="date"  value="<%= operation.date %>">
+  
+          <label for="type">Type</label>
+          <select name="type" id="type">
+            <option value="Income" <%= operation.type == 'Income'? 'selected': null; %> >Income</option>
+            <option value="Expense" <%= operation.type == 'Expense'? 'selected': null; %> >Expense</option>
+          </select>
+          
+          <label for="category">Category</label>
+          <select name="category" id="category">
+            <option value="Food">Food</option>
+            <option value="Essential Services">Essential Services</option>
+          </select>
+  
+          <button type="submit" class="btn-check"><i class="fas fa-check-square"></i></button>
+        </form>
+      </section>
+    </body>
+    <script src="/javascripts/operationsMenu.js"></script>
+    <%- include partials/footer %> 
+  </body>
+</html>
