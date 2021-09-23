@@ -481,6 +481,15 @@ body .last-operations .flex-conteiner .fa-plus-square {
 body .last-operations .flex-conteiner .fa-plus-square:hover {
     font-size: 3.5rem;
 }
+table tbody tr td .options-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+table tbody tr td a .fa-edit, table tbody tr td a .fa-trash{
+    font-size: 1.8rem;
+    color: var(--black);
+}
 
 /* detail operations section ends */
 
