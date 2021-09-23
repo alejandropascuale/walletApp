@@ -11,10 +11,6 @@
       <h1 class="wallet-balance">$132.456,59</h1>
     </section>
     <section class="last-operations" id="last-operations">
-      <div class="flex-conteiner">
-        <a class="heartbeat" id="add-operations-button"><i class="fas fa-plus-square"></i></a>
-        <h3 class="add-text">Pres to Add operation</h3>
-      </div>
       <form class="add-operations-form" id="add-operations-form" action="/operations/add" method="POST">
         <i class="fas fa-times cancel-button" id="cancel-button"></i>
 
@@ -22,7 +18,7 @@
         <input type="text" name="detail" id="detail">
 
         <label for="ammount">Ammount</label>
-        <input type="number" name="ammount" id="ammount">
+        <input type="number" name="ammount" id="ammount" step="any">
 
         <label for="date">Date</label>
         <input type="date" name="date" id="date" value="">
@@ -40,8 +36,11 @@
         </select>
 
         <button type="submit" class="btn-check"><i class="fas fa-check-square"></i></button>
-
       </form>
+      <div class="flex-conteiner">
+        <a class="heartbeat" id="add-operations-button"><i class="fas fa-plus-square"></i></a>
+        <h3 class="add-text">Pres to Add operation</h3>
+      </div>
       <div class="card-table">
         <table aria-describedby="myOperations" id="dataTable" cellspacing="0">
           <thead>

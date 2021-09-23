@@ -8,7 +8,7 @@ window.addEventListener('load', ()=> {
         operationsAddForm.style.left = '0';
     })
     cancelButton.addEventListener('click', ()=>{
-        operationsAddForm.style.left = '-30%';
+        operationsAddForm.style.left = '-110%';
     })
 
 })

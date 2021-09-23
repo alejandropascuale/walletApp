@@ -12,7 +12,7 @@ module.exports = function (sequelize, DataTypes) {
          type: DataTypes.STRING
      },
      ammount: {
-         type: DataTypes.INTEGER
+         type: DataTypes.FLOAT
      },
     date: {
         type: DataTypes.DATE

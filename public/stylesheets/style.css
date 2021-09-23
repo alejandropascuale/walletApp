@@ -444,18 +444,19 @@ body section .add-operations-form {
     background-color: var(--black);
     color: #fff;
     font-size: 2.5rem;
-    width: 30%;
+    width: 100%;
     max-width: 380px;
     margin: -2rem 0;
     border-radius: .5rem;
     position: absolute;
-    /* left: 0; */
-    left: -30%;
+    z-index: 900;
+    left: -110%;
     padding: 3.5rem;
 }
 body section .add-operations-form input, body section .add-operations-form select {
     width: 75%;
     border-radius: .5rem;
+    font-family: 'Open Sans', sans-serif;
 }
 body section .add-operations-form .cancel-button {
     display: flex;
@@ -614,6 +615,9 @@ body form .align-image-user img {
         width: 85%;
         margin: auto;
     }
+    body section .add-operations-form input, body section .add-operations-form select {
+        padding: .2rem;
+    }
 }
 
 @media (min-width: 1440px) {
@@ -647,5 +651,10 @@ body form .align-image-user img {
     }
     .user-menu ul li a {
         font-size: 2.4rem;
+    }
+    body section .add-operations-form input, body section .add-operations-form select {
+        padding: .4rem;
+        font-size: 1.5rem;
+        width: 90%;
     }
 }
