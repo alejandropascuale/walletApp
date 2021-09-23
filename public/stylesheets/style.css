@@ -453,9 +453,6 @@ body section .add-operations-form {
     left: -30%;
     padding: 3.5rem;
 }
-/* body section .add-operations-form.active {
-    left: 0;
-} */
 body section .add-operations-form input, body section .add-operations-form select {
     width: 75%;
     border-radius: .5rem;
@@ -467,6 +464,21 @@ body section .add-operations-form .cancel-button {
 }
 body section .add-operations-form .cancel-button .fa-times {
     color: #fff;
+}
+body .last-operations .flex-conteiner {
+    display: flex;
+    align-items: center;
+}
+body .last-operations .flex-conteiner .fa-plus-square, body .last-operations .flex-conteiner .add-text {
+    font-size: 3rem;
+    color: rgb(1, 207, 1);
+    padding: 1rem 0.5rem;
+}
+body .last-operations .flex-conteiner .fa-plus-square {
+    cursor: pointer;
+}
+body .last-operations .flex-conteiner .fa-plus-square:hover {
+    font-size: 3.5rem;
 }
 
 /* detail operations section ends */
@@ -597,6 +609,10 @@ body form .align-image-user img {
     }
     .user-menu ul li a {
         font-size: 2.4rem;
+    }
+    body .last-operations .flex-conteiner {
+        width: 85%;
+        margin: auto;
     }
 }
 

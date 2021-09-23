@@ -22,6 +22,9 @@ module.exports = function (sequelize, DataTypes) {
      },
     category: {
          type: DataTypes.STRING
+     },
+    id_user: {
+         type: DataTypes.INTEGER
      }
     }
     let config = {

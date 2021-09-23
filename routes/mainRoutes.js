@@ -7,5 +7,7 @@ const mainController = require('../controllers/mainController')
 router.get('/', mainController.index)
 /* GET operations page. */
 router.get('/operations', mainController.detailOperations)
+/* POST create operations */
+router.post('/operations/add', mainController.createOperations)
 
 module.exports = router;

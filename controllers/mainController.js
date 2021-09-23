@@ -17,11 +17,28 @@ const controller = {
         if (req.session.userLogged){
             const user = await db.User.findOne({
                 where: {email: req.session.userLogged.email}
+            })
+            const lastOperations = await db.Operation.findAll({
+                where: {
+                    id_user: req.session.userLogged.idUser
+                },
+                limit: 10
             }) 
-            return res.render ('operations', {user});
+            return res.render ('operations', {user, lastOperations});
         } else {
             return res.render ('operations');
         }
+    },
+    createOperations: async (req, res) => {
+        await db.Operation.create({
+        detail: req.body.detail,
+        ammount: req.body.ammount,
+        date: req.body.date,
+        type: req.body.type,
+        category: req.body.category,
+        id_user: req.session.userLogged.idUser
+        }) 
+        return res.redirect('/operations');
     }
 }
 

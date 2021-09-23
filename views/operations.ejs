@@ -11,8 +11,11 @@
       <h1 class="wallet-balance">$132.456,59</h1>
     </section>
     <section class="last-operations" id="last-operations">
-      <a class="btn-check" id="add-operations-button"><i class="fas fa-plus-square"></i></a>
-      <form class="add-operations-form" id="add-operations-form" action="/operations/add">
+      <div class="flex-conteiner">
+        <a class="heartbeat" id="add-operations-button"><i class="fas fa-plus-square"></i></a>
+        <h3 class="add-text">Pres to Add operation</h3>
+      </div>
+      <form class="add-operations-form" id="add-operations-form" action="/operations/add" method="POST">
         <i class="fas fa-times cancel-button" id="cancel-button"></i>
 
         <label for="detail">Detail</label>
@@ -60,26 +63,30 @@
             </tr>
           </tfoot>
           <tbody>
+            <% if (lastOperations.length >= 1) { %> 
+              <% lastOperations.forEach(operation => { %>
             <tr>
-              <td>Almuerzo restaurant españa</td>
-              <td>650,00</td>
-              <td>20/09/2021 13:35</td>
-              <td>Gasto</td>
+              <td><%= operation.detail %></td>
+              <td>$<%= operation.ammount %></td>
+              <td><%= operation.date %></td>
+              <td><%= operation.type %></td>
               <td>
-                Comida
+                <%= operation.category %>
                 <a class="btn-cancel" href="/operations/edit">
                   <i class="fas fa-edit"></i>
                 </a>
                 <a class="btn-cancel" href="/operations/delete/"><i class="fas fa-trash"></i></a>
               </td>
             </tr>
-            <tr>
+            <%  }); %>
+            <% }; %> 
+            <!-- <tr>
               <td>Pago factura de luz</td>
               <td>890,35</td>
               <td>21/09/2021 10:30</td>
               <td>Gasto</td>
               <td>Servicios básicos</td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
