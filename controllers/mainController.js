@@ -60,6 +60,12 @@ const controller = {
             { where: {idOperation: req.params.idOperation}
         })
         return res.redirect('/operations');
+    },
+    deleteOperation:  async (req, res) => {
+        await db.Operation.destroy({
+            where: {idOperation: req.params.idOperation}
+        })
+        return res.redirect('/operations');
     }
 }
 

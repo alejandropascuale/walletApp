@@ -13,5 +13,7 @@ router.post('/operations/add', mainController.createOperations)
 router.get('/operations/edit/:idOperation', mainController.editOperationForm)
 /* POST edit operation */
 router.post('/operations/edit/:idOperation', mainController.updateOperation)
+/* DELETE operation */
+router.delete('/operations/delete/:idOperation', mainController.deleteOperation)
 
 module.exports = router;

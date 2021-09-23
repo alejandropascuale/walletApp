@@ -77,7 +77,9 @@
                   <td>
                     <div class="options-container">
                       <a href="/operations/edit/<%= operation.idOperation %>"><i class="fas fa-edit"></i></a>
-                      <a href="/operations/delete/<%= operation.idOperation %>"><i class="fas fa-trash"></i></a>
+                      <form action="/operations/delete/<%= operation.idOperation %>?_method=DELETE" method="post">
+                        <button type="submit"><i class="fas fa-trash"></i></button>
+                      </form>
                     </div>
                   </td>
                 </tr>
