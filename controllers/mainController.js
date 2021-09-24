@@ -10,14 +10,14 @@ const controller = {
         if (req.session.userLogged){
             const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
 
-            const operations = (await axios.get('http://localhost:3000/api/operations')).data;
-            const lastOperations = (await axios.get(`http://localhost:3000/api/operations/${user.idUser}/last`)).data;
+            let operations = (await axios.get('http://localhost:3000/api/operations')).data;
+            const lastOperations = operations.slice(operations.length-10).reverse();
 
             let incomes =  operations.filter(i => i.type == 'Income');
             let expenses =  operations.filter(i => i.type == 'Expense');
             const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
             const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
-            let balance = totalIncomes - totalExpenses;
+            const balance = totalIncomes - totalExpenses;
             return res.render ('index', {user, lastOperations, balance, moment});
         } else {
             return res.render ('index');
@@ -27,55 +27,35 @@ const controller = {
         if (req.session.userLogged){
             const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
             
-            const operations = (await axios.get('http://localhost:3000/api/operations')).data;
-            const lastOperations = (await axios.get(`http://localhost:3000/api/operations/${user.idUser}/last`)).data;
+            let operations = (await axios.get('http://localhost:3000/api/operations')).data.reverse();
+            /* const lastOperations = (await axios.get(`http://localhost:3000/api/operations/${user.idUser}/last`)).data; */
 
             let incomes =  operations.filter(i => i.type == 'Income');
             let expenses =  operations.filter(i => i.type == 'Expense');
             const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
             const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
             let balance = totalIncomes - totalExpenses;
-            return res.render ('operations', {user, lastOperations, balance, moment});
+            return res.render ('operations', {user, operations, balance, moment});
         } else {
             return res.render ('operations');
         }
     },
     createOperations: async (req, res) => {
-        await db.Operation.create({
-        detail: req.body.detail,
-        ammount: req.body.ammount,
-        date: req.body.date,
-        type: req.body.type,
-        category: req.body.category,
-        id_user: req.session.userLogged.idUser
-        }) 
+        await axios.post(`http://localhost:3000/api/operations/add`);
         return res.redirect('/operations');
     },
     editOperationForm: async (req, res) => {
-        const user = await db.User.findOne({
-            where: {email: req.session.userLogged.email}
-        }) 
-        const operation = await db.Operation.findOne({
-            where:{ idOperation: req.params.idOperation }
-        })
+        const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
+        const operation = (await axios.get(`http://localhost:3000/api/operations/${req.params.idOperation}`)).data;
         return res.render ('operation-edit', {user, operation})
     },
     updateOperation: async (req, res) => {
-        await db.Operation.update({
-            detail: req.body.detail,
-            ammount: req.body.ammount,
-            date: req.body.date,
-            type: req.body.type,
-            category: req.body.category
-            },
-            { where: {idOperation: req.params.idOperation}
-        })
+        const data = await axios.put(`http://localhost:3000/api/operations/${req.params.idOperation}/edit`).data;
+        console.log(data);
         return res.redirect('/operations');
     },
     deleteOperation:  async (req, res) => {
-        await db.Operation.destroy({
-            where: {idOperation: req.params.idOperation}
-        })
+        await axios.delete(`http://localhost:3000/api/operations/delete/${req.params.idOperation}`);
         return res.redirect('/operations');
     }
 }

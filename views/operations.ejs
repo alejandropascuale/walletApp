@@ -77,8 +77,8 @@
             </tr>
           </tfoot>
           <tbody>
-            <% if (lastOperations.length >= 1) { %> 
-              <% lastOperations.forEach(operation => { %>
+            <% if (operations.length >= 1) { %> 
+              <% operations.forEach(operation => { %>
                 <tr>
                   <td><%= operation.detail %></td>
                   <td>$<%= operation.ammount %></td>

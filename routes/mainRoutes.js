@@ -12,7 +12,7 @@ router.post('/operations/add', mainController.createOperations)
 /* GET edit operation form */
 router.get('/operations/edit/:idOperation', mainController.editOperationForm)
 /* POST edit operation */
-router.post('/operations/edit/:idOperation', mainController.updateOperation)
+router.put('/operations/edit/:idOperation', mainController.updateOperation)
 /* DELETE operation */
 router.delete('/operations/delete/:idOperation', mainController.deleteOperation)
 

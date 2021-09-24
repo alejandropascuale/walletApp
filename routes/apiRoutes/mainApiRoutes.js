@@ -5,14 +5,12 @@ const mainController = require('../../controllers/apiControllers/mainApiControll
 
 /* List of all operations from the user */
 router.get('/operations', mainController.listOperations)
-/* List of last 10 operations from the user */
-router.get('/operations/:idUser/last', mainController.lastOperations)
+/* Select one operation */
+router.get('/operations/:idOperation', mainController.selectOperation)
 /* POST create operations */
 router.post('/operations/add', mainController.createOperations)
-/* GET edit operation form */
-router.get('/operations/edit/:idOperation', mainController.editOperationForm)
-/* POST edit operation */
-router.post('/operations/edit/:idOperation', mainController.updateOperation)
+/* PUT edit operation */
+router.put('/operations/:idOperation/edit', mainController.updateOperation)
 /* DELETE operation */
 router.delete('/operations/delete/:idOperation', mainController.deleteOperation)
 
