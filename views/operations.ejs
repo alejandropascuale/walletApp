@@ -83,7 +83,7 @@
                   <td><%= operation.detail %></td>
                   <td>$<%= operation.ammount %></td>
                   <td>
-                    <%= `${operation.date.getDate()}/${operation.date.getMonth()}/${operation.date.getFullYear()} ${operation.date.getHours()+3}:${operation.date.getMinutes()}`%>
+                    <%= moment(operation.date).format( 'DD-MMM-YYYY HH:MM') %>
                   </td>
                   <td><%= operation.type %></td>
                   <td><%= operation.category %></td>

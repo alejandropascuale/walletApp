@@ -8,6 +8,8 @@ const session = require('express-session');
 
 var mainRouter = require('./routes/mainRoutes');
 var usersRouter = require('./routes/usersRoutes');
+var mainApiRouter = require('./routes/apiRoutes/mainApiRoutes');
+var usersApiRouter = require('./routes/apiRoutes/usersApiRoutes');
 
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware');
 
@@ -32,6 +34,8 @@ app.use(userLoggedMiddleware);
 
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
+app.use('/api', mainApiRouter);
+app.use('/api/users', usersApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

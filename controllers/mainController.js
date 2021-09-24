@@ -1,64 +1,41 @@
 const express = require('express');
 const router = express.Router ();
 const db = require ('../database/models');
+const axios = require('axios');
+var moment = require('moment');
+
 
 const controller = {
     index: async (req, res) => {
         if (req.session.userLogged){
-            const user = await db.User.findOne({
-                where: {email: req.session.userLogged.email}
-            })
-            const lastOperations = await db.Operation.findAll({
-                where: {
-                    id_user: req.session.userLogged.idUser
-                },
-                limit: 10,
-                order: [['idOperation', 'DESC']]
-            })
-            let incomes =  await db.Operation.findAll({
-                where: {
-                    type: 'Income'
-                }
-            });
-            let expenses =  await db.Operation.findAll({
-                where: {
-                    type: 'Expense'
-                }
-            });
+            const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
+
+            const operations = (await axios.get('http://localhost:3000/api/operations')).data;
+            const lastOperations = (await axios.get(`http://localhost:3000/api/operations/${user.idUser}/last`)).data;
+
+            let incomes =  operations.filter(i => i.type == 'Income');
+            let expenses =  operations.filter(i => i.type == 'Expense');
             const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
             const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
-            let balance = totalIncomes - totalExpenses;  
-            return res.render ('index', {user, lastOperations, balance});
+            let balance = totalIncomes - totalExpenses;
+            return res.render ('index', {user, lastOperations, balance, moment});
         } else {
             return res.render ('index');
         }
     },
     detailOperations: async (req, res) => {
         if (req.session.userLogged){
-            const user = await db.User.findOne({
-                where: {email: req.session.userLogged.email}
-            })
-            const lastOperations = await db.Operation.findAll({
-                where: {
-                    id_user: req.session.userLogged.idUser
-                },
-                offset: 0,
-                limit: 10
-            })
-            let incomes =  await db.Operation.findAll({
-                where: {
-                    type: 'Income'
-                }
-            });
-            let expenses =  await db.Operation.findAll({
-                where: {
-                    type: 'Expense'
-                }
-            });
+            const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
+            
+            const operations = (await axios.get('http://localhost:3000/api/operations')).data;
+            const lastOperations = (await axios.get(`http://localhost:3000/api/operations/${user.idUser}/last`)).data;
+
+            let incomes =  operations.filter(i => i.type == 'Income');
+            let expenses =  operations.filter(i => i.type == 'Expense');
             const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
             const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
             let balance = totalIncomes - totalExpenses;
-            return res.render ('operations', {user, lastOperations, balance});
+            return res.render ('operations', {user, lastOperations, balance, moment});
         } else {
             return res.render ('operations');
         }
