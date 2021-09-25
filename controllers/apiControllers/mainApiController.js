@@ -15,7 +15,14 @@ const controller = {
         return res.json(operation);
     },
     createOperations: async (req, res) => {
-        const newOperation = await db.Operation.create(req.body)
+        const newOperation = await db.Operation.create({
+            detail: req.body.detail,
+            ammount: req.body.ammount,
+            date: req.body.date,
+            type: req.body.type,
+            category: req.body.category,
+            id_user: req.body.id_user
+        });
         return res.json(newOperation);
     },
     updateOperation: async (req, res) => {

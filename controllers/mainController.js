@@ -41,7 +41,8 @@ const controller = {
     },
     createOperations: async (req, res) => {
         /* await axios.post('http://localhost:3000/api/operations/add'); */
-        await axios({ url :'http://localhost:3000/api/operations/add', method: 'post', data: req.body})
+        console.log(req.body);
+        await axios({ url :'http://localhost:3000/api/operations', method: 'post', data: req.body})
         return res.redirect('/operations');
     },
     editOperationForm: async (req, res) => {

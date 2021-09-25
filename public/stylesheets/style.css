@@ -521,7 +521,9 @@ body section .edit-operations-form a {
 body section .edit-operations-form a .fa-times {
     color: #fff;
 }
-
+.display-none {
+    display: none;
+}
 /* detail operations section ends */
 
 /* account user starts */

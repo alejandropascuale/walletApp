@@ -8,7 +8,7 @@ router.get('/operations', mainController.listOperations)
 /* Select one operation */
 router.get('/operations/:idOperation', mainController.selectOperation)
 /* POST create operations */
-router.post('/operations/add', mainController.createOperations)
+router.post('/operations', mainController.createOperations)
 /* PUT edit operation */
 router.put('/operations/:idOperation/edit', mainController.updateOperation)
 /* DELETE operation */
