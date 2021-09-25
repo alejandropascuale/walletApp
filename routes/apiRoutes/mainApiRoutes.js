@@ -3,7 +3,7 @@ var router = express.Router();
 
 const mainController = require('../../controllers/apiControllers/mainApiController')
 
-/* List of all operations from the user */
+/* Apis Routes */
 router.get('/operations', mainController.listOperations)
 /* Select one operation */
 router.get('/operations/:idOperation', mainController.selectOperation)
@@ -12,6 +12,6 @@ router.post('/operations/add', mainController.createOperations)
 /* PUT edit operation */
 router.put('/operations/:idOperation/edit', mainController.updateOperation)
 /* DELETE operation */
-router.delete('/operations/delete/:idOperation', mainController.deleteOperation)
+router.delete('/operations/:idOperation/delete', mainController.deleteOperation)
 
 module.exports = router;

@@ -471,6 +471,7 @@ body section .edit-operations-form input, body section .edit-operations-form sel
     width: 75%;
     border-radius: .5rem;
     font-family: 'Open Sans', sans-serif;
+    padding: .5rem;
 }
 body section .add-operations-form .cancel-button,
 body section .edit-operations-form .cancel-button {

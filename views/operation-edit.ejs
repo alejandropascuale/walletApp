@@ -8,7 +8,7 @@
     <%- include partials/header %>
     <body>
       <section class="edit-operation-section">
-        <form class="edit-operations-form" id="edit-operations-form" action="/operations/edit/<%= operation.idOperation %>?_method=PUT" method="POST">
+        <form class="edit-operations-form" id="edit-operations-form" action="/operations/<%= operation.idOperation %>/edit?_method=PUT" method="post">
           <a href="/operations"><i class="fas fa-times cancel-button" id="cancel-button"></i></a>
   
           <label for="detail">Detail</label>
@@ -18,7 +18,7 @@
           <input type="number" name="ammount" id="ammount" step="any" value="<%= operation.ammount %>">
   
           <label for="date">Date</label>
-          <input type="datetime-local" name="date" id="date"  value="<%= operation.date %>">
+          <input type="date" name="date" id="date"  value="<%= moment(operation.date).format('YYYY-MM-DD') %>">
   
           <label for="type">Type</label>
           <select name="type" id="type">

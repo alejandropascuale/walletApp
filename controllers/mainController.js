@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router ();
-const db = require ('../database/models');
 const axios = require('axios');
 var moment = require('moment');
 
@@ -17,7 +16,7 @@ const controller = {
             let expenses =  operations.filter(i => i.type == 'Expense');
             const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
             const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
-            const balance = totalIncomes - totalExpenses;
+            const balance = (totalIncomes - totalExpenses).toFixed(2);
             return res.render ('index', {user, lastOperations, balance, moment});
         } else {
             return res.render ('index');
@@ -34,28 +33,29 @@ const controller = {
             let expenses =  operations.filter(i => i.type == 'Expense');
             const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
             const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
-            let balance = totalIncomes - totalExpenses;
+            let balance = (totalIncomes - totalExpenses).toFixed(2);
             return res.render ('operations', {user, operations, balance, moment});
         } else {
             return res.render ('operations');
         }
     },
     createOperations: async (req, res) => {
-        await axios.post(`http://localhost:3000/api/operations/add`);
+        /* await axios.post('http://localhost:3000/api/operations/add'); */
+        await axios({ url :'http://localhost:3000/api/operations/add', method: 'post', data: req.body})
         return res.redirect('/operations');
     },
     editOperationForm: async (req, res) => {
         const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
         const operation = (await axios.get(`http://localhost:3000/api/operations/${req.params.idOperation}`)).data;
-        return res.render ('operation-edit', {user, operation})
+        return res.render ('operation-edit', {user, operation, moment})
     },
     updateOperation: async (req, res) => {
-        const data = await axios.put(`http://localhost:3000/api/operations/${req.params.idOperation}/edit`).data;
-        console.log(data);
+        await axios({ url :`http://localhost:3000/api/operations/${req.params.idOperation}/edit`, method: 'put', data: req.body })
         return res.redirect('/operations');
+        /* return res.send(req.body) */
     },
     deleteOperation:  async (req, res) => {
-        await axios.delete(`http://localhost:3000/api/operations/delete/${req.params.idOperation}`);
+        await axios.delete(`http://localhost:3000/api/operations/${req.params.idOperation}/delete`);
         return res.redirect('/operations');
     }
 }
