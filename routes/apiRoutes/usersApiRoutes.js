@@ -11,7 +11,7 @@ router.get('/', usersController.listUsers)
 /* GET register form */
 router.get('/:idUser', usersController.detailUser)
 /* POST register */
-router.post('/register', uploadFile.single('avatar'), validateRegisterUser, usersController.createUser)
+router.post('/register', validateRegisterUser, usersController.createUser)
 /* GET login form */
 router.get('/login', usersController.loginForm)
 /* POST login form */

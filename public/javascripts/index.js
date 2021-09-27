@@ -3,6 +3,7 @@ let navbar = document.querySelector('.navbar');
 let searchForm = document.querySelector('#search-form');
 let searchIcon = document.querySelector('#search-icon');
 let closeIcon = document.querySelector('#close');
+let searchBox = document.querySelector('#search-box');
 
 menu.onclick = () => {
   menu.classList.toggle('fa-times');
@@ -16,6 +17,7 @@ menu.onscroll = () => {
 
 searchIcon.onclick = () => {
   searchForm.classList.toggle('active');
+  searchBox.focus();
 };
 closeIcon.onclick = () => {
   searchForm.classList.remove('active');

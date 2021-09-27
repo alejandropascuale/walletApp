@@ -4,7 +4,6 @@ window.addEventListener('load', ()=> {
     let cancelButton = document.querySelector('#cancel-button');
     let detailInput = document.querySelector('#detail');
 
-
     addButton.addEventListener('click', ()=> {
         operationsAddForm.style.left = '0';
         detailInput.focus();
@@ -12,7 +11,5 @@ window.addEventListener('load', ()=> {
     cancelButton.addEventListener('click', ()=>{
         operationsAddForm.style.left = '-110%';
     })
-
-    /* let optionCategory =  */
 
 })

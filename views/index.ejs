@@ -51,7 +51,7 @@
       <% if (locals.userLogged && typeof user != 'undefined') { %>
         <h1 class="wallet-balance">$<%= balance %></h1>
         <% } else { %> 
-          <h1 class="wallet-balance">$132.456,59</h1>
+          <h2 class="wallet-balance">$0,00</h2>
       <% }; %>
     </section>
     <section class="last-operations" id="last-operations">
@@ -84,9 +84,9 @@
               <% lastOperations.forEach(operation => { %>
                 <tr>
                   <td><%= operation.detail %></td>
-                  <td>$<%= operation.ammount %></td>
+                  <td class=<%= operation.type=='Expense'? 'expense': null; %>>$<%= operation.ammount %></td>
                   <td>
-                    <%= moment(operation.date).format( 'DD-MMM-YYYY HH:MM') %>
+                    <%= moment(operation.date).format( 'DD-MMM-YYYY') %>
                   </td>
                 </tr>
               <%  }); %>

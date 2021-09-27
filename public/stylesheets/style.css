@@ -111,6 +111,7 @@ header .icons #menu-bars {
     border-radius: .5rem;
     font-size: 2rem;
     font-weight: bold;
+    box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1)
 }
 .user-menu a {
     color: var(--black);
@@ -118,6 +119,9 @@ header .icons #menu-bars {
 .user-menu a:hover {
     background-color: var(--black);
     color: #fff;
+}
+#category-filter {
+    text-align: center;
 }
 /* header section ends */
 
@@ -344,6 +348,10 @@ tr:hover {
     background-color: var(--black) !important;
     color: #fff;
 }
+tr:hover .fa-edit, tr:hover .fa-trash {
+    background-color: var(--black) !important;
+    color: #fff;
+}
 tr:nth-child(even) {
     background-color: #eee;
 }
@@ -523,6 +531,12 @@ body section .edit-operations-form a .fa-times {
 }
 .display-none {
     display: none;
+}
+.expense {
+    color: red;
+}
+.fa-edit:hover, .fa-trash:hover {
+    cursor: pointer;
 }
 /* detail operations section ends */
 

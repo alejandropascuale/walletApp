@@ -8,11 +8,7 @@
     <%- include partials/header %>
     <section class="balance-detail" id="balance">
       <h1 class="heading">Your Balance</h1>
-      <% if (locals.userLogged && typeof user != 'undefined') { %>
         <h1 class="wallet-balance">$<%= balance %></h1>
-        <% } else { %> 
-          <h1 class="wallet-balance">$132.456,59</h1>
-      <% }; %>
     </section>
     <section class="last-operations" id="last-operations">
       <form class="add-operations-form" id="add-operations-form" action="/operations/add" method="POST">
@@ -22,7 +18,7 @@
         <input type="text" name="detail" id="detail">
 
         <label for="ammount">Ammount</label>
-        <input type="number" name="ammount" id="ammount" step="any">
+        <input type="number" name="ammount" id="ammount" step=".01">
 
         <label for="date">Date</label>
         <input type="date" name="date" id="date" value="">
@@ -54,6 +50,22 @@
       <div class="flex-conteiner">
         <a class="heartbeat" id="add-operations-button"><i class="fas fa-plus-square"></i></a>
         <h3 class="add-text">Pres to Add operation</h3>
+        <label for="category-filter">Category Filter</label>
+        <form action="/operations/search?category="></form>
+        <select name="category-filter" id="category-filter">
+          <option value="-" selected>-</option>
+          <option value="Awards">Awards</option>
+          <option value="Credit card">Credit card</option>
+          <option value="Essential Services">Essential Services</option>
+          <option value="Food">Food</option>
+          <option value="House Rent">House Rent</option>
+          <option value="Insurance">Insurance</option>
+          <option value="Investments">Investments</option>
+          <option value="Loans">Loans</option>
+          <option value="Others">Others</option>
+          <option value="Taxes">Taxes</option>
+          <option value="Salary">Salary</option>
+        </select>
       </div>
       <div class="card-table">
         <table aria-describedby="myOperations" id="dataTable" cellspacing="0">
@@ -82,9 +94,9 @@
               <% operations.forEach(operation => { %>
                 <tr>
                   <td><%= operation.detail %></td>
-                  <td>$<%= operation.ammount %></td>
+                  <td class=<%= operation.type=='Expense'? 'expense': null; %>>$<%= operation.ammount %></td>
                   <td>
-                    <%= moment(operation.date).format( 'DD-MMM-YYYY HH:MM') %>
+                    <%= moment(operation.date).format( 'DD-MMM-YYYY') %>
                   </td>
                   <td><%= operation.type %></td>
                   <td><%= operation.category %></td>
@@ -104,6 +116,7 @@
       </div>
     </section>
     <script src="/javascripts/operationsMenu.js"></script>
+    <script src="/javascripts/categoryFilter.js"></script>
     <%- include partials/footer %> 
   </body>
 </html>
