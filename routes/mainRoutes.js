@@ -15,5 +15,8 @@ router.get('/operations/:idOperation/edit', mainController.editOperationForm)
 router.put('/operations/:idOperation/edit', mainController.updateOperation)
 /* DELETE operation */
 router.delete('/operations/:idOperation/delete', mainController.deleteOperation)
+/* GET filter operation */
+router.get('/operations/category-filter/:category', mainController.filterOperations)
+
 
 module.exports = router;

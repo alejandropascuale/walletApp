@@ -494,6 +494,15 @@ body section .edit-operations-form .cancel-button .fa-times {
 body .last-operations .flex-conteiner {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+body .last-operations .flex-conteiner .flex-container1, body .last-operations .flex-conteiner .flex-container2 {
+    display: flex;
+}
+body .last-operations .flex-conteiner .flex-container2 {
+    width: 20%;
+    justify-content: space-around;
+    align-items: center;
 }
 body .last-operations .flex-conteiner .fa-plus-square, body .last-operations .flex-conteiner .add-text {
     font-size: 3rem;

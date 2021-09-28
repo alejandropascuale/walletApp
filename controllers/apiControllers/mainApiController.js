@@ -42,6 +42,17 @@ const controller = {
             where: {idOperation: req.params.idOperation}
         })
         return res.json(operation);
+    },
+    filterOperations: async (req, res) => {
+        let operations
+        if (req.params.category == 'All') {
+            operations = await db.Operation.findAll({});    
+        } else {
+            operations = await db.Operation.findAll({
+                where: {category: req.params.category}
+            })
+        }
+        return res.json(operations);
     }
 }
 

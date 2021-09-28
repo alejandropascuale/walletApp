@@ -13,5 +13,7 @@ router.post('/operations', mainController.createOperations)
 router.put('/operations/:idOperation/edit', mainController.updateOperation)
 /* DELETE operation */
 router.delete('/operations/:idOperation/delete', mainController.deleteOperation)
+/* GET filter operation */
+router.get('/operations/search/:category', mainController.filterOperations)
 
 module.exports = router;

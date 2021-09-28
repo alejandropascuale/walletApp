@@ -26,6 +26,7 @@
     "node-fetch": "^3.0.0",
     "sequelize": "^6.6.5",
     "sweetalert2": "^11.1.7",
-    "swiper": "^7.0.6"
+    "swiper": "^7.0.6",
+    "uniq": "^1.0.1"
   }
 }
