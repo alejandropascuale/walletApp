@@ -9,7 +9,7 @@ const usersController = require('../controllers/usersController')
 /* GET register form */
 router.get('/register', usersController.registerForm)
 /* POST register */
-router.post('/register', validateRegisterUser, usersController.createUser)
+router.post('/register', usersController.createUser)
 /* GET login form */
 router.get('/login', usersController.loginForm)
 /* POST login form */

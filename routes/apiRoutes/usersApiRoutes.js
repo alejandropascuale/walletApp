@@ -12,15 +12,11 @@ router.get('/', usersController.listUsers)
 router.get('/:idUser', usersController.detailUser)
 /* POST register */
 router.post('/register', validateRegisterUser, usersController.createUser)
-/* GET login form */
-router.get('/login', usersController.loginForm)
 /* POST login form */
 router.post('/login', usersController.loginProcess)
-/* GET logout */
-router.get('/logout', usersController.logoutUser)
 /* GET edit account form */
 router.get('/account/', usersController.userAccountForm)
 /* POST edit account */
-router.put('/account/', uploadFile.single('avatar'), usersController.userEditAccount)
+router.put('/account/:idUser', uploadFile.single('avatar'), usersController.userEditAccount)
 
 module.exports = router;
