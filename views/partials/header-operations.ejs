@@ -1,0 +1,22 @@
+<header>
+    <a href="/" class="logo"><i class="fas fa-wallet"></i>Wallet App</a>
+    <div class="icons">
+    <i class="fas fa-bars" id="menu-bars"></i>
+    <i class="fas fa-search" id="search-icon"></i>
+    <a href="#" class="fas fa-heart"></a>
+        <div class="icon-user">
+            <img src="<%= user.avatar %>" alt="user image" class="user-image-header">
+        </div>
+        <div class="user-menu">
+            <ul type='none'>
+                <li><a href="/users/account/">Edit Account</a></li>
+                <li><a href="/users/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<form action="" id="search-form">
+    <input type="search" placeholder="Search by ammount, date, type..." name="" id="search-box">
+    <label for="search-box" class="fas fa-search"></label>
+    <i class="fas fa-times" id="close"></i>
+</form>
