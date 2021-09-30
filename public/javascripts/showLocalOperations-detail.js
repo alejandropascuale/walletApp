@@ -30,8 +30,8 @@ for (var i = 0; i < length; i++) {
 
     div.classList = ('options-container');
     form.method=('post');
-    link.href=(`/operations/${operations[i].idOperation}/edit`);
-    form.action=(`/operations/${operations[i].idOperation}/delete?_method=DELETE`);
+    link.id=operations[i].id;
+    form.id=operations[i].id;
     button.type = ('submit');
     editIcon.classList = ('fas fa-edit');
     trashIcon.classList = ('fas fa-trash');
