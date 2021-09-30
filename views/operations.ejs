@@ -50,7 +50,7 @@
         <% if (locals.userLogged && typeof user != 'undefined') { %>
         <input type="number" name="id_user" id="id_user" class="display-none" value="<%= locals.userLogged.idUser %>">
         <% }; %> 
-        <button type="submit" class="btn-check">Add</button>
+        <button type="submit" class="btn-check" id="add-operation-button">Add</button>
       </form>
       <div class="flex-conteiner">
         <div class="flex-container1">
@@ -112,15 +112,15 @@
                     </td>
                     <td><%= operation.type %></td>
                     <td><%= operation.category %></td>
+                    <td>
+                      <div class="options-container">
+                        <a href="/operations/<%= operation.idOperation %>/edit"><i class="fas fa-edit"></i></a>
+                        <form action="/operations/<%= operation.idOperation %>/delete?_method=DELETE" method="post">
+                          <button type="submit"><i class="fas fa-trash"></i></button>
+                        </form>
+                      </div>
+                    </td>
                   </tr>
-                  <td>
-                    <div class="options-container">
-                      <a href="/operations/<%= operation.idOperation %>/edit"><i class="fas fa-edit"></i></a>
-                      <form action="/operations/<%= operation.idOperation %>/delete?_method=DELETE" method="post">
-                        <button type="submit"><i class="fas fa-trash"></i></button>
-                      </form>
-                    </div>
-                  </td>
                 <%  }); %>
               <% }; %>
             <% }; %> 
@@ -128,12 +128,13 @@
         </table>
       </div>
     </section>
-    <% if (locals.userLogged && typeof user != 'undefined') { %>
     <script src="/javascripts/operationsMenu.js"></script>
+    <% if (locals.userLogged && typeof user != 'undefined') { %>
     <script src="/javascripts/categoryFilter.js"></script>
-    <% }else { %> 
-      <script src="/javascripts/showLocalOperations-detail.js"></script>
+    <% } else { %> 
       <script src="/javascripts/categoryFilter-localStorage.js"></script>
+      <script src="/javascripts/mainOperations.js"></script>
+      <script src="/javascripts/showLocalOperations-detail.js"></script>
     <% }; %>
     <%- include partials/footer %> 
   </body>

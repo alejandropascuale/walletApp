@@ -24,5 +24,14 @@ if(localStorage.getItem('operationsUser')) {
       
     }
     tbody.appendChild(tr);
+
+    
   }
+  let incomes =  operations.filter(i => i.type == 'Income');
+  let expenses =  operations.filter(i => i.type == 'Expense');
+  const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
+  console.log(totalIncomes);
+  const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
+  const balance = (totalIncomes - totalExpenses).toFixed(2);
+  localStorage.setItem('balance', balance);
 }
