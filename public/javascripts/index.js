@@ -22,3 +22,4 @@ searchIcon.onclick = () => {
 closeIcon.onclick = () => {
   searchForm.classList.remove('active');
 };
+

@@ -8,7 +8,11 @@
     <%- include partials/header-operations %>
     <section class="balance-detail" id="balance">
       <h1 class="heading">Your Balance</h1>
-        <h1 class="wallet-balance">$<%= balance %></h1>
+      <% if (locals.userLogged && typeof user != 'undefined') { %>
+      <h1 class="wallet-balance">$<%= balance %></h1>
+      <% } else { %> 
+        <h2 class="wallet-balance">$0,00</h2>
+    <% }; %>
     </section>
     <section class="last-operations" id="last-operations">
       <form class="add-operations-form" id="add-operations-form" action="/operations/add" method="POST">
@@ -43,8 +47,9 @@
           <option value="Taxes">Taxes</option>
           <option value="Salary">Salary</option>
         </select>
-
+        <% if (locals.userLogged && typeof user != 'undefined') { %>
         <input type="number" name="id_user" id="id_user" class="display-none" value="<%= locals.userLogged.idUser %>">
+        <% }; %> 
         <button type="submit" class="btn-check">Add</button>
       </form>
       <div class="flex-conteiner">
@@ -95,18 +100,19 @@
               <th id="category">Actions</th>
             </tr>
           </tfoot>
-          <tbody>
-            <tr id="data">
-            <% if (operations.length >= 1) { %> 
-              <% operations.forEach(operation => { %>
-                <tr id="data">
-                  <td><%= operation.detail %></td>
-                  <td class=<%= operation.type=='Expense'? 'expense': null; %>>$<%= operation.ammount %></td>
-                  <td>
-                    <%= moment(operation.date).format( 'DD-MMM-YYYY') %>
-                  </td>
-                  <td><%= operation.type %></td>
-                  <td><%= operation.category %></td>
+          <tbody id="insert-data">
+            <% if (locals.userLogged && typeof user != 'undefined') { %>
+              <% if (operations.length >= 1) { %> 
+                <% operations.forEach(operation => { %>
+                  <tr id="data">
+                    <td><%= operation.detail %></td>
+                    <td class=<%= operation.type=='Expense'? 'expense': null; %>>$<%= operation.ammount %></td>
+                    <td>
+                      <%= moment(operation.date).format( 'DD-MMM-YYYY') %>
+                    </td>
+                    <td><%= operation.type %></td>
+                    <td><%= operation.category %></td>
+                  </tr>
                   <td>
                     <div class="options-container">
                       <a href="/operations/<%= operation.idOperation %>/edit"><i class="fas fa-edit"></i></a>
@@ -115,15 +121,20 @@
                       </form>
                     </div>
                   </td>
-                </tr>
-              <%  }); %>
-            <% }; %>
+                <%  }); %>
+              <% }; %>
+            <% }; %> 
           </tbody>
         </table>
       </div>
     </section>
+    <% if (locals.userLogged && typeof user != 'undefined') { %>
     <script src="/javascripts/operationsMenu.js"></script>
     <script src="/javascripts/categoryFilter.js"></script>
+    <% }else { %> 
+      <script src="/javascripts/showLocalOperations-detail.js"></script>
+      <script src="/javascripts/categoryFilter-localStorage.js"></script>
+    <% }; %>
     <%- include partials/footer %> 
   </body>
 </html>

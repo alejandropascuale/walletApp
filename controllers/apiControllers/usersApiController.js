@@ -85,7 +85,7 @@ const controller = {
     },
     userEditAccount: async (req, res) => {    
         if (req.file) {
-            let editUser = await db.User.update({
+            const editUser = await db.User.update({
                 email: req.body.email,   
                 password: bcrypt.hashSync(req.body.password, 10),
                 avatar: '/images/avatars/'+req.file.filename
@@ -105,7 +105,7 @@ const controller = {
         })
             console.log(req.file);
             console.log(req.body);
-            console.log(editUser[0].data);
+            console.log(editUser);
             return res.json(editUser);
         }
     }
