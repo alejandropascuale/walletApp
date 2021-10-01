@@ -46,9 +46,13 @@ if(localStorage.getItem('operationsUser') || localStorage.getItem('operationsFil
       button.type = ('submit');
       editIcon.classList = ('fas fa-edit');
       trashIcon.classList = ('fas fa-trash');
+      
+      if(operations[i].type == 'Expense'){
+        td2.classList.add('expense'); 
+      }
   
       let textoCelda1 = document.createTextNode(operations[i].detail);
-      let textoCelda2 = document.createTextNode(operations[i].ammount);
+      let textoCelda2 = document.createTextNode('$' + operations[i].ammount);
       let textoCelda3 = document.createTextNode(operations[i].date);
       let textoCelda4 = document.createTextNode(operations[i].type);
       let textoCelda5 = document.createTextNode(operations[i].category);

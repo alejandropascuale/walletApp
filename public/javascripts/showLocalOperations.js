@@ -11,8 +11,12 @@ if(localStorage.getItem('operationsUser')) {
       let td2 = document.createElement("td");
       let td3 = document.createElement("td");
       let textoCelda1 = document.createTextNode(operations[i].detail);
-      let textoCelda2 = document.createTextNode(operations[i].ammount);
+      let textoCelda2 = document.createTextNode('$' + operations[i].ammount);
       let textoCelda3 = document.createTextNode(operations[i].date);
+
+      if(operations[i].type == 'Expense'){
+        td2.classList.add('expense'); 
+      }
     
       td1.appendChild(textoCelda1);
       td2.appendChild(textoCelda2);
@@ -30,7 +34,6 @@ if(localStorage.getItem('operationsUser')) {
   let incomes =  operations.filter(q => q.type == 'Income');
   let expenses =  operations.filter(e => e.type == 'Expense');
   const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
-  console.log(totalIncomes);
   const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
   const balance = (totalIncomes - totalExpenses).toFixed(2);
   localStorage.setItem('balance', balance);
