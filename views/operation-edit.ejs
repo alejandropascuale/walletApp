@@ -47,7 +47,7 @@
             <option value="Salary">Salary</option>
           </select>
   
-          <button type="submit" class="btn-check"><i class="fas fa-check-square"></i></button>
+          <button type="submit" class="btn-check"><i class="fas fa-check"></i></button>
         </form>
         <% } else { %>
           <form class="edit-operations-form" id="edit-operations-form" action="/operations/">
@@ -84,13 +84,15 @@
               <option value="Salary">Salary</option>
             </select>
     
-            <button type="submit" class="btn-check"><i class="fas fa-check-square"></i></button>
+            <button type="submit" class="btn-check"><i class="fas fa-check"></i></button>
           </form> 
         <% }; %> 
       </section>
     </body>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <% if (locals.userLogged && typeof user != 'undefined') { %>
       <script src="/javascripts/operationsMenu.js"></script>
+      <script src="/javascripts/sweetAlertEdit.js"></script>
     <% } else { %> 
       <script src="/javascripts/editFormOperation.js"></script>
     <% }; %>

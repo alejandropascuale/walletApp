@@ -23,7 +23,8 @@ closeIcon.onclick = () => {
   searchForm.classList.remove('active');
 };
 
-if(window.location.href == 'http://localhost:3000/'){
+if(window.location.href != 'http://localhost:3000/'){
   let footer = document.querySelector('footer');
-  footer.style.position = 'relative';
+  footer.style.position = 'fixed';
+  footer.style.bottom = '0';
 }

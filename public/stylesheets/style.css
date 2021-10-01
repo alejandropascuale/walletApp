@@ -554,6 +554,19 @@ body section .edit-operations-form a .fa-times {
 .fa-edit:hover, .fa-trash:hover {
     cursor: pointer;
 }
+.swal2-title {
+    font-size: 3.2rem !important;
+    padding: .8em .5em 0 !important;
+}
+.swal2-html-container {
+    font-size: 1.8rem !important;
+}
+.swal2-styled.swal2-confirm, .swal2-styled.swal2-cancel {
+    font-size: 1.5rem !important;
+}
+/* .swal2-styled.swal2-confirm {
+    background-color: greenyellow !important;
+} */
 /* detail operations section ends */
 
 /* account user starts */
@@ -571,8 +584,6 @@ body form .align-image-user img {
 /* footer starts */
 
 footer {
-    position: absolute;
-    bottom: 0;
     margin-top: 2%;
     padding: .5rem;
     width: 100%;
@@ -723,7 +734,7 @@ footer {
         padding: .2rem;
     }
     body .edit-operations-form {
-        margin: 11rem auto;
+        margin: 11rem auto 8rem;
     }
 }
 
@@ -766,5 +777,8 @@ footer {
     }
     body .last-operations .flex-conteiner .flex-container2 {
         width: 20%;
+    }
+    .balance-detail {
+        margin-top: 120px;
     }
 }

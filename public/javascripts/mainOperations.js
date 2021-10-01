@@ -1,6 +1,3 @@
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-];/* Operations without login */
 
 let addOperationsForm = document.querySelector('#add-operations-form');
 let addOperationsButton = document.querySelector('#add-operation-button');
@@ -35,7 +32,15 @@ addOperationsButton.addEventListener('click', (e)=>{
 
   operations.push(operation);
   localStorage.setItem('operationsUser', JSON.stringify(operations));
-  addOperationsForm.reset();
-  location.reload()
+  
+  Swal.fire({
+    icon: 'success',
+    title: 'Operation added successfully',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  setTimeout(function(){
+     window.location.reload(1);
+  }, 1500);
 
 })

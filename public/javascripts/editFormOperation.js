@@ -21,11 +21,22 @@ category.value = (operationToEdit[0].category);
 
 let btnCheck = document.querySelector('.btn-check');
 
-btnCheck.addEventListener('click', () => {
+btnCheck.addEventListener('click', (e) => {
+    e.preventDefault();
     operations[operations.indexOf(operationToEdit[0])].detail = detail.value;
     operations[operations.indexOf(operationToEdit[0])].ammount = Number(ammount.value);
     operations[operations.indexOf(operationToEdit[0])].date = date.value;
     operations[operations.indexOf(operationToEdit[0])].category = category.value;
 
     localStorage.setItem('operationsUser', JSON.stringify(operations));
+
+    Swal.fire({
+    icon: 'success',
+    title: 'Operation added successfully',
+    showConfirmButton: false,
+    timer: 1200
+    })
+    setTimeout(function(){
+        window.location.href = 'http://localhost:3000/operations';
+    }, 1200);
 })
