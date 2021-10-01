@@ -73,8 +73,8 @@ for (var i = 0; i < operations.length; i++) {
   tbody.appendChild(tr);
 }
 let balanceValue = document.querySelector('.wallet-balance');
-let incomes =  operations.filter(i => i.type == 'Income');
-let expenses =  operations.filter(i => i.type == 'Expense');
+let incomes =  operations.filter(q => q.type == 'Income');
+let expenses =  operations.filter(e => e.type == 'Expense');
 const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
 const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
 const balance = (totalIncomes - totalExpenses).toFixed(2);

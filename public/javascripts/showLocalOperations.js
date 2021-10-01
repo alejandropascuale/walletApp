@@ -1,5 +1,4 @@
 let tbody = document.querySelector('#insert-data');
-let tr = document.createElement("tr");
 
 if(localStorage.getItem('operationsUser')) {
   let operations = JSON.parse(localStorage.getItem('operationsUser'));
@@ -28,8 +27,8 @@ if(localStorage.getItem('operationsUser')) {
     
   }
   let balanceValue = document.querySelector('.wallet-balance');
-  let incomes =  operations.filter(i => i.type == 'Income');
-  let expenses =  operations.filter(i => i.type == 'Expense');
+  let incomes =  operations.filter(q => q.type == 'Income');
+  let expenses =  operations.filter(e => e.type == 'Expense');
   const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
   console.log(totalIncomes);
   const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
