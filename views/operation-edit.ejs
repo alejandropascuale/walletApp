@@ -2,13 +2,19 @@
 <html lang="en">
   <head>
     <%- include partials/head %>
-    <title>Edit Operation #<%= operation.idOperation %> </title>
+    <% if (locals.userLogged && typeof user != 'undefined') { %>
+      <title>Edit Operation #<%= operation.idOperation %> </title>
+    <% }else{ %>
+      <title>Edit Operation #</title>
+    <% }; %>  
   </head>
   <body>
     <%- include partials/header %>
     <body>
       <section class="edit-operation-section">
+        <% if (locals.userLogged && typeof user != 'undefined') { %>
         <form class="edit-operations-form" id="edit-operations-form" action="/operations/<%= operation.idOperation %>/edit?_method=PUT" method="post">
+        
           <a href="/operations"><i class="fas fa-times cancel-button" id="cancel-button"></i></a>
   
           <label for="detail">Detail</label>
@@ -43,9 +49,51 @@
   
           <button type="submit" class="btn-check"><i class="fas fa-check-square"></i></button>
         </form>
+        <% } else { %>
+          <form class="edit-operations-form" id="edit-operations-form" action="/operations/">
+          
+            <a href="/operations"><i class="fas fa-times cancel-button" id="cancel-button"></i></a>
+    
+            <label for="detail">Detail</label>
+            <input type="text" name="detail" id="detail">
+    
+            <label for="ammount">Ammount</label>
+            <input type="number" name="ammount" id="ammount" step="any">
+    
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date">
+    
+            <label for="type">Type</label>
+            <select name="type" id="type">
+              <option value="Income">Income</option>
+              <option value="Expense">Expense</option>
+            </select>
+            
+            <label for="category">Category</label>
+            <select name="category" id="category">
+              <option value="Awards">Awards</option>
+              <option value="Credit card">Credit card</option>
+              <option value="Essential Services">Essential Services</option>
+              <option value="Food">Food</option>
+              <option value="House Rent">House Rent</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Investments">Investments</option>
+              <option value="Loans">Loans</option>
+              <option value="Others">Others</option>
+              <option value="Taxes">Taxes</option>
+              <option value="Salary">Salary</option>
+            </select>
+    
+            <button type="submit" class="btn-check"><i class="fas fa-check-square"></i></button>
+          </form> 
+        <% }; %> 
       </section>
     </body>
-    <script src="/javascripts/operationsMenu.js"></script>
+    <% if (locals.userLogged && typeof user != 'undefined') { %>
+      <script src="/javascripts/operationsMenu.js"></script>
+    <% } else { %> 
+      <script src="/javascripts/editFormOperation.js"></script>
+    <% }; %>
     <%- include partials/footer %> 
   </body>
 </html>

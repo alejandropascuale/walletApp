@@ -1,12 +1,18 @@
 let tbody = document.querySelector('#insert-data');
-let tr = document.createElement("tr");
 
 let operations;
 if(localStorage.getItem('operationsFilter')){
   operations = JSON.parse(localStorage.getItem('operationsFilter'));
 
-} else if (localStorage.getItem('operationsUser')){
+} else if (localStorage.getItem('operationsUser').length != 0){
    operations = JSON.parse(localStorage.getItem('operationsUser'));
+} else {
+  let tr = document.createElement("tr");
+  let td1 = document.createElement("td");
+  let textoCelda1 = document.createTextNode('register to have all your operations synchronized');
+  tr.appendChild(td1);
+  td1.appendChild(textoCelda1);
+  tbody.appendChild(tr);
 }
   
 let length = operations.length > 10? 10: operations.length;
@@ -31,6 +37,7 @@ for (var i = 0; i < length; i++) {
     div.classList = ('options-container');
     form.method=('post');
     link.id=operations[i].id;
+    link.href = `http://localhost:3000/operations/${operations[i].id}/edit-local`
     form.id=operations[i].id;
     button.type = ('submit');
     editIcon.classList = ('fas fa-edit');

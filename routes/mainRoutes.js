@@ -11,6 +11,7 @@ router.get('/operations', mainController.detailOperations)
 router.post('/operations/add', mainController.createOperations)
 /* GET edit operation form */
 router.get('/operations/:idOperation/edit', mainController.editOperationForm)
+router.get('/operations/:idOperation/edit-local', mainController.editLocalOperationForm)
 /* PUT edit operation */
 router.put('/operations/:idOperation/edit', mainController.updateOperation)
 /* DELETE operation */
