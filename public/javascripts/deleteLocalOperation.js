@@ -8,6 +8,6 @@ for(let i = 0; i< iconsTrash.length; i++){
         let operations = JSON.parse(localStorage.getItem('operationsUser'));
         let newOperations = operations.filter(p => p.id != operationToDelete);
         localStorage.setItem('operationsUser', JSON.stringify(newOperations));
-        location.reload()
+        location.reload();
     })
 }
