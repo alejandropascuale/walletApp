@@ -27,7 +27,7 @@
           <input type="date" name="date" id="date"  value="<%= moment(operation.date).format('YYYY-MM-DD') %>">
   
           <label for="type">Type</label>
-          <select name="type" id="type">
+          <select name="type" id="type" disabled>
             <option value="Income" <%= operation.type == 'Income'? 'selected': null; %> >Income</option>
             <option value="Expense" <%= operation.type == 'Expense'? 'selected': null; %> >Expense</option>
           </select>

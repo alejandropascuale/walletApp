@@ -30,7 +30,6 @@ const controller = {
             detail: req.body.detail,
             ammount: req.body.ammount,
             date: req.body.date,
-            type: req.body.type,
             category: req.body.category
             },
             { where: {idOperation: req.params.idOperation}

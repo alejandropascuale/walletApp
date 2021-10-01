@@ -35,7 +35,7 @@ if(localStorage.getItem('operationsUser')) {
   const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
   const balance = (totalIncomes - totalExpenses).toFixed(2);
   localStorage.setItem('balance', balance);
-  balanceValue.innerHTML = (localStorage.getItem('balance'));
+  balanceValue.innerHTML = '$' + (localStorage.getItem('balance'));
 } else {
   let tr = document.createElement("tr");
   let td1 = document.createElement("td");

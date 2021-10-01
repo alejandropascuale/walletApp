@@ -4,8 +4,9 @@ let operations;
 if(localStorage.getItem('operationsFilter')){
   operations = JSON.parse(localStorage.getItem('operationsFilter'));
 
-} else if (JSON.parse(localStorage.getItem('operationsUser')) != []){
+} else if (localStorage.getItem('operationsUser') && JSON.parse(localStorage.getItem('operationsUser')) != []){
    operations = JSON.parse(localStorage.getItem('operationsUser'));
+   console.log('estoy aca');
 } else {
   let tr = document.createElement("tr");
   let td1 = document.createElement("td");
@@ -78,4 +79,4 @@ const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
 const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
 const balance = (totalIncomes - totalExpenses).toFixed(2);
 localStorage.setItem('balance', balance); 
-balanceValue.innerHTML = (localStorage.getItem('balance'));
+balanceValue.innerHTML = '$' + (localStorage.getItem('balance'));
