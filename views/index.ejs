@@ -95,8 +95,9 @@
     </section>
     <script src="/javascripts/swiper.js"></script>
     <%- include partials/footer %> 
+    <% if (locals.userLogged && typeof user != 'undefined') { %>
     <script src="/javascripts/operationsMenu.js"></script>
-    <% if (!locals.userLogged) { %>
+    <% } else { %>
       <script src="/javascripts/showLocalOperations.js"></script>
     <% }; %>
   </body>

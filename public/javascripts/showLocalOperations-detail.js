@@ -63,4 +63,11 @@ for (var i = 0; i < length; i++) {
   }
   tbody.appendChild(tr);
 }
-  
+let balanceValue = document.querySelector('.wallet-balance');
+let incomes =  operations.filter(i => i.type == 'Income');
+let expenses =  operations.filter(i => i.type == 'Expense');
+const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
+const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
+const balance = (totalIncomes - totalExpenses).toFixed(2);
+localStorage.setItem('balance', balance); 
+balanceValue.innerHTML = (localStorage.getItem('balance'));
