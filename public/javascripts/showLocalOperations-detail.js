@@ -1,3 +1,4 @@
+
 let tbody = document.querySelector('#insert-data');
 
 let operations;
@@ -50,10 +51,16 @@ if(localStorage.getItem('operationsUser') || localStorage.getItem('operationsFil
       if(operations[i].type == 'Expense'){
         td2.classList.add('expense'); 
       }
-  
+      
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      let date = operations[i].date;
+      let arrayDate = date.split('-');
+      let month = monthNames[arrayDate[1]]
+      let formatDate = arrayDate[2] + '-' + month + '-' + arrayDate[0];
+    
       let textoCelda1 = document.createTextNode(operations[i].detail);
       let textoCelda2 = document.createTextNode('$' + operations[i].ammount);
-      let textoCelda3 = document.createTextNode(operations[i].date);
+      let textoCelda3 = document.createTextNode(formatDate);
       let textoCelda4 = document.createTextNode(operations[i].type);
       let textoCelda5 = document.createTextNode(operations[i].category);
     

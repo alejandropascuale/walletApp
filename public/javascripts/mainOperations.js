@@ -25,16 +25,11 @@ addOperationsButton.addEventListener('click', (e)=>{
 
   let t = addOperationsForm.elements;
   let operation = {};
-  
-  let dateValue = new Date(t[2].value);
-  let day = dateValue.getDay() < 10? '0' + dateValue.getDay(): dateValue.getDay();
-  let month = monthNames[dateValue.getMonth()];
-  let formatDate = `${day}-${month}-${dateValue.getFullYear()}`;
 
   operation.id = lastId + 1;
   operation.detail = t[0].value;
   operation.ammount = Number(t[1].value);
-  operation.date = formatDate;
+  operation.date = t[2].value;
   operation.type = t[3].value;
   operation.category = t[4].value;
 

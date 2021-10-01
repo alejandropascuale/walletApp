@@ -67,7 +67,7 @@ header .navbar a.active, header .navbar a:hover {
 header .icons {
     display: flex;
 }
-.fa-heart, .fa-search, .fa-bars {
+.fa-search, .fa-bars {
     cursor: pointer;
     margin-left: .5rem;
     height: 4rem;
@@ -78,8 +78,7 @@ header .icons {
     color: var(--black);
     border-radius: 50%;
     background: #eee;
-}
-.fa-heart:hover, 
+} 
 .fa-search:hover,
 .fa-bars:hover {
     color: #fff;
@@ -567,7 +566,26 @@ body form .align-image-user img {
     text-align: center;
 }
 
- /* account user ends */
+/* account user ends */
+
+/* footer starts */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    margin-top: 2%;
+    padding: .5rem;
+    width: 100%;
+    box-shadow: 0 -.5rem 1.5rem rgba(0,0,0,.1);
+}
+.made-by{
+    text-align: center;
+}
+.fa-heart {
+    color: red;
+}
+
+/* footer ends */
 
 /* media queries */
 
