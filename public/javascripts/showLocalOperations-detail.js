@@ -20,7 +20,7 @@ if(localStorage.getItem('operationsFilter')){
   labelCategory[0].innerHTML = '';
 }
 
-if(localStorage.getItem('operationsFilter') || localStorage.getItem('operationsFilter')) {
+if(localStorage.getItem('operationsUser') || localStorage.getItem('operationsFilter')) {
   for (var i = 0; i < operations.length; i++) {
     let tr = document.createElement("tr");
     for (var j = 0; j < 1; j++) {
