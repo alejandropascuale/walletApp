@@ -108,6 +108,12 @@ const controller = {
             console.log(editUser);
             return res.json(editUser);
         }
+    },
+    deleteUser: async (req, res) => {
+        let deleteUser = await db.User.destroy({
+        where: {idUser: req.params.idUser}
+        })
+        return res.json(deleteUser);
     }
 }
 

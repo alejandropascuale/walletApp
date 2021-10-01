@@ -36,6 +36,10 @@ const controller = {
         /* const body = {data: req.body} */
         /* await axios.put(`http://localhost:3000/api/users/account/${req.session.userLogged.idUser}`,{body},{headers:{'Content-Type': 'multipart/form-data'}}) */
         /* return res.send(req.body); */
+    },
+    deleteUser: async (req, res) => {    
+        await axios({ url :`http://localhost:3000/api/users/delete/${req.session.userLogged.idUser}`, method: 'post', data: req.body});
+        return res.redirect (303, '/');
     }
     
 }

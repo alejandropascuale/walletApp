@@ -20,5 +20,7 @@ router.get('/logout', usersController.logoutUser)
 router.get('/account/', usersController.userAccountForm)
 /* POST edit account */
 router.put('/account/', uploadFile.single('avatar'), usersController.userEditAccount)
+/* get delete user */
+router.get('/delete/', usersController.deleteUser)
 
 module.exports = router;

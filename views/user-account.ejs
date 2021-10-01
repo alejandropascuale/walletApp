@@ -8,7 +8,7 @@
     <%- include partials/header %>
         <form class="register-form" action="/users/account/?_method=PUT" method="POST" enctype="multipart/form-data">
             <div class="align-image-user">
-                <img src="<%= user.avatar %> " alt="user image" class="user-image">
+                <img src="<%= user.avatar %>" alt="user image" class="user-image">
             </div>
             <div class="top-form">
                 <h2 class="title-form">Edit Account</h2>
@@ -33,6 +33,7 @@
                     </div>
                 <% } %>
             </div>
+            <a href="/users/delete/" type="menu" class="btn-cancel">Delete User</a>
             <a href="/" type="menu" class="btn-cancel">Back</a>
             <button class="btn-check" type="submit">Edit</button>      
         </form>

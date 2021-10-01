@@ -18,5 +18,7 @@ router.post('/login', usersController.loginProcess)
 router.get('/account/', usersController.userAccountForm)
 /* POST edit account */
 router.put('/account/:idUser', usersController.userEditAccount)
+/* POST delete account */
+router.post('/delete/:idUser', usersController.deleteUser)
 
 module.exports = router;
