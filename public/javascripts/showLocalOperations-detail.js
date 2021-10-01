@@ -4,20 +4,21 @@ let operations;
 if(localStorage.getItem('operationsFilter')){
   operations = JSON.parse(localStorage.getItem('operationsFilter'));
 
-} else if (localStorage.getItem('operationsUser').length != 0){
+} else if (JSON.parse(localStorage.getItem('operationsUser')) != []){
    operations = JSON.parse(localStorage.getItem('operationsUser'));
 } else {
   let tr = document.createElement("tr");
   let td1 = document.createElement("td");
-  let textoCelda1 = document.createTextNode('register to have all your operations synchronized');
+  let textoCelda1 = document.createTextNode('you have no registered operations');
   tr.appendChild(td1);
   td1.appendChild(textoCelda1);
   tbody.appendChild(tr);
-}
-  
-let length = operations.length > 10? 10: operations.length;
 
-for (var i = 0; i < length; i++) {
+  let categoryFilter = document.querySelector('#category-filter-form');
+  categoryFilter.classList.add('display-none');
+}
+
+for (var i = 0; i < operations.length; i++) {
   let tr = document.createElement("tr");
   for (var j = 0; j < 1; j++) {
     let td1 = document.createElement("td");

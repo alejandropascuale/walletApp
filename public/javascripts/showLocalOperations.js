@@ -36,4 +36,11 @@ if(localStorage.getItem('operationsUser')) {
   const balance = (totalIncomes - totalExpenses).toFixed(2);
   localStorage.setItem('balance', balance);
   balanceValue.innerHTML = (localStorage.getItem('balance'));
+} else {
+  let tr = document.createElement("tr");
+  let td1 = document.createElement("td");
+  let textoCelda1 = document.createTextNode('you have no registered operations');
+  tr.appendChild(td1);
+  td1.appendChild(textoCelda1);
+  tbody.appendChild(tr);
 }

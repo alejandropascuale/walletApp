@@ -501,7 +501,7 @@ body .last-operations .flex-conteiner .flex-container1, body .last-operations .f
     font-size: 2.5rem;
 }
 body .last-operations .flex-conteiner .flex-container2 {
-    width: 20%;
+    width: 30%;
     justify-content: space-around;
     align-items: center;
     color: var(--black);

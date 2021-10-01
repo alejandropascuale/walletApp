@@ -49,7 +49,7 @@ const controller = {
         return res.render ('operation-edit', {user, operation, moment})
     },
     editLocalOperationForm: async (req, res) => {
-        return res.render ('operation-edit')
+        return res.render ('operation-edit');
     },
     updateOperation: async (req, res) => {
         await axios({ url :`http://localhost:3000/api/operations/${req.params.idOperation}/edit`, method: 'put', data: req.body })
