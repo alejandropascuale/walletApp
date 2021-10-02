@@ -6,7 +6,7 @@ btnCheck.addEventListener('click', (e) => {
   
   Swal.fire({
   icon: 'success',
-  title: 'Operation added successfully',
+  title: 'Operation edited successfully',
   showConfirmButton: false,
   timer: 1200
   })

@@ -29,10 +29,10 @@ btnCheck.addEventListener('click', (e) => {
     operations[operations.indexOf(operationToEdit[0])].category = category.value;
 
     localStorage.setItem('operationsUser', JSON.stringify(operations));
-
+    localStorage.removeItem('operationToEdit');
     Swal.fire({
     icon: 'success',
-    title: 'Operation added successfully',
+    title: 'Operation edited successfully',
     showConfirmButton: false,
     timer: 1200
     })

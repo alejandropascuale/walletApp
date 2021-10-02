@@ -9,14 +9,19 @@ const controller = {
         if (req.session.userLogged){
             const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
 
-            let operations = (await axios.get('http://localhost:3000/api/operations')).data;
-            const lastOperations = operations.slice(operations.length-10).reverse();
-
-            let incomes =  operations.filter(i => i.type == 'Income');
-            let expenses =  operations.filter(i => i.type == 'Expense');
-            const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
-            const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
-            const balance = (totalIncomes - totalExpenses).toFixed(2);
+            let operations = (await axios.get(`http://localhost:3000/api/operations/user/${req.session.userLogged.idUser}`)).data;
+            let lastOperations = [];
+            let balance = 0;
+            
+            if(operations.length > 1){
+                lastOperations = operations.slice(operations.length-10).reverse();
+    
+                let incomes =  operations.filter(i => i.type == 'Income');
+                let expenses =  operations.filter(i => i.type == 'Expense');
+                let totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
+                let totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
+                balance = (totalIncomes - totalExpenses).toFixed(2);
+            }
             return res.render ('index', {user, lastOperations, balance, moment});
         } else {
             return res.render ('index');
@@ -26,15 +31,20 @@ const controller = {
         if (req.session.userLogged){
             const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
             
-            let operations = (await axios.get('http://localhost:3000/api/operations')).data.reverse();
-            /* const lastOperations = (await axios.get(`http://localhost:3000/api/operations/${user.idUser}/last`)).data; */
+            let operations = (await axios.get(`http://localhost:3000/api/operations/user/${req.session.userLogged.idUser}`)).data;
+            let lastOperations = [];
+            let balance = 0;
 
-            let incomes =  operations.filter(i => i.type == 'Income');
-            let expenses =  operations.filter(i => i.type == 'Expense');
-            const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
-            const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
-            let balance = (totalIncomes - totalExpenses).toFixed(2);
-            return res.render ('operations', {user, operations, balance, moment});
+            if(operations.length > 1){
+                lastOperations = operations.slice(operations.length-10).reverse();
+
+                let incomes =  operations.filter(i => i.type == 'Income');
+                let expenses =  operations.filter(i => i.type == 'Expense');
+                let totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
+                let totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
+                balance = (totalIncomes - totalExpenses).toFixed(2);
+            }
+            return res.render ('operations', {user, operations, lastOperations, balance, moment});
         } else {
             return res.render ('operations');
         }
@@ -61,16 +71,16 @@ const controller = {
     },
     filterOperations:  async (req, res) => {
         const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
-        const operations = (await axios.get(`http://localhost:3000/api/operations/search/${req.params.category}`)).data;
-        let operation = (await axios.get('http://localhost:3000/api/operations')).data;
-        
-        let incomes =  operation.filter(i => i.type == 'Income');
-        let expenses =  operation.filter(i => i.type == 'Expense');
+        const operations = (await axios.get(`http://localhost:3000/api/operations/search/user/${req.session.userLogged.idUser}/${req.params.category}`)).data;
+        let operationsBalance = (await axios.get(`http://localhost:3000/api/operations/user/${req.session.userLogged.idUser}`)).data;
+    
+        let incomes =  operationsBalance.filter(i => i.type == 'Income');
+        let expenses =  operationsBalance.filter(i => i.type == 'Expense');
         const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
         const totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
         let balance = (totalIncomes - totalExpenses).toFixed(2);
         
-        return res.render ('operations', {user, operation, balance, operations, moment})
+        return res.render ('operations', {user, operations, balance, moment})
     }
 }
 

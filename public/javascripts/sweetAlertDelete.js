@@ -28,7 +28,7 @@ for(let i = 0; i< iconsTrash.length; i++){
       let deleteForm = (iconsTrash[i].parentNode).parentNode;
       setTimeout(function(){
         deleteForm.submit();
-      }, 1500);
+      }, 1200);
       let confirmButton2 = document.querySelector('.swal2-styled.swal2-confirm');
       confirmButton2.addEventListener('click', ()=>{
         console.log('segunda confirmacion');

@@ -75,15 +75,23 @@
           </tfoot>
           <tbody id="insert-data">
             <% if (locals.userLogged && typeof user != 'undefined') { %>
-              <% lastOperations.forEach(operation => { %>
+              <% if (lastOperations.length < 1) { %> 
                 <tr>
-                  <td><%= operation.detail %></td>
-                  <td class=<%= operation.type=='Expense'? 'expense': null; %>>$<%= operation.ammount %></td>
                   <td>
-                    <%= moment(operation.date).format( 'DD-MMM-YYYY') %>
+                    you have no registered operations
                   </td>
                 </tr>
-              <%  }); %>
+                <% } else { %> 
+                  <% lastOperations.forEach(operation => { %>
+                    <tr>
+                      <td><%= operation.detail %></td>
+                      <td class=<%= operation.type=='Expense'? 'expense': null; %>>$<%= operation.ammount %></td>
+                      <td>
+                        <%= moment(operation.date).format( 'DD-MMM-YYYY') %>
+                      </td>
+                    </tr>
+                  <%  }); %>
+                <% }; %>
               <% }; %>
           </tbody>
         </table>
@@ -93,7 +101,7 @@
   <%- include partials/footer %> 
   <script src="/javascripts/swiper.js"></script>
   <% if (locals.userLogged && typeof user != 'undefined') { %>
-  <script src="/javascripts/operationsMenu.js"></script>
+  
   <% } else { %>
     <script src="/javascripts/showLocalOperations.js"></script>
   <% }; %>

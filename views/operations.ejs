@@ -102,39 +102,45 @@
           </tfoot>
           <tbody id="insert-data">
             <% if (locals.userLogged && typeof user != 'undefined') { %>
-              <% if (operations.length >= 1) { %> 
-                <% operations.forEach(operation => { %>
-                  <tr id="data">
-                    <td><%= operation.detail %></td>
-                    <td class=<%= operation.type=='Expense'? 'expense': null; %>>$<%= operation.ammount %></td>
+                <% if (operations.length >= 1) { %> 
+                  <% operations.forEach(operation => { %>
+                    <tr id="data">
+                      <td><%= operation.detail %></td>
+                      <td class=<%= operation.type=='Expense'? 'expense': null; %>>$<%= operation.ammount %></td>
+                      <td>
+                        <%= moment(operation.date).format( 'DD-MMM-YYYY') %>
+                      </td>
+                      <td><%= operation.type %></td>
+                      <td><%= operation.category %></td>
+                      <td>
+                        <div class="options-container">
+                          <a href="/operations/<%= operation.idOperation %>/edit"><i class="fas fa-edit"></i></a>
+                          <form action="/operations/<%= operation.idOperation %>/delete?_method=DELETE" method="post">
+                            <button type="submit"><i class="fas fa-trash"></i></button>
+                          </form>
+                        </div>
+                      </td>
+                    </tr>
+                  <%  }); %>
+                <% }else { %>
+                  <tr>
                     <td>
-                      <%= moment(operation.date).format( 'DD-MMM-YYYY') %>
-                    </td>
-                    <td><%= operation.type %></td>
-                    <td><%= operation.category %></td>
-                    <td>
-                      <div class="options-container">
-                        <a href="/operations/<%= operation.idOperation %>/edit"><i class="fas fa-edit"></i></a>
-                        <form action="/operations/<%= operation.idOperation %>/delete?_method=DELETE" method="post">
-                          <button type="submit"><i class="fas fa-trash"></i></button>
-                        </form>
-                      </div>
+                      you have no registered operations
                     </td>
                   </tr>
-                <%  }); %>
-              <% }; %>
-            <% }; %> 
+                <% }; %> 
+              <% }; %> 
           </tbody>
         </table>
       </div>
     </section>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/javascripts/operationsMenu.js"></script>
-    <script src="/javascripts/search.js"></script>
     <% if (locals.userLogged && typeof user != 'undefined') { %>
     <script src="/javascripts/sweetAlertDelete.js"></script>
     <script src="/javascripts/sweetAlertConfirm.js"></script>
     <script src="/javascripts/categoryFilter.js"></script>
+    <script src="/javascripts/userMenu.js"></script>
     <% } else { %> 
       <script src="/javascripts/categoryFilter-localStorage.js"></script>
       <script src="/javascripts/mainOperations.js"></script>

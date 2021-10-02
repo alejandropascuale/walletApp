@@ -5,7 +5,9 @@ const db = require ('../../database/models');
 
 const controller = {
     listOperations: async (req, res) => {
-        const operations = await db.Operation.findAll({})
+        const operations = await db.Operation.findAll({
+            where: {id_user: req.params.idUser}
+        })
         return res.json(operations);
     },
     selectOperation: async (req, res) => {
@@ -45,10 +47,15 @@ const controller = {
     filterOperations: async (req, res) => {
         let operations
         if (req.params.category == 'All') {
-            operations = await db.Operation.findAll({});    
+            operations = await db.Operation.findAll({
+                where: {id_user: req.params.idUser}
+            });    
         } else {
             operations = await db.Operation.findAll({
-                where: {category: req.params.category}
+                where: {
+                    category: req.params.category,
+                    id_user: req.params.idUser
+                }
             })
         }
         return res.json(operations);

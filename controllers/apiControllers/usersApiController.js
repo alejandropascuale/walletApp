@@ -17,7 +17,7 @@ const controller = {
         return res.json(user);
     },
     createUser: async (req, res) => {
-        const resultValidation = validationResult(req);
+        /* const resultValidation = validationResult(req);
         if (resultValidation.errors.length > 0) {
             return res.render('register-form', {
                 errors: resultValidation.mapped(),
@@ -35,7 +35,7 @@ const controller = {
                     }
                 }
             });
-        } else {
+        } else { */
             const defaultImageProfile = '/images/avatars/user-avatar.jpg';
             const newUserawait = await db.User.create ({
             email: req.body.email,   
@@ -43,8 +43,8 @@ const controller = {
             avatar: defaultImageProfile,
         })
             res.json(newUserawait);
-        }
-        }
+        /* }
+        } */
     },
     loginForm: (req, res) => {
         return res.render ('login-form');
