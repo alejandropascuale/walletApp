@@ -1,7 +1,7 @@
 let tbody = document.querySelector('#insert-data');
 
 if(localStorage.getItem('operationsUser')) {
-  let operations = JSON.parse(localStorage.getItem('operationsUser'));
+  let operations = JSON.parse(localStorage.getItem('operationsUser')).reverse();
   let length = operations.length > 10? 10: operations.length;
   
   for (var i = 0; i < length; i++) {

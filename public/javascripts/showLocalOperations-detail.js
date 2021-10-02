@@ -3,10 +3,10 @@ let tbody = document.querySelector('#insert-data');
 
 let operations;
 if(localStorage.getItem('operationsFilter')){
-  operations = JSON.parse(localStorage.getItem('operationsFilter'));
+  operations = JSON.parse(localStorage.getItem('operationsFilter')).reverse();
 
 } else if (localStorage.getItem('operationsUser') && JSON.parse(localStorage.getItem('operationsUser')) != []){
-   operations = JSON.parse(localStorage.getItem('operationsUser'));
+   operations = JSON.parse(localStorage.getItem('operationsUser')).reverse();
 } else {
   let tr = document.createElement("tr");
   let td1 = document.createElement("td");
