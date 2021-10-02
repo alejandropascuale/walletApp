@@ -33,10 +33,12 @@
                     </div>
                 <% } %>
             </div>
-            <a href="/users/delete/" type="menu" class="btn-cancel">Delete User</a>
+            <a href="/users/delete/" type="menu" class="btn-cancel" id="delete-user">Delete User</a>
             <a href="/" type="menu" class="btn-cancel">Back</a>
             <button class="btn-check" type="submit">Edit</button>      
         </form>
     <%- include partials/footer %>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/javascripts/sweetAlertDelete-user.js"></script>
   </body>
 </html>

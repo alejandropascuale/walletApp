@@ -73,7 +73,7 @@ const controller = {
         const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
         const operations = (await axios.get(`http://localhost:3000/api/operations/search/user/${req.session.userLogged.idUser}/${req.params.category}`)).data;
         let operationsBalance = (await axios.get(`http://localhost:3000/api/operations/user/${req.session.userLogged.idUser}`)).data;
-    
+        
         let incomes =  operationsBalance.filter(i => i.type == 'Income');
         let expenses =  operationsBalance.filter(i => i.type == 'Expense');
         const totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
