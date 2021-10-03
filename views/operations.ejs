@@ -6,134 +6,138 @@
   </head>
   <body>
     <%- include partials/header-operations %>
-    <section class="balance-detail" id="balance">
-      <h1 class="heading">Your Balance</h1>
-      <% if (locals.userLogged && typeof user != 'undefined') { %>
-      <h1 class="wallet-balance">$<%= balance %></h1>
-      <% } else { %> 
-        <h2 class="wallet-balance">$0,00</h2>
-    <% }; %>
-    </section>
-    <section class="last-operations" id="last-operations">
-      <form class="add-operations-form" id="add-operations-form" action="/operations/add" method="POST">
-        <i class="fas fa-times cancel-button" id="cancel-button"></i>
+    <main>
 
-        <label for="detail">Detail</label>
-        <input type="text" name="detail" id="detail">
-
-        <label for="ammount">Ammount</label>
-        <input type="number" name="ammount" id="ammount" step=".01">
-
-        <label for="date">Date</label>
-        <input type="date" name="date" id="date" value="">
-
-        <label for="type">Type</label>
-        <select name="type" id="type">
-          <option value="Income">Income</option>
-          <option value="Expense">Expense</option>
-        </select>
-        
-        <label for="category">Category</label>
-        <select name="category" id="category" >
-          <option value="Awards">Awards</option>
-          <option value="Credit card">Credit card</option>
-          <option value="Essential Services">Essential Services</option>
-          <option value="Food">Food</option>
-          <option value="House Rent">House Rent</option>
-          <option value="Insurance">Insurance</option>
-          <option value="Investments">Investments</option>
-          <option value="Loans">Loans</option>
-          <option value="Others">Others</option>
-          <option value="Taxes">Taxes</option>
-          <option value="Salary">Salary</option>
-        </select>
+      <section class="balance-detail" id="balance">
+        <h1 class="heading">Your Balance</h1>
         <% if (locals.userLogged && typeof user != 'undefined') { %>
-        <input type="number" name="id_user" id="id_user" class="display-none" value="<%= locals.userLogged.idUser %>">
-        <% }; %> 
-        <button type="submit" class="btn-check" id="add-operation-button">Add</button>
-      </form>
-      <div class="flex-conteiner">
-        <div class="flex-container1">
-          <a class="heartbeat" id="add-operations-button"><i class="fas fa-plus-square"></i></a>
-          <h3 class="add-text">Pres to Add operation</h3>
+        <h1 class="wallet-balance">$<%= balance %></h1>
+        <% } else { %> 
+          <h2 class="wallet-balance">$0,00</h2>
+      <% }; %>
+      </section>
+      <section class="last-operations" id="last-operations">
+        <form class="add-operations-form" id="add-operations-form" action="/operations/add" method="POST">
+          <i class="fas fa-times cancel-button" id="cancel-button"></i>
+  
+          <label for="detail">Detail</label>
+          <input type="text" name="detail" id="detail">
+  
+          <label for="ammount">Ammount</label>
+          <input type="number" name="ammount" id="ammount" step=".01">
+  
+          <label for="date">Date</label>
+          <input type="date" name="date" id="date" value="">
+  
+          <label for="type">Type</label>
+          <select name="type" id="type">
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+          
+          <label for="category">Category</label>
+          <select name="category" id="category" >
+            <option value="Awards">Awards</option>
+            <option value="Credit card">Credit card</option>
+            <option value="Essential Services">Essential Services</option>
+            <option value="Food">Food</option>
+            <option value="House Rent">House Rent</option>
+            <option value="Insurance">Insurance</option>
+            <option value="Investments">Investments</option>
+            <option value="Loans">Loans</option>
+            <option value="Others">Others</option>
+            <option value="Taxes">Taxes</option>
+            <option value="Salary">Salary</option>
+          </select>
+          <% if (locals.userLogged && typeof user != 'undefined') { %>
+          <input type="number" name="id_user" id="id_user" class="display-none" value="<%= locals.userLogged.idUser %>">
+          <% }; %> 
+          <button type="submit" class="btn-check" id="add-operation-button">Add</button>
+        </form>
+        <div class="flex-conteiner">
+          <div class="flex-container1">
+            <a class="heartbeat" id="add-operations-button"><i class="fas fa-plus-square"></i></a>
+            <h3 class="add-text">Pres to Add operation</h3>
+          </div>
+          <div class="flex-container2">
+            <label for="category-filter">Category Filter</label>
+            <form action=""  name="category-filter-form" id="category-filter-form">
+              <select name="category-filter" id="category-filter">
+                <option value="All">-</option>
+                <option value="Awards">Awards</option>
+                <option value="Credit card">Credit card</option>
+                <option value="Essential Services">Essential Services</option>
+                <option value="Food">Food</option>
+                <option value="House Rent">House Rent</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Investments">Investments</option>
+                <option value="Loans">Loans</option>
+                <option value="Others">Others</option>
+                <option value="Taxes">Taxes</option>
+                <option value="Salary">Salary</option>
+              </select>
+              <input type="hidden" name="name" value="someName" id="nameInput">
+            </form>
+          </div>
         </div>
-        <div class="flex-container2">
-          <label for="category-filter">Category Filter</label>
-          <form action=""  name="category-filter-form" id="category-filter-form">
-            <select name="category-filter" id="category-filter">
-              <option value="All">-</option>
-              <option value="Awards">Awards</option>
-              <option value="Credit card">Credit card</option>
-              <option value="Essential Services">Essential Services</option>
-              <option value="Food">Food</option>
-              <option value="House Rent">House Rent</option>
-              <option value="Insurance">Insurance</option>
-              <option value="Investments">Investments</option>
-              <option value="Loans">Loans</option>
-              <option value="Others">Others</option>
-              <option value="Taxes">Taxes</option>
-              <option value="Salary">Salary</option>
-            </select>
-            <input type="hidden" name="name" value="someName" id="nameInput">
-          </form>
-        </div>
-      </div>
-      <div class="card-table">
-        <table aria-describedby="myOperations" id="dataTable" cellspacing="0">
-          <thead>
-            <tr>
-              <th id="detail">Detail</th>
-              <th id="amount">Amount</th>
-              <th id="date">Date</th>
-              <th id="type">Type</th>
-              <th id="category">Category</th>
-              <th id="category">Actions</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr>
-              <th id="detail">Detail</th>
-              <th id="amount">Amount</th>
-              <th id="date">Date</th>
-              <th id="type">Type</th>
-              <th id="category">Category</th>
-              <th id="category">Actions</th>
-            </tr>
-          </tfoot>
-          <tbody id="insert-data">
-            <% if (locals.userLogged && typeof user != 'undefined') { %>
-                <% if (operations.length >= 1) { %> 
-                  <% operations.forEach(operation => { %>
-                    <tr id="data">
-                      <td><%= operation.detail %></td>
-                      <td class=<%= operation.type=='Expense'? 'expense': null; %>>$<%= operation.ammount %></td>
+        <div class="card-table">
+          <table aria-describedby="myOperations" id="dataTable" cellspacing="0">
+            <thead>
+              <tr>
+                <th id="detail">Detail</th>
+                <th id="amount">Amount</th>
+                <th id="date">Date</th>
+                <th id="type">Type</th>
+                <th id="category">Category</th>
+                <th id="category">Actions</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th id="detail">Detail</th>
+                <th id="amount">Amount</th>
+                <th id="date">Date</th>
+                <th id="type">Type</th>
+                <th id="category">Category</th>
+                <th id="category">Actions</th>
+              </tr>
+            </tfoot>
+            <tbody id="insert-data">
+              <% if (locals.userLogged && typeof user != 'undefined') { %>
+                  <% if (operations.length >= 1) { %> 
+                    <% operations.forEach(operation => { %>
+                      <tr id="data">
+                        <td><%= operation.detail %></td>
+                        <td class=<%= operation.type=='Expense'? 'expense': null; %>>$<%= operation.ammount %></td>
+                        <td>
+                          <%= moment(operation.date).format( 'DD-MMM-YYYY') %>
+                        </td>
+                        <td><%= operation.type %></td>
+                        <td><%= operation.category %></td>
+                        <td>
+                          <div class="options-container">
+                            <a href="/operations/<%= operation.idOperation %>/edit"><i class="fas fa-edit"></i></a>
+                            <form action="/operations/<%= operation.idOperation %>/delete?_method=DELETE" method="post">
+                              <button type="submit"><i class="fas fa-trash"></i></button>
+                            </form>
+                          </div>
+                        </td>
+                      </tr>
+                    <%  }); %>
+                  <% }else { %>
+                    <tr>
                       <td>
-                        <%= moment(operation.date).format( 'DD-MMM-YYYY') %>
-                      </td>
-                      <td><%= operation.type %></td>
-                      <td><%= operation.category %></td>
-                      <td>
-                        <div class="options-container">
-                          <a href="/operations/<%= operation.idOperation %>/edit"><i class="fas fa-edit"></i></a>
-                          <form action="/operations/<%= operation.idOperation %>/delete?_method=DELETE" method="post">
-                            <button type="submit"><i class="fas fa-trash"></i></button>
-                          </form>
-                        </div>
+                        you have no registered operations
                       </td>
                     </tr>
-                  <%  }); %>
-                <% }else { %>
-                  <tr>
-                    <td>
-                      you have no registered operations
-                    </td>
-                  </tr>
+                  <% }; %> 
                 <% }; %> 
-              <% }; %> 
-          </tbody>
-        </table>
-      </div>
-    </section>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <%- include partials/footer %>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/javascripts/operationsMenu.js"></script>
     <% if (locals.userLogged && typeof user != 'undefined') { %>

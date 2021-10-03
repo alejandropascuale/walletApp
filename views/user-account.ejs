@@ -6,6 +6,8 @@
   </head>
   <body>
     <%- include partials/header %>
+    <main>
+
         <form class="register-form" action="/users/account/?_method=PUT" method="POST" enctype="multipart/form-data">
             <div class="align-image-user">
                 <img src="<%= user.avatar %>" alt="user image" class="user-image">
@@ -37,6 +39,7 @@
             <a href="/" type="menu" class="btn-cancel">Back</a>
             <button class="btn-check" type="submit">Edit</button>      
         </form>
+    </main>
     <%- include partials/footer %>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/javascripts/sweetAlertDelete-user.js"></script>

@@ -21,6 +21,15 @@ html {
     overflow-x: hidden;
     scroll-padding-top: 5.5rem;
     scroll-behavior: smooth;
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+main {
+    margin-bottom: 2%;
 }
 header {
     position: fixed;
@@ -584,7 +593,7 @@ body form .align-image-user img {
 /* footer starts */
 
 footer {
-    margin-top: 2%;
+    margin-top: auto;
     padding: .5rem;
     width: 100%;
     box-shadow: 0 -.5rem 1.5rem rgba(0,0,0,.1);

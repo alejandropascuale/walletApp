@@ -10,7 +10,7 @@
   </head>
   <body>
     <%- include partials/header %>
-    <body>
+    <main>
       <section class="edit-operation-section">
         <% if (locals.userLogged && typeof user != 'undefined') { %>
         <form class="edit-operations-form" id="edit-operations-form" action="/operations/<%= operation.idOperation %>/edit?_method=PUT" method="post">
@@ -88,6 +88,8 @@
           </form> 
         <% }; %> 
       </section>
+      </main>
+      <%- include partials/footer %> 
     </body>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <% if (locals.userLogged && typeof user != 'undefined') { %>
@@ -96,6 +98,5 @@
     <% } else { %> 
       <script src="/javascripts/editFormOperation.js"></script>
     <% }; %>
-    <%- include partials/footer %> 
-  </body>
-</html>
+    </html>
+    
