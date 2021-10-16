@@ -1,9 +1,8 @@
 import React from 'react';
-import Header from './Header';
-import FormSearch from './FormSearch';
-import Home from './home/Home';
-import Footer from './Footer';
-
+import Header from './components/Header';
+import FormSearch from './components/FormSearch';
+import Home from './components/home/Home';
+import Footer from './components/Footer';
 
 
 function App() {
