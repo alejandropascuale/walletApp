@@ -23,24 +23,27 @@ function SliderSection() {
         <section className="home" id="home">
             <Swiper pagination={true} className="mySwiper">
                 <SwiperSlide>
-                    <Slider 
+                    {/* <Slider 
                         title={'register to have all your operations synchronized'}
                         img={Slider1}
-                    />
+                    /> */}
+                    Slide 1
                 </SwiperSlide>
                     
                 <SwiperSlide>
-                    <Slider 
+                    {/* <Slider 
                         title={'Control over your income and expenses'}
                         img={Slider2}
-                    />
+                    /> */}
+                    Slide 2
                 </SwiperSlide>
                     
                 <SwiperSlide>
-                    <Slider 
+                    {/* <Slider 
                         title={'register to have all your operations synchronized'}
                         img={Slider3}
-                    />
+                    /> */}
+                    Slide 3
                 </SwiperSlide>
             </Swiper>
         </section>

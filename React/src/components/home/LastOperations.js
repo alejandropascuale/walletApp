@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react';
+import {Route, Link} from 'react-router-dom'
+import Operations from '../operations/Operations'
 
 
 function LastOperations() {
+    const [operations, setOperations] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:3001/api/operations/user/1')
+            .then(response => response.json())
+            .then(data => {
+              let lastOperations = [];
+              if(data.length > 10){
+                lastOperations = data.slice(data.length-10).reverse();
+                } else {
+                  data.slice(data.length).reverse()
+                  lastOperations = data.slice(data.length).reverse();
+                }
+                setOperations(lastOperations)
+            })
+    }, [])
     return (
         <section className="last-operations" id="last-operations">
         <h1 className="heading">Last Operations</h1>
-        <a href="/operations"><h3 className="sub-heading heartbeat">Click here to manage your operations</h3></a>
+        {<Route path='/operations' component={Operations} />}
+        <Link to='/operations'><h3 className="sub-heading heartbeat">Click here to manage your operations</h3></Link>
         <div className="card-table">
           <table className="home-table"aria-describedby="myOperations" id="dataTable" cellspacing="0">
             <thead>
@@ -23,11 +41,20 @@ function LastOperations() {
               </tr>
             </tfoot>
             <tbody id="insert-data">
-                  <tr>
-                    <td>
-                      you have no registered operations
-                    </td>
+              {/* <tr>
+                <td>
+                  you have no registered operations
+                </td>
+              </tr> */}
+              {operations.map((operation, i) => {
+                return (
+                  <tr key={i}>
+                    <td>{operation.detail}</td>
+                    <td>{operation.type}</td>
+                    <td>{operation.date}</td>
                   </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
