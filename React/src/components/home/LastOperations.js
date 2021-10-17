@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import {Route, Link} from 'react-router-dom'
-import Operations from '../operations/Operations'
+
 
 
 function LastOperations() {
@@ -22,7 +22,7 @@ function LastOperations() {
     return (
         <section className="last-operations" id="last-operations">
         <h1 className="heading">Last Operations</h1>
-        {<Route path='/operations' component={Operations} />}
+        
         <Link to='/operations'><h3 className="sub-heading heartbeat">Click here to manage your operations</h3></Link>
         <div className="card-table">
           <table className="home-table"aria-describedby="myOperations" id="dataTable" cellspacing="0">

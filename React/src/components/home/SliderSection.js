@@ -7,6 +7,8 @@ import Slider3 from '../../assets/images/slider3.jpeg'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import  "../../assets/css/style.css";
+import  "swiper/swiper-bundle.css";
 
 
 // import Swiper core and required modules
@@ -21,29 +23,26 @@ SwiperCore.use([Pagination]);
 function SliderSection() {
     return (
         <section className="home" id="home">
-            <Swiper pagination={true} className="mySwiper">
+            <Swiper pagination={true} className="home-slider">
                 <SwiperSlide>
-                    {/* <Slider 
+                    <Slider 
                         title={'register to have all your operations synchronized'}
                         img={Slider1}
-                    /> */}
-                    Slide 1
+                    />
                 </SwiperSlide>
                     
                 <SwiperSlide>
-                    {/* <Slider 
+                    <Slider 
                         title={'Control over your income and expenses'}
                         img={Slider2}
-                    /> */}
-                    Slide 2
+                    />
                 </SwiperSlide>
                     
                 <SwiperSlide>
-                    {/* <Slider 
+                    <Slider 
                         title={'register to have all your operations synchronized'}
                         img={Slider3}
-                    /> */}
-                    Slide 3
+                    />
                 </SwiperSlide>
             </Swiper>
         </section>
