@@ -7,23 +7,26 @@ import Slider3 from '../../assets/images/slider3.jpeg'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import  "../../assets/css/style.css";
 import  "swiper/swiper-bundle.css";
 
 
 // import Swiper core and required modules
 import SwiperCore, {
-  Pagination
+  Pagination, Autoplay
 } from 'swiper';
 
+
 // install Swiper modules
-SwiperCore.use([Pagination]);
+SwiperCore.use([Pagination, Autoplay]);
+
 
 
 function SliderSection() {
     return (
         <section className="home" id="home">
-            <Swiper pagination={true} className="home-slider">
+            <Swiper pagination={true} spaceBetween={30} loop={true} autoplay={{delay: 7500, disableOnInteraction: false}} className="home-slider">
                 <SwiperSlide>
                     <Slider 
                         title={'register to have all your operations synchronized'}
@@ -40,7 +43,7 @@ function SliderSection() {
                     
                 <SwiperSlide>
                     <Slider 
-                        title={'register to have all your operations synchronized'}
+                        title={'Easy to use'}
                         img={Slider3}
                     />
                 </SwiperSlide>

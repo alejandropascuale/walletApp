@@ -292,6 +292,7 @@ section {
 }
 .home .home-slider .slide .image img {
     width: 100%;
+    border-radius: .5rem;
 }
 .home .home-slider .slide .content span {
     color: var(--blue);
