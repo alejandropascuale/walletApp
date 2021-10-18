@@ -1,20 +1,23 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
-import Operations from '../operations/Operations'
 
+import Header from '../Header';
+import FormSearch from '../FormSearch';
 import SliderSection from './SliderSection'
 import BalanceSection from './BalanceSection'
 import LastOperations from './LastOperations'
+import Footer from '../Footer';
 
 
 function Home() {
     return (
-        <main>
+        <>
+            <Header />
+            <FormSearch />
             <SliderSection />
             <BalanceSection />
             <LastOperations />
-            <Route path='/operations' component={Operations} />
-        </main>
+            <Footer />
+        </>
     )
 }
 

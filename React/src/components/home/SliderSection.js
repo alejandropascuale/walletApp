@@ -26,7 +26,13 @@ SwiperCore.use([Pagination, Autoplay]);
 function SliderSection() {
     return (
         <section className="home" id="home">
-            <Swiper pagination={true} spaceBetween={30} loop={true} autoplay={{delay: 7500, disableOnInteraction: false}} className="home-slider">
+            <Swiper 
+                pagination={true}
+                spaceBetween={50}
+                centeredSlides={true}
+                loop={true}
+                autoplay={{delay: 7500, disableOnInteraction: false}}
+                className="home-slider">
                 <SwiperSlide>
                     <Slider 
                         title={'register to have all your operations synchronized'}

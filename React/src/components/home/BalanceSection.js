@@ -8,8 +8,8 @@ function BalanceSection() {
         .then(response => response.json())
         .then(data => {
           let balance = 0;
-          let incomes =  data.filter(i => i.type == 'Income');
-          let expenses =  data.filter(i => i.type == 'Expense');
+          let incomes =  data.filter(i => i.type === 'Income');
+          let expenses =  data.filter(i => i.type === 'Expense');
           let totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
           let totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
           balance = (totalIncomes - totalExpenses).toFixed(2);
