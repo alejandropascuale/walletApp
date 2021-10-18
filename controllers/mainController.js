@@ -51,7 +51,7 @@ const controller = {
     },
     createOperations: async (req, res) => {
         await axios({ url :'http://localhost:3001/api/operations', method: 'post', data: req.body})
-        return res.redirect('/operations');
+        return res.redirect('http://localhost:3000/operations');
     },
     editOperationForm: async (req, res) => {
         const user = (await axios.get(`http://localhost:3001/api/users/${req.session.userLogged.idUser}`)).data;
@@ -63,11 +63,11 @@ const controller = {
     },
     updateOperation: async (req, res) => {
         await axios({ url :`http://localhost:3001/api/operations/${req.params.idOperation}/edit`, method: 'put', data: req.body })
-        return res.redirect('/operations');
+        return res.redirect('http://localhost:3000/operations');
     },
     deleteOperation:  async (req, res) => {
         await axios.delete(`http://localhost:3001/api/operations/${req.params.idOperation}/delete`);
-        return res.redirect('/operations');
+        return res.redirect('http://localhost:3000/operations');
     },
     filterOperations:  async (req, res) => {
         const user = (await axios.get(`http://localhost:3001/api/users/${req.session.userLogged.idUser}`)).data;

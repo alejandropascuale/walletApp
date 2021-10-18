@@ -1,14 +1,14 @@
 import React from 'react'
 import Slider from './Slider'
 
-import Slider1 from '../../assets/images/slider1.jpeg'
-import Slider2 from '../../assets/images/slider2.jpeg'
-import Slider3 from '../../assets/images/slider3.jpeg'
+import Slider1 from '../assets/images/slider1.jpeg'
+import Slider2 from '../assets/images/slider2.jpeg'
+import Slider3 from '../assets/images/slider3.jpeg'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import  "../../assets/css/style.css";
+import  "../assets/css/style.css";
 import  "swiper/swiper-bundle.css";
 
 

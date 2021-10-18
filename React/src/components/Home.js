@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Header from '../Header';
-import FormSearch from '../FormSearch';
+import Header from './Header';
+import FormSearch from './FormSearch';
 import SliderSection from './SliderSection'
 import BalanceSection from './BalanceSection'
 import LastOperations from './LastOperations'
-import Footer from '../Footer';
+import Footer from './Footer';
 
 
 function Home() {

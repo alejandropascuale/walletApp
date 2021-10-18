@@ -2,8 +2,8 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
 
 
-import Home from './components/home/Home';
-import Operations from './components/operations/Operations';
+import Home from './components/Home';
+import Operations from './components/Operations';
 import Login from './components/Login';
 import Register from './components/Register';
 
