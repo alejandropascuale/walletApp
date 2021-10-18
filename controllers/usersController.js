@@ -10,14 +10,14 @@ const controller = {
         return res.render ('register-form');
     },
     createUser: async (req, res) => {
-        await axios({ url :'http://localhost:3000/api/users/register', method: 'post', data: req.body})
+        await axios({ url :'http://localhost:3001/api/users/register', method: 'post', data: req.body})
         return res.render('register-ok');
     },
     loginForm: (req, res) => {
         return res.render ('login-form');
     },
     loginProcess: async (req, res) => {
-        const user = (await axios({ url :'http://localhost:3000/api/users/login', method: 'post', data: req.body})).data
+        const user = (await axios({ url :'http://localhost:3001/api/users/login', method: 'post', data: req.body})).data
         res.cookie('userEmail', user.email, { maxAge: (1000 * 60) * 60 })
         return res.redirect('/');
     },
@@ -27,18 +27,18 @@ const controller = {
 		return res.redirect('/');
 	},
     userAccountForm: async (req, res) => {
-        const user = (await axios.get(`http://localhost:3000/api/users/${req.session.userLogged.idUser}`)).data;
+        const user = (await axios.get(`http://localhost:3001/api/users/${req.session.userLogged.idUser}`)).data;
         return res.render ('user-account',{user});
     },
     userEditAccount: async (req, res) => {    
-        await axios({ url :`http://localhost:3000/api/users/account/${req.session.userLogged.idUser}`, method: 'put', data: req.body});
+        await axios({ url :`http://localhost:3001/api/users/account/${req.session.userLogged.idUser}`, method: 'put', data: req.body});
         return res.redirect (303, '/');
         /* const body = {data: req.body} */
-        /* await axios.put(`http://localhost:3000/api/users/account/${req.session.userLogged.idUser}`,{body},{headers:{'Content-Type': 'multipart/form-data'}}) */
+        /* await axios.put(`http://localhost:3001/api/users/account/${req.session.userLogged.idUser}`,{body},{headers:{'Content-Type': 'multipart/form-data'}}) */
         /* return res.send(req.body); */
     },
     deleteUser: async (req, res) => {    
-        await axios({ url :`http://localhost:3000/api/users/delete/${req.session.userLogged.idUser}`, method: 'post', data: req.body});
+        await axios({ url :`http://localhost:3001/api/users/delete/${req.session.userLogged.idUser}`, method: 'post', data: req.body});
         return res.redirect (303, '/');
     }
     

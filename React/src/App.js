@@ -15,9 +15,9 @@ function App() {
       <BrowserRouter>
         
         <Route path='/' exact={true} component={Home} />
-        <Route path='/users/login' exact={true} component={Login} />
-        <Route path='/users/register' exact={true} component={Register} />
-        <Route path='/operations' exact={true} component={Operations} />
+        <Route path='/users/login' component={Login} />
+        <Route path='/users/register' component={Register} />
+        <Route path='/operations' component={Operations} />
         
       </BrowserRouter>
       <script src="/javascripts/index.js"></script>

@@ -13,29 +13,24 @@ function Login() {
         <>        
             <Header />
             <FormSearch />
-            <body>
-            <main>
+                <main>
 
-                <form className="register-form" action="/users/login" method="POST">
-                    <div className="top-form">
-                        <h2 className="title-form">Login</h2>
-                        <a href="/"><i className="fas fa-times"></i></a>
-                    </div>
-                    <div className="format-form">
-                        <label for="email">Email</label>
-                        <input className="<%= locals.errors && errors.email? 'is-invalid style-input' : 'style-input' %>" type="email" name="email" id="email" 
-                        value="" />
-                        
-                        <label for="password">Password</label>
-                        <input className="<%= locals.errors && errors.password? 'is-invalid style-input' : 'style-input' %>" type="password" name="password" id="password" 
-                        value="" />
-                        
-                    </div>
-                    <button className="btn-check" type="submit"><FontAwesomeIcon icon={faSignInAlt} /></button>
-                </form>
-            </main>
-        
-            </body>
+                    <form className="register-form" action="http://localhost:3001/users/login" method="POST">
+                        <div className="top-form">
+                            <h2 className="title-form">Login</h2>
+                            <a href="/"><i className="fas fa-times"></i></a>
+                        </div>
+                        <div className="format-form">
+                            <label htmlFor="email">Email</label>
+                            <input className='style-input' type="email" name="email" id="email"/>
+                            
+                            <label htmlFor="password">Password</label>
+                            <input className='style-input' type="password" name="password" id="password" autoComplete='on' />
+                            
+                        </div>
+                        <button className="btn-check" type="submit"><FontAwesomeIcon icon={faSignInAlt} /></button>
+                    </form>
+                </main>
             <Footer />
         </>
     )
