@@ -6,6 +6,8 @@ import Home from './components/Home';
 import Operations from './components/Operations';
 import Login from './components/Login';
 import Register from './components/Register';
+import UserAccount from './components/UserAccount';
+
 
 
 
@@ -18,6 +20,7 @@ function App() {
         <Route path='/users/login' component={Login} />
         <Route path='/users/register' component={Register} />
         <Route path='/operations' component={Operations} />
+        <Route path='/users/account' component={UserAccount} />
         
       </BrowserRouter>
       <script src="/javascripts/index.js"></script>
