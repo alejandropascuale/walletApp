@@ -15,8 +15,8 @@ function GuestHome() {
                     <a className="active" href="#home">home</a> 
                     <a href="#Balance">balance</a>
                     <a href="#last-operations">last operations</a>
-                    <Link to='users/register'>register</Link>
-                    <Link to='users/login'>login</Link>
+                    <Link to='/users/register'>register</Link>
+                    <Link to='/users/login'>login</Link>
                 </nav>
                 <div className="icons">
                     <FontAwesomeIcon icon={faBars} id="menu-bars"/>

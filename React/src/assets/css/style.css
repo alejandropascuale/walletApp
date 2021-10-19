@@ -124,10 +124,10 @@ header .icons #menu-bars {
     font-weight: bold;
     box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1)
 }
-.user-menu a {
+.user-menu .options-user {
     color: var(--black);
 }
-.user-menu a:hover {
+.user-menu .options-user:hover {
     background-color: var(--black);
     color: #fff;
 }
@@ -623,9 +623,8 @@ footer {
   }
   header .icons #menu-bars{
     display: none;
-  }
-  header .icons i, 
-  header .icons a,
+  } 
+  header .icons .options-user,
   .user-image-header {
     height: 4.5rem;
     line-height: 4.5rem;
@@ -689,7 +688,7 @@ footer {
     width: 60%;
     margin: auto;
   }
-  .user-menu ul li a {
+  .user-menu ul li, .options-user {
     font-size: 2.2rem;
   }
   body .edit-operations-form {
@@ -740,7 +739,7 @@ footer {
         top: 9rem;
         right: 4rem;
     }
-    .user-menu ul li a {
+    .user-menu ul li .options-user {
         font-size: 2.4rem;
     }
     body .last-operations .flex-conteiner {
@@ -784,7 +783,7 @@ footer {
         right: 7rem;
         padding: 2rem;
     }
-    .user-menu ul li a {
+    .user-menu ul li .options-user {
         font-size: 2.4rem;
     }
     body section .add-operations-form input, body section .add-operations-form select {

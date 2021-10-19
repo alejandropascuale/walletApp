@@ -1,19 +1,20 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWallet, faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
-function HeaderLoginHome(props) {
+function UserLoginHome(props) {
     
     return (
         
             <header>
-                <a href="/" className="logo"><FontAwesomeIcon icon={faWallet} />Wallet App</a>
+                <Link to="/" exact='true' className="logo"><FontAwesomeIcon icon={faWallet} />Wallet App</Link>
                 <nav className="navbar">
-                    <a className="active" href="#home">home</a> 
-                    <a href="#Balance">balance</a>
-                    <a href="#last-operations">last operations</a>
+                    <Link className="active" to="#home">home</Link> 
+                    <Link to="#Balance">balance</Link>
+                    <Link to="#last-operations">last operations</Link>
                 </nav>
                 <div className="icons">
                     <FontAwesomeIcon icon={faBars} id="menu-bars"/>
@@ -23,8 +24,12 @@ function HeaderLoginHome(props) {
                     </div>
                     <div className="user-menu">
                         <ul type='none'>
-                            <li><a href="/users/account/">Edit Account</a></li>
-                            <li><a href="/users/logout">Logout</a></li>
+                            <li><Link to="/users/account/" className='options-user'>Edit Account</Link></li>
+                            <li>
+                                <form action="http://localhost:3001/users/logout" >
+                                    <button type='submit' className='options-user'>Logout</button>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -33,4 +38,4 @@ function HeaderLoginHome(props) {
     )
 }
 
-export default HeaderLoginHome;
+export default UserLoginHome;
