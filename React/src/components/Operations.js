@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './Header';
+import Header from './header/Header';
 import FormSearch from './FormSearch';
 import BalanceSection from './BalanceSection'
 import LastOperations from './LastOperations'

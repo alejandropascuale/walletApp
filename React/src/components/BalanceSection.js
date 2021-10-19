@@ -7,13 +7,13 @@ function BalanceSection() {
     fetch('http://localhost:3001/api/operations/user/1')
         .then(response => response.json())
         .then(data => {
-          let balance = 0;
+          let balanceStatus = 0;
           let incomes =  data.filter(i => i.type === 'Income');
           let expenses =  data.filter(i => i.type === 'Expense');
           let totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
           let totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
-          balance = (totalIncomes - totalExpenses).toFixed(2);
-          setBalance(balance)
+          balanceStatus = (totalIncomes - totalExpenses).toFixed(2);
+          setBalance(balanceStatus);
         })
     }, [])
     return (

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Header from './Header';
+import Header from './header/Header';
 import FormSearch from './FormSearch';
 import SliderSection from './SliderSection'
 import BalanceSection from './BalanceSection'
