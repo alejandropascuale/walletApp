@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 import Header from './header/Header';
 import FormSearch from './FormSearch';
@@ -23,7 +24,7 @@ function Login() {
                     <input className='style-input' type="password" name="password" id="password" autoComplete='on' />
                     
                     </div>
-                    <a className="btn-cancel" href="/">Back</a>
+                    <Link className="btn-cancel" href="/">Back</Link>
                     <button className="btn-check" type="submit">Send</button>
                 </form>
             </main>

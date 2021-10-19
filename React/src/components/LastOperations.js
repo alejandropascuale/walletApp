@@ -52,7 +52,7 @@ function LastOperations() {
         
         <Link to='/operations'><h3 className="sub-heading heartbeat">Click here to manage your operations</h3></Link>
         <div className="card-table">
-          <table className="home-table"aria-describedby="myOperations" id="dataTable" cellspacing="0">
+          <table className="home-table"aria-describedby="myOperations" id="dataTable" cellSpacing="0">
             <thead>
               <tr>
                 <th id="detail">Detail</th>
@@ -89,7 +89,7 @@ function LastOperations() {
         
         <Link to='/operations'><h3 className="sub-heading heartbeat">Click here to manage your operations</h3></Link>
         <div className="card-table">
-          <table className="home-table"aria-describedby="myOperations" id="dataTable" cellspacing="0">
+          <table className="home-table"aria-describedby="myOperations" id="dataTable" cellSpacing="0">
             <thead>
               <tr>
                 <th id="detail">Detail</th>

@@ -11,7 +11,7 @@ import Register from './components/Register';
 
 function App() {
   return (
-    <div id="body">
+    <div className="body">
       <BrowserRouter>
         
         <Route path='/' exact={true} component={Home} />

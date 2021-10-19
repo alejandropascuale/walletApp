@@ -17,10 +17,10 @@ function BalanceSection() {
         })
     }, [])
     return (
-        <section class="balance" id="balance">
-          <h3 class="sub-heading">See yours incomes and expenses</h3>
-          <h1 class="heading">Your Balance</h1>
-          <h1 class="wallet-balance">${balance}</h1>
+        <section className="balance" id="balance">
+          <h3 className="sub-heading">See yours incomes and expenses</h3>
+          <h1 className="heading">Your Balance</h1>
+          <h1 className="wallet-balance">${balance}</h1>
         </section>
     )
 }
