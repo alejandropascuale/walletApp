@@ -1,3 +1,4 @@
+
 let avatarUser = document.querySelector('.icon-user');
 let userMenu = document.querySelector('.user-menu');
 

@@ -12,6 +12,15 @@ import UserAccount from './components/UserAccount';
 
 
 function App() {
+  /* useEffect(() => {
+    const script = document.createElement("script");
+  
+    script.src = "/javascripts/userMenu.js";
+    script.async = true;
+  
+    document.body.appendChild(script);
+    console.log('montando el script userMenu');
+  }, []) */
   return (
     <div className="body">
       <BrowserRouter>
@@ -23,8 +32,6 @@ function App() {
         <Route path='/users/account' component={UserAccount} />
         
       </BrowserRouter>
-      <script src="/javascripts/index.js"></script>
-      <script src="/javascripts/search.js"></script>
     </div>
   );
 }
