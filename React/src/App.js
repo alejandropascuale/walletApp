@@ -12,15 +12,6 @@ import UserAccount from './components/UserAccount';
 
 
 function App() {
-  /* useEffect(() => {
-    const script = document.createElement("script");
-  
-    script.src = "/javascripts/userMenu.js";
-    script.async = true;
-  
-    document.body.appendChild(script);
-    console.log('montando el script userMenu');
-  }, []) */
   return (
     <div className="body">
       <BrowserRouter>
