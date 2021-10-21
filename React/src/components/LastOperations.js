@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 function LastOperations() {
     const [operations, setOperations] = useState([]);
-    useEffect(()=>{
+    useEffect(() => {
       fetch('http://localhost:3001/api/users')
         .then(response => response.json())
         .then(data => {
@@ -26,6 +26,7 @@ function LastOperations() {
           }
           let emailCookie = getCookie('userEmail');
           let lastOperations = [];
+          let operationsLocal = JSON.parse(window.localStorage.getItem('operationsUser'))
           if(emailCookie){
             const user = data.find(u => u.email === emailCookie);
             fetch(`http://localhost:3001/api/operations/user/${user.idUser}`)
@@ -39,6 +40,9 @@ function LastOperations() {
                     }
                     setOperations(lastOperations)
                 })
+          } else if (operationsLocal) {
+            lastOperations = operationsLocal.slice(operationsLocal).reverse();
+            setOperations(lastOperations);
           } else {
             setOperations(lastOperations);
           }

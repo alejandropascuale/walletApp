@@ -36,7 +36,7 @@ function UserAccount() {
         <>
         <Header />
         <main>
-            <form className="register-form" action="/users/account/?_method=PUT" method="POST" encType="multipart/form-data">
+            <form className="register-form" action="http://localhost:3001/users/account/?_method=PUT" method="POST" encType="multipart/form-data">
                 <div className="align-image-user">
                     <img src={user.avatar} alt="user-avatar" className="user-image" />
                 </div>
@@ -47,7 +47,7 @@ function UserAccount() {
                     <label htmlFor="avatar">Avatar</label>
                     <input className="style-input" type="file" name="avatar" id="avatar" />
                     <label htmlFor="email">Email</label>
-                    <input className="style-input" type="email" name="email" id="email" value={user.email} />
+                    <input className="style-input" type="email" name="email" id="email" /* value={user.email} */ />
                     
                     
                     <label htmlFor="password">Password</label>
