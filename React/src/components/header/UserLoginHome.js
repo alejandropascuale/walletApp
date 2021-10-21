@@ -6,7 +6,14 @@ import { faWallet, faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
 function UserLoginHome(props) {
-    
+    let displayMenu = () => {
+        let userMenu = document.querySelector('.user-menu');
+        userMenu.style.display = 'block';
+    }
+    let hiddenMenu = () =>{
+        let userMenu = document.querySelector('.user-menu');
+        userMenu.style.display = 'none';
+    }
     return (
         
             <header>
@@ -19,15 +26,15 @@ function UserLoginHome(props) {
                 <div className="icons">
                     <FontAwesomeIcon icon={faBars} id="menu-bars"/>
                     <FontAwesomeIcon icon={faSearch} id="search-icon"/>
-                    <div className="icon-user">
+                    <div className="icon-user" onMouseOver={displayMenu}>
                         <img src={props.login.avatar} alt="user-avatar" className="user-image-header"/>
                     </div>
-                    <div className="user-menu">
+                    <div className="user-menu" onMouseLeave={hiddenMenu}>
                         <ul type='none'>
                             <li><Link to="/users/account/" className='options-user'>Edit Account</Link></li>
                             <li>
                                 <form action="http://localhost:3001/users/logout" >
-                                    <button type='submit' className='options-user'>Logout</button>
+                                    <button type='submit' className='logout-user'><h4>Logout</h4></button>
                                 </form>
                             </li>
                         </ul>

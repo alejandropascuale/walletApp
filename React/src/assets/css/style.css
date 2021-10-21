@@ -125,10 +125,11 @@ header .icons #menu-bars {
     font-weight: bold;
     box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1)
 }
-.user-menu .options-user {
+.user-menu .options-user, .logout-user {
     color: var(--black);
+    background-color: #fff;
 }
-.user-menu .options-user:hover {
+.user-menu .options-user:hover, .logout-user:hover {
     background-color: var(--black);
     color: #fff;
 }
@@ -327,6 +328,9 @@ section {
 .balance {
     background-color: #fff;
 }
+.balance-operations {
+    margin-top: 7%;
+}
 .sub-heading {
     text-align: center;
     color: var(--blue);
@@ -351,6 +355,7 @@ section {
 
 .last-operations {
     padding: 0;
+    margin-bottom: 2%;
     background-color: #fff;
 }
 table {
@@ -511,10 +516,11 @@ body section .edit-operations-form .cancel-button .fa-times {
 body .last-operations .flex-conteiner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 body .last-operations .flex-conteiner .flex-container1, body .last-operations .flex-conteiner .flex-container2 {
     display: flex;
+    align-items: center;
     font-size: 2.5rem;
 }
 body .last-operations .flex-conteiner .flex-container2 {
@@ -536,9 +542,10 @@ body .last-operations .flex-conteiner .fa-plus-square, body .last-operations .fl
 }
 body .last-operations .flex-conteiner .fa-plus-square {
     cursor: pointer;
+    font-size: 5rem;
 }
 body .last-operations .flex-conteiner .fa-plus-square:hover {
-    font-size: 3.5rem;
+    font-size: 5.5rem;
 }
 table tbody tr td .options-container {
     display: flex;
@@ -681,7 +688,7 @@ footer {
     width: 60%;
     margin: auto;
   }
-  .user-menu ul li, .options-user {
+  .user-menu ul li, .options-user, .logout-user {
     font-size: 2.2rem;
   }
   body .edit-operations-form {
@@ -732,7 +739,7 @@ footer {
         top: 9rem;
         right: 4rem;
     }
-    .user-menu ul li .options-user {
+    .user-menu ul li .options-user, .logout-user {
         font-size: 2.4rem;
     }
     body .last-operations .flex-conteiner {
@@ -776,7 +783,7 @@ footer {
         right: 7rem;
         padding: 2rem;
     }
-    .user-menu ul li .options-user {
+    .user-menu ul li .options-user, .logout-user {
         font-size: 2.4rem;
     }
     body section .add-operations-form input, body section .add-operations-form select {
