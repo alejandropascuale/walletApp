@@ -24,7 +24,7 @@ function Login() {
                     <input className='style-input' type="password" name="password" id="password" autoComplete='on' />
                     
                     </div>
-                    <Link className="btn-cancel" href="/">Back</Link>
+                    <Link className="btn-cancel" to="/">Back</Link>
                     <button className="btn-check" type="submit">Send</button>
                 </form>
             </main>
