@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import {Link} from 'react-router-dom'
-
+import moment from 'moment';
 
 
 function LastOperations() {
@@ -77,7 +77,7 @@ function LastOperations() {
                   <tr key={i}>
                     <td>{operation.detail}</td>
                     <td>{operation.type}</td>
-                    <td>{operation.date}</td>
+                    <td>{moment(operation.date).format( 'DD-MMM-YYYY')}</td>
                   </tr>
                 )
               })}

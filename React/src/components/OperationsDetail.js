@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import moment from 'moment';
 
 import AddOperations from './AddOperations'
 import ButtonsContainerOperations from './ButtonsContainerOperations';
@@ -83,7 +84,7 @@ function LastOperations() {
                     <tr key={i}>
                       <td>{operation.detail}</td>
                       <td>{operation.type}</td>
-                      <td>{operation.date}</td>
+                      <td>{moment(operation.date).format( 'DD-MMM-YYYY')}</td>
                       <td>{operation.type}</td>
                       <td>{operation.category}</td>
                     </tr>
