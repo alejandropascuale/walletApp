@@ -1,5 +1,9 @@
 import React, { useState, useEffect} from 'react';
 import moment from 'moment';
+import {Link} from 'react-router-dom'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 import AddOperations from './AddOperations'
 import ButtonsContainerOperations from './ButtonsContainerOperations';
@@ -67,6 +71,7 @@ function LastOperations() {
                   <th id="date">Date</th>
                   <th id="type">Type</th>
                   <th id="category">category</th>
+                  <th id="actions">Actions</th>
                 </tr>
               </thead>
               <tfoot>
@@ -76,6 +81,7 @@ function LastOperations() {
                   <th id="date">Date</th>
                   <th id="type">Type</th>
                   <th id="category">category</th>
+                  <th id="actions">Actions</th>
                 </tr>
               </tfoot>
               <tbody id="insert-data">
@@ -87,6 +93,15 @@ function LastOperations() {
                       <td>{moment(operation.date).format( 'DD-MMM-YYYY')}</td>
                       <td>{operation.type}</td>
                       <td>{operation.category}</td>
+                      <td>
+                        <div class="options-container">
+                          {/* ver porque no funciona el link para editar y crear el componente de edicion de operaciones */}
+                            <Link href={`/operations/${operation.idOperation}/edit`}><FontAwesomeIcon icon={faEdit} /></Link>
+                            <form action={`/operations/${operation.idOperation}/delete?_method=DELETE`} method="post">
+                              <button type="submit"><FontAwesomeIcon icon={faTrash} /></button>
+                            </form>
+                          </div>
+                      </td>
                     </tr>
                   )
                 })}

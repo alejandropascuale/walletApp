@@ -20,6 +20,7 @@ function App() {
         <Route path='/users/login' component={Login} />
         <Route path='/users/register' component={Register} />
         <Route path='/operations' component={OperationsDetail} />
+        <Route path='/operations/:idOperation/edit' component={OperationsDetail} />
         <Route path='/users/account' component={UserAccount} />
         
       </BrowserRouter>
