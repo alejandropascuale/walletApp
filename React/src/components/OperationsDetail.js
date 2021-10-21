@@ -35,13 +35,8 @@ function LastOperations() {
             fetch(`http://localhost:3001/api/operations/user/${user.idUser}`)
                 .then(response => response.json())
                 .then(op => {
-                  if(op.length > 10){
-                    lastOperations = op.slice(op.length-10).reverse();
-                    } else {
-                      op.slice(op.length).reverse()
-                      lastOperations = op.slice(op.length).reverse();
-                    }
-                    setOperations(lastOperations)
+                  lastOperations = op.slice(op).reverse();
+                  setOperations(lastOperations)
                 })
           } else if (operationsLocal) {
             lastOperations = operationsLocal.slice(operationsLocal).reverse();
