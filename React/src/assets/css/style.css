@@ -9,7 +9,7 @@
     font-family: 'Amatic SC', cursive;
     margin: 0; padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
+    text-decoration: none !important;
     /* similar a border pero no ocupa espacio en el html ya que se dibuja sobre el elemento */
     outline: none; border: none;
     /* transforma todas las palabras para que sea la primer letra en mayuscula */
@@ -487,30 +487,33 @@ body .edit-operations-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 6rem auto;
     background-color: var(--black);
     color: #fff;
     font-size: 2.5rem;
     width: 100%;
-    max-width: 380px;
     border-radius: .5rem;
     padding: 3.5rem;
 }
-body section .add-operations-form input, body section .add-operations-form select,
-body section .edit-operations-form input, body section .edit-operations-form select {
+.add-operations-form input, .add-operations-form select,
+.edit-operations-form input, .edit-operations-form select {
     width: 75%;
     border-radius: .5rem;
     font-family: 'Open Sans', sans-serif;
     padding: .5rem;
 }
-body section .add-operations-form .cancel-button,
-body section .edit-operations-form .cancel-button {
+.add-operations-form .cancel-button,
+.edit-operations-form .cancel-button {
     display: flex;
     justify-content: flex-end;
     width: 100%;
 }
-body section .add-operations-form .cancel-button .fa-times,
-body section .edit-operations-form .cancel-button .fa-times {
+.modal-body {
+    background-color: var(--black);
+}
+.edit-title-form {
+    text-align: center;
+    font-size: 4rem;
+    background-color: var(--black);
     color: #fff;
 }
 body .last-operations .flex-conteiner {
@@ -691,9 +694,6 @@ footer {
   .user-menu ul li, .options-user, .logout-user {
     font-size: 2.2rem;
   }
-  body .edit-operations-form {
-    margin: 9rem auto;
-  }
   body .last-operations .flex-conteiner .flex-container2 {
     width: 30%;
   }
@@ -748,9 +748,6 @@ footer {
     }
     body section .add-operations-form input, body section .add-operations-form select {
         padding: .2rem;
-    }
-    body .edit-operations-form {
-        margin: 11rem auto 8rem;
     }
 }
 

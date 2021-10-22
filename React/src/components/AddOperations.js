@@ -4,8 +4,12 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import useLocalStorage from '../hooks/useLocalStorage';
 
+
+
 function AddOperations() {
   const [operation, setOperation] = useLocalStorage ()
+  
+
   let addOperationsForm = document.querySelector('#add-operations-form');
   
   let closeForm = () => {
@@ -13,6 +17,7 @@ function AddOperations() {
   }
   
     return (
+      
         <form className="add-operations-form" id="add-operations-form" action="/operations/add" method="POST">
           <FontAwesomeIcon icon={faTimes} onClick={closeForm} className="cancel-button" id="cancel-button" />
   
@@ -50,6 +55,7 @@ function AddOperations() {
           } */}
           <button onClick={e=>setOperation(e => operation)} type="reset" className="btn-check" id="add-operation-button">Add</button>
         </form>
+      
     )
 }
 

@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import Footer from './Footer'
 import Header from './header/Header'
 
 function OperationsEdit() {
-    const [operation, setOperation] = useState([]);
-    useEffect(() => {
+    /* const [operation, setOperation] = useState([]); */
+    /* useEffect(() => {
       fetch('http://localhost:3001/api/users')
         .then(response => response.json())
         .then(data => {
@@ -42,7 +42,7 @@ function OperationsEdit() {
           }
           
         })
-    }, [])
+    }, []) */
     return (
         <>
             <Header />
