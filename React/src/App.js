@@ -4,6 +4,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 
 import Home from './components/Home';
 import OperationsDetail from './components/OperationsDetail';
+import OperationsEdit from './components/OperationsEdit';
 import Login from './components/Login';
 import Register from './components/Register';
 import UserAccount from './components/UserAccount';
@@ -20,7 +21,7 @@ function App() {
         <Route path='/users/login' component={Login} />
         <Route path='/users/register' component={Register} />
         <Route path='/operations' component={OperationsDetail} />
-        <Route path='/operations/:idOperation/edit' component={OperationsDetail} />
+        <Route path='/operations/:idOperation/edit' component={OperationsEdit} />
         <Route path='/users/account' component={UserAccount} />
         
       </BrowserRouter>

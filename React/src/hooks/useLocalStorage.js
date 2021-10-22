@@ -27,7 +27,7 @@ export default function useLocalStorage() {
             let t = addOperationsForm.elements;
             let operation = {};
 
-            operation.id = lastId + 1;
+            operation.idOperation = lastId + 1;
             operation.detail = t[0].value;
             operation.ammount = Number(t[1].value);
             operation.date = t[2].value;

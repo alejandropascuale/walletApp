@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 import AddOperations from './AddOperations'
-import ButtonsContainerOperations from './ButtonsContainerOperations';
+import CategoryFilter from './CategoryFilter';
 import Header from './header/Header';
 import BalanceSection from './BalanceSection'
 import Footer from './Footer'
@@ -59,13 +59,14 @@ function LastOperations() {
           <BalanceSection />
           <section className="last-operations" id="last-operations">
           <AddOperations />
-          <ButtonsContainerOperations />
+          <CategoryFilter />
           
           
           <div className="card-table">
             <table className="home-table"aria-describedby="myOperations" id="dataTable" cellSpacing="0">
               <thead>
                 <tr>
+                  <th id="idOperation">Id</th>
                   <th id="detail">Detail</th>
                   <th id="amount">Amount</th>
                   <th id="date">Date</th>
@@ -76,6 +77,7 @@ function LastOperations() {
               </thead>
               <tfoot>
                 <tr>
+                  <th id="idOperation">Id</th>
                   <th id="detail">Detail</th>
                   <th id="amount">Amount</th>
                   <th id="date">Date</th>
@@ -88,16 +90,17 @@ function LastOperations() {
                 {operations.map((operation, i) => {
                   return (
                     <tr key={i}>
+                      <td>{operation.idOperation}</td>
                       <td>{operation.detail}</td>
                       <td>{operation.type}</td>
                       <td>{moment(operation.date).format( 'DD-MMM-YYYY')}</td>
                       <td>{operation.type}</td>
                       <td>{operation.category}</td>
                       <td>
-                        <div class="options-container">
+                        <div className="options-container">
                           {/* ver porque no funciona el link para editar y crear el componente de edicion de operaciones */}
-                            <Link href={`/operations/${operation.idOperation}/edit`}><FontAwesomeIcon icon={faEdit} /></Link>
-                            <form action={`/operations/${operation.idOperation}/delete?_method=DELETE`} method="post">
+                            <Link to={`/operations/${operation.idOperation}/edit`}><FontAwesomeIcon icon={faEdit} /></Link>
+                            <form action={`http://localhost:3001/operations/${operation.idOperation}/delete?_method=DELETE`} method="post">
                               <button type="submit"><FontAwesomeIcon icon={faTrash} /></button>
                             </form>
                           </div>
@@ -120,12 +123,13 @@ function LastOperations() {
           <section className="last-operations" id="last-operations">
           <h1 className="heading">Last Operations</h1>
           <AddOperations />
-          <ButtonsContainerOperations />
+          <CategoryFilter />
           
           <div className="card-table">
             <table className="home-table"aria-describedby="myOperations" id="dataTable" cellSpacing="0">
               <thead>
                 <tr>
+                  <th id="idOperation">Id</th>
                   <th id="detail">Detail</th>
                   <th id="amount">Amount</th>
                   <th id="date">Date</th>
@@ -135,6 +139,7 @@ function LastOperations() {
               </thead>
               <tfoot>
                 <tr>
+                  <th id="idOperation">Id</th>
                   <th id="detail">Detail</th>
                   <th id="amount">Amount</th>
                   <th id="date">Date</th>
