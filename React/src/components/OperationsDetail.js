@@ -35,7 +35,7 @@ function LastOperations() {
     });
   const SelectOperation = (elemento, caso)=> {
     setOperationSelect(elemento);
-    (caso === 'Editar') && setModalEditar(true)
+    (caso === 'Edit')? setModalEditar(true): setModalEliminar(true);
   }
 
   const handleChange = e => {
@@ -60,7 +60,13 @@ function LastOperations() {
     setOperations(newOperations);
     setModalEditar(false);
     localStorage.setItem('operationsUser', JSON.stringify(newOperations))
-    console.log(operations);
+  }
+
+  const deleteOp = () => {
+    let newOperations = operations.filter(op => op.idOperation !== operationSelect.idOperation);
+    setOperations(newOperations);
+    localStorage.setItem('operationsUser', JSON.stringify(newOperations))
+    setModalEliminar(false);
   }
 
   const openInsertModal = () => {
@@ -76,9 +82,7 @@ function LastOperations() {
     setOperations(newOperations);
     setModalInsertar(false);
     localStorage.setItem('operationsUser', JSON.stringify(newOperations))
-    console.log(operations);
   }
-  console.log(operations);
       return (
         <>
           <Header />
@@ -153,7 +157,26 @@ function LastOperations() {
                 </form> 
               </ModalBody>
             </Modal>
-            
+                      
+            <Modal isOpen={ModalEliminar}>
+              <ModalBody>
+                <h2 className='edit-title-form'>
+                  Are you sure to delete the operation #{operationSelect && operationSelect.idOperation}
+                </h2>
+
+                <button className='btn btn-secondary'
+                onClick={() => setModalEliminar(false)}
+                >Cancel
+                </button>
+
+                <button className='btn btn-danger'
+                onClick={() => deleteOp()}
+                >Yes
+                </button>
+
+              </ModalBody>
+            </Modal>
+
             <Modal isOpen={ModalInsertar}>
               <ModalBody>
                 <div>
@@ -213,7 +236,7 @@ function LastOperations() {
                 </form> 
               </ModalBody>
             </Modal>
-          
+
             <div className="card-table">
               <table className="home-table"aria-describedby="myOperations" id="dataTable" cellSpacing="0">
                 <thead>
@@ -252,8 +275,8 @@ function LastOperations() {
                           <div className="options-container">
                             {/* ver porque no funciona el link para editar y crear el componente de edicion de operaciones */}
                               {/* <Link to={`/operations/${operation.idOperation}/edit`}><FontAwesomeIcon icon={faEdit} /></Link> */}
-                              <button onClick={() => SelectOperation(operation, 'Editar')}><FontAwesomeIcon icon={faEdit} /></button>
-                              <button ><FontAwesomeIcon icon={faTrash} /></button>
+                              <button onClick={() => SelectOperation(operation, 'Edit')}><FontAwesomeIcon icon={faEdit} /></button>
+                              <button onClick={() => SelectOperation(operation, 'Delete')}><FontAwesomeIcon icon={faTrash} /></button>
                               {/* <form action={`http://localhost:3001/operations/${operation.idOperation}/delete?_method=DELETE`} method="post">
                                 <button type="submit"><FontAwesomeIcon icon={faTrash} /></button>
                               </form> */}
