@@ -51,7 +51,7 @@ function LastOperations() {
     newOperations.map(operation => {
       if(operation.idOperation === operationSelect.idOperation){
         operation.detail = operationSelect.detail;
-        operation.ammount = Number(operationSelect.ammount);
+        operation.ammount = operationSelect.ammount;
         operation.date = operationSelect.date;
         operation.type = operationSelect.type;
         operation.category = operationSelect.category;
@@ -76,7 +76,15 @@ function LastOperations() {
 
   const insert = () => {
     var operationToInsert = operationSelect;
-    operationToInsert.idOperation = operations[operations.length-1].idOperation +1;
+    console.log(operationSelect);
+    if(operations.length > 0) {
+      operationToInsert.idOperation = operations[operations.length-1].idOperation +1;
+    } else {
+      operationToInsert.idOperation = 1;
+    }
+    if (!operationToInsert.type){
+      operationToInsert.type = 'Income';
+    } 
     let newOperations = operations;
     newOperations.push(operationToInsert);
     setOperations(newOperations);
@@ -208,7 +216,8 @@ function LastOperations() {
                   />
           
                   <label htmlFor="type">Type</label>
-                  <select name="type" id="type" onChange={handleChange}>
+                  <select name="type" id="type" onChange={handleChange}
+                  value={operationSelect? operationSelect.type: ''}>
                     <option >Income</option>
                     <option >Expense</option>
                   </select>
@@ -267,7 +276,7 @@ function LastOperations() {
                       <tr key={i}>
                         <td value={operation.idOperation}>{operation.idOperation}</td>
                         <td>{operation.detail}</td>
-                        <td>{operation.type}</td>
+                        <td>{operation.ammount}</td>
                         <td>{moment(operation.date).format( 'DD-MMM-YYYY')}</td>
                         <td>{operation.type}</td>
                         <td>{operation.category}</td>
