@@ -84,7 +84,8 @@ function LastOperations() {
     }
     if (!operationToInsert.type){
       operationToInsert.type = 'Income';
-    } 
+    }
+    operationToInsert.ammount = parseFloat(operationToInsert.ammount)
     let newOperations = operations;
     newOperations.push(operationToInsert);
     setOperations(newOperations);
@@ -199,6 +200,7 @@ function LastOperations() {
 
                   <label htmlFor="detail">Detail</label>
                   <input type="text" name="detail" id="detail" 
+                  autoFocus
                   value={operationSelect? operationSelect.detail: ''}
                   onChange={handleChange}
                   />

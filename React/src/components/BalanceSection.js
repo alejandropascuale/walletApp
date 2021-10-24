@@ -36,9 +36,17 @@ function BalanceSection() {
                 balanceStatus = (totalIncomes - totalExpenses).toFixed(2);
                 setBalance(balanceStatus);
               })
+        } else if (localStorage.getItem('operationsUser')){
+          let op = JSON.parse(localStorage.getItem('operationsUser'));
+          let incomes =  op.filter(i => i.type === 'Income');
+          let expenses =  op.filter(i => i.type === 'Expense');
+          let totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
+          let totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
+          balanceStatus = (totalIncomes - totalExpenses).toFixed(2);
+          setBalance(balanceStatus);
         } else {
-            setBalance(balanceStatus);
-          }
+          setBalance(balanceStatus);
+        }
     })
     }, [])
     if(balance !== 0){
