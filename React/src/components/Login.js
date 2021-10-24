@@ -29,7 +29,7 @@ function Login() {
                             <input className='style-input' type="password" name="password" id="password" autoComplete='on' />
                             
                         </div>
-                        <button className="btn-check" type="submit"><FontAwesomeIcon icon={faSignInAlt} /></button>
+                        <button className="button-check" type="submit"><FontAwesomeIcon icon={faSignInAlt} /></button>
                     </form>
                 </main>
             <Footer />

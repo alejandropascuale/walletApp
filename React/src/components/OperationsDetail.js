@@ -85,6 +85,9 @@ function LastOperations() {
     if (!operationToInsert.type){
       operationToInsert.type = 'Income';
     }
+    if (!operationToInsert.category){
+      operationToInsert.category = 'Awards';
+    }
     operationToInsert.ammount = parseFloat(operationToInsert.ammount)
     let newOperations = operations;
     newOperations.push(operationToInsert);
