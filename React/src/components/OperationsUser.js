@@ -15,7 +15,6 @@ import {Modal, ModalBody} from 'reactstrap'
 
 function OperationsUser() {
   const [operations, setOperations] = useState([]);
-  /* const [category, setCategory] = useState('All'); */
   const {userLogin} = useContext(UserContext);
 
   useEffect(() => {
@@ -26,18 +25,6 @@ function OperationsUser() {
         setOperations(lastOperations)
       })
     }, [])
-    /* useEffect(() => {
-      let option
-      if(localStorage.getItem('categoryValue')){
-        option = document.querySelectorAll('#category-filter option')[localStorage.getItem('categoryValue')];
-        option.setAttribute('selected', true);
-        setCategory(option.value);
-      }
-      let index = document.getElementById("category-filter").options.selectedIndex;
-      localStorage.setItem("categoryValue", index);
-      let optionValue = document.querySelectorAll('#category-filter option')[index].value;
-      setCategory(optionValue);
-    }, [category]) */
 
   const [ModalEditar, setModalEditar] = useState (false);
   const [ModalEliminar, setModalEliminar] = useState (false);
@@ -108,7 +95,14 @@ function OperationsUser() {
       let filterOperations = operations.filter( o => o.category === option.value);
       let lastOperations = filterOperations.slice(filterOperations).reverse();
       setOperations(lastOperations);
-      console.log(operations);
+    }
+    if ( index === 0) {
+      fetch(`http://localhost:3001/api/operations/user/${userLogin.idUser}`)
+      .then(response => response.json())
+      .then(op => {
+        let lastOperations = op.slice(op).reverse();
+        setOperations(lastOperations)
+      })
     }
   }
 
