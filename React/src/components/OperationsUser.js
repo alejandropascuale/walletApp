@@ -24,7 +24,7 @@ function OperationsUser() {
         let lastOperations = op.slice(op).reverse();
         setOperations(lastOperations)
       })
-    }, [])
+    }, [userLogin])
 
   const [ModalEditar, setModalEditar] = useState (false);
   const [ModalEliminar, setModalEliminar] = useState (false);

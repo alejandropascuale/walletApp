@@ -31,7 +31,7 @@ function LastOperations() {
       } else {
         setOperations(lastOperations);
       }
-    }, [])
+    }, [userLogin])
     if(operations.length !== 0){
       return (
         <section className="last-operations" id="last-operations">
