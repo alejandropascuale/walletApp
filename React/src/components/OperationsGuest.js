@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import moment from 'moment';
 
-import { UserContext } from '../App';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faEdit, faCheck, faTimes, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 
@@ -16,13 +14,12 @@ import {Modal, ModalBody} from 'reactstrap'
 
 function LastOperations() {
   const [operations, setOperations] = useState([]);
-  const {userLogin} = useContext(UserContext);
 
   useEffect(() => {
     let lastOperations = [];
     let operationsLocal = JSON.parse(localStorage.getItem('operationsUser'));
     if (operationsLocal) {
-      lastOperations = operationsLocal.slice(operationsLocal).reverse();
+      lastOperations = operationsLocal.sort((a,b)=>a.idOperation-b.idOperation).reverse();
       setOperations(lastOperations);
     }
     }, [])
@@ -82,9 +79,8 @@ function LastOperations() {
 
   const insert = () => {
     var operationToInsert = operationSelect;
-    console.log(operationSelect);
     if(operations.length > 0) {
-      operationToInsert.idOperation = operations[operations.length-1].idOperation +1;
+      operationToInsert.idOperation = operations.length +1;
     } else {
       operationToInsert.idOperation = 1;
     }
@@ -106,7 +102,6 @@ function LastOperations() {
           <Header />
           <BalanceSection />
           <section className="last-operations" id="last-operations">
-            {/* <AddOperations /> */}
             <div className="flex-conteiner">
               <div className="flex-container1">
                 <FontAwesomeIcon 
@@ -123,7 +118,7 @@ function LastOperations() {
                 <div>
                   <h3 className="edit-title-form">Edit Operation</h3>
                 </div>
-                <form className="edit-operations-form" id="edit-operations-form" action="/operations/">
+                <form className="edit-operations-form" id="edit-operations-form">
             
                   <label htmlFor="id">id</label>
                   <input disabled type="number" name="id" id="id" value={operationSelect && operationSelect.idOperation}/>
@@ -168,8 +163,8 @@ function LastOperations() {
                   </select>
 
                   <div>
-                    <button onClick={() => setModalEditar(false)} className="btn btn-danger"><FontAwesomeIcon icon={faTimes} /></button>
-                    <button onClick={()=> edit()} className="btn btn-primary"><FontAwesomeIcon icon={faCheck} /></button>
+                    <button type='button' onClick={() => setModalEditar(false)} className="btn btn-danger"><FontAwesomeIcon icon={faTimes} /></button>
+                    <button type='button' onClick={()=> edit()} className="btn btn-primary"><FontAwesomeIcon icon={faCheck} /></button>
                   </div>
                   
                 </form> 
@@ -181,17 +176,17 @@ function LastOperations() {
                 <h2 className='edit-title-form'>
                   Are you sure to delete the operation #{operationSelect && operationSelect.idOperation}
                 </h2>
+                <form>
+                  <button className='btn btn-secondary'type='button' 
+                  onClick={() => setModalEliminar(false)}
+                  >Cancel
+                  </button>
 
-                <button className='btn btn-secondary'
-                onClick={() => setModalEliminar(false)}
-                >Cancel
-                </button>
-
-                <button className='btn btn-danger'
-                onClick={() => deleteOp()}
-                >Yes
-                </button>
-
+                  <button className='btn btn-danger'type='button' 
+                  onClick={() => deleteOp()}
+                  >Yes
+                  </button>
+                </form>
               </ModalBody>
             </Modal>
 
@@ -200,7 +195,7 @@ function LastOperations() {
                 <div>
                   <h3 className="edit-title-form">Add Operation</h3>
                 </div>
-                <form className="edit-operations-form" id="edit-operations-form" action="/operations/">
+                <form className="edit-operations-form" id="edit-operations-form" action='/operations'>
             
                   <label htmlFor="id">id</label>
                   <input disabled type="number" name="id" id="id" 
@@ -249,8 +244,8 @@ function LastOperations() {
                   </select>
 
                   <div>
-                    <button onClick={() => setModalInsertar(false)} className="btn btn-danger"><FontAwesomeIcon icon={faTimes} /></button>
-                    <button onClick={()=> insert()} className="btn btn-primary"><FontAwesomeIcon icon={faCheck} /></button>
+                    <button type='button' onClick={() => setModalInsertar(false)} className="btn btn-danger"><FontAwesomeIcon icon={faTimes} /></button>
+                    <button type='submit' onClick={()=> insert()} className="btn btn-primary"><FontAwesomeIcon icon={faCheck} /></button>
                   </div>
                   
                 </form> 

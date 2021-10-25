@@ -23,9 +23,9 @@ function LastOperations() {
         })
       } else if (operationsLocal) {
         if (operationsLocal.length > 10) {
-          lastOperations = operationsLocal.slice(operationsLocal.length-10).reverse();
+          lastOperations = operationsLocal.slice(operationsLocal.length-10).sort((a,b)=>a.idOperation-b.idOperation).reverse();
         } else {
-          lastOperations = operationsLocal.slice(operationsLocal).reverse();
+          lastOperations = operationsLocal.sort((a,b)=>a.idOperation-b.idOperation).reverse();
         }
         setOperations(lastOperations);
       } else {
