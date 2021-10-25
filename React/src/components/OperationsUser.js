@@ -14,7 +14,7 @@ import Footer from './Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody} from 'reactstrap'
 
-function LastOperations() {
+function OperationsUser() {
   const [operations, setOperations] = useState([]);
   const {userLogin} = useContext(UserContext);
 
@@ -41,6 +41,15 @@ function LastOperations() {
     });
   const SelectOperation = (elemento, caso)=> {
     setOperationSelect(elemento);
+    /* console.log(operationSelect);
+    console.log(SelectOperation);
+    if(caso === 'Editar') {
+      setModalEditar(true);
+    } else if (caso === 'Eliminar') {
+      setModalEliminar(true);
+    } else {
+      setModalInsertar(true);
+    } */
     (caso === 'Edit')? setModalEditar(true): setModalEliminar(true);
   }
 
@@ -65,7 +74,6 @@ function LastOperations() {
     })
     setOperations(newOperations);
     setModalEditar(false);
-    /* localStorage.setItem('operationsUser', JSON.stringify(newOperations)) */
   }
 
   const deleteOp = () => {
@@ -81,11 +89,11 @@ function LastOperations() {
 
   const insert = () => {
     var operationToInsert = operationSelect;
-    if(operations.length > 0) {
+    /* if(operations.length > 0) {
       operationToInsert.idOperation = operations[operations.length-1].idOperation +1;
     } else {
       operationToInsert.idOperation = 1;
-    }
+    } */
     if (!operationToInsert.type){
       operationToInsert.type = 'Income';
     }
@@ -107,7 +115,7 @@ function LastOperations() {
               <div className="flex-container1">
                 <FontAwesomeIcon 
                 className="heartbeat" icon={faPlusSquare} id="add-operations-button" 
-                onClick={() => openInsertModal()}
+                onClick={() => setModalInsertar(true)}
                 />
                 <h3 className="add-text">Pres to Add operation</h3>
               </div>
@@ -201,11 +209,11 @@ function LastOperations() {
                 <div>
                   <h3 className="edit-title-form">Add Operation</h3>
                 </div>
-                <form className="add-operations-form" id="add-operations-form" action="http://localhost:3001/operations/add" method="POST">
+                <form className="edit-operations-form" id="add-operations-form" action="http://localhost:3001/operations/add" method="POST">
             
                   <label htmlFor="id">id</label>
                   <input disabled type="number" name="id" id="id" 
-                  value={operations.length ===0? 1: operations.length + 1}
+                  value={operations.length ===0? 1: operations[0].idOperation +1}
                   />
 
                   <label htmlFor="detail">Detail</label>
@@ -248,6 +256,8 @@ function LastOperations() {
                     <option >Taxes</option>
                     <option >Salary</option>
                   </select>
+
+                  <input type="number" name="id_user" id="id_user" class="display-none" value={userLogin.idUser}></input>
 
                   <div>
                     <button type='button' onClick={() => setModalInsertar(false)} className="btn btn-danger"><FontAwesomeIcon icon={faTimes} /></button>
@@ -315,4 +325,4 @@ function LastOperations() {
       )
 }
 
-export default LastOperations;
+export default OperationsUser;

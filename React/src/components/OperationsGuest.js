@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,7 +12,7 @@ import Footer from './Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody} from 'reactstrap'
 
-function LastOperations() {
+function OperationsGuest() {
   const [operations, setOperations] = useState([]);
 
   useEffect(() => {
@@ -137,18 +137,20 @@ function LastOperations() {
           
                   <label htmlFor="date">Date</label>
                   <input type="date" name="date" id="date" 
-                  value={operationSelect && operationSelect.date}
+                  value={operationSelect && moment(operationSelect.date).format( 'YYYY-MM-DD')}
                   onChange={handleChange}
                   />
           
                   <label htmlFor="type">Type</label>
-                  <select name="type" id="type" disabled>
+                  <select name="type" id="type" disabled
+                  value={operationSelect && operationSelect.type}>
                     <option >Income</option>
                     <option >Expense</option>
                   </select>
                   
                   <label htmlFor="category">Category</label>
-                  <select name="category" id="category" onChange={handleChange}>
+                  <select name="category" id="category" onChange={handleChange}
+                  value={operationSelect && operationSelect.category}>
                     <option >Awards</option>
                     <option >Credit card</option>
                     <option >Essential Services</option>
@@ -309,4 +311,4 @@ function LastOperations() {
       )
 }
 
-export default LastOperations;
+export default OperationsGuest;
