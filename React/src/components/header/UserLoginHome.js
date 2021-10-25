@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Link} from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWallet, faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 
+import { UserContext } from '../../App';
 
-function UserLoginHome(props) {
+
+function UserLoginHome() {
+    const {userLogin} = useContext(UserContext);
+
     let displayMenu = () => {
         let userMenu = document.querySelector('.user-menu');
         userMenu.style.display = 'block';
@@ -27,7 +31,7 @@ function UserLoginHome(props) {
                     <FontAwesomeIcon icon={faBars} id="menu-bars"/>
                     <FontAwesomeIcon icon={faSearch} id="search-icon"/>
                     <div className="icon-user" onMouseOver={displayMenu}>
-                        <img src={props.login.avatar} alt="user-avatar" className="user-image-header"/>
+                        <img src={userLogin.avatar} alt="user-avatar" className="user-image-header"/>
                     </div>
                     <div className="user-menu" onMouseLeave={hiddenMenu}>
                         <ul type='none'>

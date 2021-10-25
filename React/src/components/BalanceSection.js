@@ -1,53 +1,34 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
+import { UserContext } from '../App';
 
 
 function BalanceSection() {
   const [balance, setBalance] = useState([]);
+  const {userLogin} = useContext(UserContext);
   useEffect(()=>{
-    fetch('http://localhost:3001/api/users')
-      .then(response => response.json())
-      .then(data => {
-        function getCookie(cname) {
-          let name = cname + "=";
-          let decodedCookie = decodeURIComponent(document.cookie);
-          let ca = decodedCookie.split(';');
-          for(let i = 0; i <ca.length; i++) {
-              let c = ca[i];
-              while (c.charAt(0) === ' ') {
-              c = c.substring(1);
-              }
-              if (c.indexOf(name) === 0) {
-              return c.substring(name.length, c.length);
-              }
-          }
-          return "";
-        }
-        let emailCookie = getCookie('userEmail');
-        let balanceStatus = 0;
-        if(emailCookie){
-          const user = data.find(u => u.email === emailCookie);
-          fetch(`http://localhost:3001/api/operations/user/${user.idUser}`)
-              .then(response => response.json())
-              .then(op => {
-                let incomes =  op.filter(i => i.type === 'Income');
-                let expenses =  op.filter(i => i.type === 'Expense');
-                let totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
-                let totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
-                balanceStatus = (totalIncomes - totalExpenses).toFixed(2);
-                setBalance(balanceStatus);
-              })
-        } else if (localStorage.getItem('operationsUser')){
-          let op = JSON.parse(localStorage.getItem('operationsUser'));
+    let balanceStatus = 0;
+    if(userLogin && typeof userLogin != 'undefined'){
+      fetch(`http://localhost:3001/api/operations/user/${userLogin.idUser}`)
+        .then(response => response.json())
+        .then(op => {
           let incomes =  op.filter(i => i.type === 'Income');
           let expenses =  op.filter(i => i.type === 'Expense');
           let totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
           let totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
           balanceStatus = (totalIncomes - totalExpenses).toFixed(2);
           setBalance(balanceStatus);
-        } else {
-          setBalance(balanceStatus);
-        }
-    })
+        })
+    } else if (localStorage.getItem('operationsUser')){
+      let op = JSON.parse(localStorage.getItem('operationsUser'));
+      let incomes =  op.filter(i => i.type === 'Income');
+      let expenses =  op.filter(i => i.type === 'Expense');
+      let totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
+      let totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
+      balanceStatus = (totalIncomes - totalExpenses).toFixed(2);
+      setBalance(balanceStatus);
+    } else {
+      setBalance(balanceStatus);
+    }
     }, [])
     if(balance !== 0){
       return (

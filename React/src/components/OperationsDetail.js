@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import moment from 'moment';
+
+import { UserContext } from '../App';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faEdit, faCheck, faTimes, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
@@ -14,12 +16,30 @@ import {Modal, ModalBody} from 'reactstrap'
 
 function LastOperations() {
   const [operations, setOperations] = useState([]);
+  const {userLogin} = useContext(UserContext);
 
   useEffect(() => {
-    if(localStorage.getItem('operationsUser')) {
-      setOperations(JSON.parse(localStorage.getItem('operationsUser')))
-    }
-  }, [])
+      let lastOperations = [];
+      let operationsLocal = JSON.parse(localStorage.getItem('operationsUser'));
+      if(userLogin && typeof userLogin != 'undefined'){ 
+        fetch(`http://localhost:3001/api/operations/user/${userLogin.idUser}`)
+        .then(response => response.json())
+        .then(op => {
+          if(op.length > 10){
+            lastOperations = op.slice(op.length-10).reverse();
+            } else {
+              op.slice(op.length).reverse()
+              lastOperations = op.slice(op.length).reverse();
+            }
+            setOperations(lastOperations)
+        })
+      } else if (operationsLocal) {
+        lastOperations = operationsLocal.slice(operationsLocal).reverse();
+        setOperations(lastOperations);
+      } else {
+        setOperations(lastOperations);
+      }
+    }, [])
 
   const [ModalEditar, setModalEditar] = useState (false);
   const [ModalEliminar, setModalEliminar] = useState (false);
