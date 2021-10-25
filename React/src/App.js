@@ -30,7 +30,7 @@ function App() {
     return "";
   }
   useEffect(()=>{
-  if (getCookie('userEmail') !== null) {
+  if (getCookie('userEmail') !== '') {
     fetch('http://localhost:3001/api/users')
       .then(response => response.json())
       .then(data => {
@@ -40,7 +40,7 @@ function App() {
       }
       )
     }
-  })
+  }, [])
 
   return (
     <div className="body">

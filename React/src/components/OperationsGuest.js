@@ -19,26 +19,12 @@ function LastOperations() {
   const {userLogin} = useContext(UserContext);
 
   useEffect(() => {
-      let lastOperations = [];
-      let operationsLocal = JSON.parse(localStorage.getItem('operationsUser'));
-      if(userLogin && typeof userLogin != 'undefined'){ 
-        fetch(`http://localhost:3001/api/operations/user/${userLogin.idUser}`)
-        .then(response => response.json())
-        .then(op => {
-          if(op.length > 10){
-            lastOperations = op.slice(op.length-10).reverse();
-            } else {
-              op.slice(op.length).reverse()
-              lastOperations = op.slice(op.length).reverse();
-            }
-            setOperations(lastOperations)
-        })
-      } else if (operationsLocal) {
-        lastOperations = operationsLocal.slice(operationsLocal).reverse();
-        setOperations(lastOperations);
-      } else {
-        setOperations(lastOperations);
-      }
+    let lastOperations = [];
+    let operationsLocal = JSON.parse(localStorage.getItem('operationsUser'));
+    if (operationsLocal) {
+      lastOperations = operationsLocal.slice(operationsLocal).reverse();
+      setOperations(lastOperations);
+    }
     }, [])
 
   const [ModalEditar, setModalEditar] = useState (false);

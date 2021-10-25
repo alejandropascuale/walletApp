@@ -10,20 +10,23 @@ function LastOperations() {
     useEffect(() => {
       let lastOperations = [];
       let operationsLocal = JSON.parse(localStorage.getItem('operationsUser'));
-      if(userLogin && typeof userLogin != 'undefined'){ 
+      if(userLogin && typeof userLogin != 'undefined'){
         fetch(`http://localhost:3001/api/operations/user/${userLogin.idUser}`)
         .then(response => response.json())
         .then(op => {
           if(op.length > 10){
             lastOperations = op.slice(op.length-10).reverse();
             } else {
-              op.slice(op.length).reverse()
-              lastOperations = op.slice(op.length).reverse();
+              lastOperations = op.slice(op).reverse();
             }
             setOperations(lastOperations)
         })
       } else if (operationsLocal) {
-        lastOperations = operationsLocal.slice(operationsLocal).reverse();
+        if (operationsLocal.length > 10) {
+          lastOperations = operationsLocal.slice(operationsLocal.length-10).reverse();
+        } else {
+          lastOperations = operationsLocal.slice(operationsLocal).reverse();
+        }
         setOperations(lastOperations);
       } else {
         setOperations(lastOperations);

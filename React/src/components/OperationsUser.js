@@ -19,17 +19,12 @@ function LastOperations() {
   const {userLogin} = useContext(UserContext);
 
   useEffect(() => {
-      let lastOperations = [];
-      if(userLogin && typeof userLogin != 'undefined'){ 
-        fetch(`http://localhost:3001/api/operations/user/${userLogin.idUser}`)
-        .then(response => response.json())
-        .then(op => {
-          lastOperations = op.slice(op).reverse();
-          setOperations(lastOperations)
-        })
-      } else {
-        setOperations(lastOperations);
-      }
+      fetch(`http://localhost:3001/api/operations/user/${userLogin.idUser}`)
+      .then(response => response.json())
+      .then(op => {
+        let lastOperations = op.slice(op).reverse();
+        setOperations(lastOperations)
+      })
     }, [])
 
   const [ModalEditar, setModalEditar] = useState (false);
@@ -255,8 +250,8 @@ function LastOperations() {
                   </select>
 
                   <div>
-                    <button onClick={() => setModalInsertar(false)} className="btn btn-danger"><FontAwesomeIcon icon={faTimes} /></button>
-                    <button onClick={()=> insert()} className="btn btn-primary"><FontAwesomeIcon icon={faCheck} /></button>
+                    <button type='button' onClick={() => setModalInsertar(false)} className="btn btn-danger"><FontAwesomeIcon icon={faTimes} /></button>
+                    <button type='submit' onClick={()=> insert()} className="btn btn-primary"><FontAwesomeIcon icon={faCheck} /></button>
                   </div>
                   
                 </form> 
