@@ -11,7 +11,7 @@ const controller = {
     },
     createUser: async (req, res) => {
         await axios({ url :'http://localhost:3001/api/users/register', method: 'post', data: req.body})
-        return res.redirect('http://localhost:3000');
+        return res.redirect('http://localhost:3000/users/registerOK');
     },
     loginForm: (req, res) => {
         return res.render ('login-form');

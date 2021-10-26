@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import { UserContext } from '../App';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,7 +21,11 @@ function UserAccount() {
     }
 
     const openModalDelete = () => {
-        setModalEliminar(true)
+        setModalEliminar(true);
+    }
+
+    const deleteUser = () => {
+        localStorage.removeItem('userEmail');
     }
 
     return (
@@ -61,6 +65,7 @@ function UserAccount() {
 
                         <button className='btn btn-danger'
                         type='submit'
+                        onClick={() => deleteUser()}
                         >Yes
                         </button>
                         </form>
@@ -68,7 +73,7 @@ function UserAccount() {
                     </ModalBody>
                 </Modal>
                 <Link to="/" type="menu" className="btn-cancel">Back</Link>
-                <button className="btn-check" type="submit">Edit</button>      
+                <button className="button-check" type="submit">Edit</button>      
             </form>
         </main>
         <Footer />

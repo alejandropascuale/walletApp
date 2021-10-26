@@ -286,23 +286,23 @@ function OperationsUser() {
           <table className="home-table"aria-describedby="myOperations" id="dataTable" cellSpacing="0">
             <thead>
               <tr>
-                <th id="idOperation">Id</th>
+                <th className='display-mobile' id="idOperation">Id</th>
                 <th id="detail">Detail</th>
                 <th id="amount">Amount</th>
                 <th id="date">Date</th>
-                <th id="type">Type</th>
-                <th id="category">category</th>
+                <th className='display-mobile' id="type">Type</th>
+                <th className='display-mobile' id="category">category</th>
                 <th id="actions">Actions</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
-                <th id="idOperation">Id</th>
+                <th className='display-mobile' id="idOperation">Id</th>
                 <th id="detail">Detail</th>
                 <th id="amount">Amount</th>
                 <th id="date">Date</th>
-                <th id="type">Type</th>
-                <th id="category">category</th>
+                <th className='display-mobile' id="type">Type</th>
+                <th className='display-mobile' id="category">category</th>
                 <th id="actions">Actions</th>
               </tr>
             </tfoot>
@@ -310,12 +310,12 @@ function OperationsUser() {
               {operations.map((operation, i) => {
                 return (
                   <tr key={i}>
-                    <td value={operation.idOperation}>{operation.idOperation}</td>
+                    <td className='display-mobile' value={operation.idOperation}>{operation.idOperation}</td>
                     <td>{operation.detail}</td>
                     <td>{operation.ammount}</td>
                     <td>{moment(operation.date).format( 'DD-MMM-YYYY')}</td>
-                    <td>{operation.type}</td>
-                    <td>{operation.category}</td>
+                    <td className='display-mobile'>{operation.type}</td>
+                    <td className='display-mobile'>{operation.category}</td>
                     <td>
                       <div className="options-container">
                         {/* ver porque no funciona el link para editar y crear el componente de edicion de operaciones */}

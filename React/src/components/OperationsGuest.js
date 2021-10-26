@@ -320,7 +320,7 @@ function OperationsGuest() {
                     <td className='display-mobile' value={operation.idOperation}>{operation.idOperation}</td>
                     <td>{operation.detail}</td>
                     <td>{operation.ammount}</td>
-                    <td>{moment(operation.date).format( 'DD-MMM-YYYY')}</td>
+                    <td>{moment(operation.date).format('DD-MMM-YYYY')}</td>
                     <td className='display-mobile'>{operation.type}</td>
                     <td className='display-mobile'>{operation.category}</td>
                     <td>

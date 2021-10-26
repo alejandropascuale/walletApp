@@ -128,6 +128,7 @@ header .icons #menu-bars {
 .user-menu .options-user, .logout-user {
     color: var(--black);
     background-color: #fff;
+    font-weight: 600;
 }
 .user-menu .options-user:hover, .logout-user:hover {
     background-color: var(--black);
@@ -250,11 +251,12 @@ body form .button-check, body form .btn-cancel{
     color:#fff;
     letter-spacing: .1rem;
 }
-body form div .style-input {
+.style-input {
     padding: .2rem;
     border-radius: .5rem;
     font-family: 'Open Sans', sans-serif;
     font-style: italic;
+    font-size: 1.5rem;
 }
 .is-invalid {
     border-color: #dc3545;
@@ -274,7 +276,7 @@ body form div .style-input {
 
 /* login and register form ends */
 
-/* home section ends */
+/* home section starts */
 
 section {
     padding: 2rem 9%;
@@ -600,9 +602,10 @@ body section .edit-operations-form a .fa-times {
 .swal2-styled.swal2-confirm, .swal2-styled.swal2-cancel {
     font-size: 1.5rem !important;
 }
-/* .swal2-styled.swal2-confirm {
-    background-color: greenyellow !important;
-} */
+.modal {
+    top: 15%
+}
+
 /* detail operations section ends */
 
 /* account user starts */
@@ -675,7 +678,7 @@ footer {
   body .register-form {
       width: 70%;
   }
-  body form div .style-input {
+  .style-input {
       width: 70%;
       max-width: 600px;
       margin: auto;
@@ -730,7 +733,7 @@ footer {
     body form div label {
         font-size: 2.5rem;
     }
-    body form div .style-input {
+    .style-input {
         padding: .7rem;
     }
     body form .btn {
@@ -778,7 +781,7 @@ footer {
     body form div label {
         font-size: 2.5rem;
     }
-    body form div .style-input {
+    .style-input {
         padding: .7rem;
     }
     body form .btn {

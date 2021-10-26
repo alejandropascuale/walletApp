@@ -22,13 +22,7 @@ function UserLoginHome() {
         
             <header>
                 <Link to="/" exact='true' className="logo"><FontAwesomeIcon icon={faWallet} />Wallet App</Link>
-                <nav className="navbar">
-                    <Link className="active" to="#home">home</Link> 
-                    <Link to="#Balance">balance</Link>
-                    <Link to="#last-operations">last operations</Link>
-                </nav>
                 <div className="icons">
-                    <FontAwesomeIcon icon={faBars} id="menu-bars"/>
                     <FontAwesomeIcon icon={faSearch} id="search-icon"/>
                     <div className="icon-user" onMouseOver={displayMenu}>
                         <img src={userLogin.avatar} alt="user-avatar" className="user-image-header"/>
@@ -38,7 +32,7 @@ function UserLoginHome() {
                             <li><Link to="/users/account/" className='options-user'>Edit Account</Link></li>
                             <li>
                                 <form action="http://localhost:3001/users/logout" >
-                                    <button type='submit' className='logout-user'><h4>Logout</h4></button>
+                                    <button type='submit' className='logout-user'><h4 className='options-user'>Logout</h4></button>
                                 </form>
                             </li>
                         </ul>
