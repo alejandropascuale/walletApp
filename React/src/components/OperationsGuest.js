@@ -211,9 +211,9 @@ function OperationsGuest() {
         <Modal isOpen={ModalEliminar}>
           <ModalBody>
             <h2 className='edit-title-form'>
-              Are you sure to delete the operation #{operationSelect && operationSelect.idOperation}
+              Are you sure to delete the operation #{operationSelect && operationSelect.idOperation}?
             </h2>
-            <form>
+            <form className='confirm-delete-form'>
               <button className='btn btn-secondary'type='button' 
               onClick={() => setModalEliminar(false)}
               >Cancel
@@ -319,7 +319,7 @@ function OperationsGuest() {
                   <tr key={i}>
                     <td className='display-mobile' value={operation.idOperation}>{operation.idOperation}</td>
                     <td>{operation.detail}</td>
-                    <td>{operation.ammount}</td>
+                    <td className={operation.type === 'Expense'? 'expense': ''}>{operation.ammount}</td>
                     <td>{moment(operation.date).format('DD-MMM-YYYY')}</td>
                     <td className='display-mobile'>{operation.type}</td>
                     <td className='display-mobile'>{operation.category}</td>

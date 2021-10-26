@@ -603,7 +603,11 @@ body section .edit-operations-form a .fa-times {
     font-size: 1.5rem !important;
 }
 .modal {
-    top: 15%
+    top: 15% !important;
+}
+.confirm-delete-form {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 /* detail operations section ends */
@@ -694,7 +698,7 @@ footer {
   }
   .user-menu {
     padding: 1.2rem;
-    top: 7rem;
+    top: 6rem;
     right: 1rem;
     font-size: 2.2rem;
   }
@@ -750,7 +754,7 @@ footer {
         margin: auto;
     }
     .user-menu {
-        top: 9rem;
+        top: 6rem;
         right: 4rem;
     }
     .user-menu ul li .options-user, .logout-user {
