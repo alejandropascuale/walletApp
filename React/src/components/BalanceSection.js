@@ -32,11 +32,19 @@ function BalanceSection() {
     }, [])
     if(balance !== 0){
       return (
+        <>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
           <section className="balance" id="balance">
             <h3 className="sub-heading">See yours incomes and expenses</h3>
             <h1 className="heading">Your Balance</h1>
             <h1 className="wallet-balance">${balance}</h1>
           </section>
+        </>
       )
     } else {
       return (
