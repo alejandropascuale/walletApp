@@ -24,7 +24,7 @@ function OperationsUser() {
         let lastOperations = op.slice(op).reverse();
         setOperations(lastOperations)
       })
-    }, [userLogin])
+    }, [])
 
   const [ModalEditar, setModalEditar] = useState (false);
   const [ModalEliminar, setModalEliminar] = useState (false);
@@ -312,7 +312,7 @@ function OperationsUser() {
                   <tr key={i}>
                     <td className='display-mobile' value={operation.idOperation}>{operation.idOperation}</td>
                     <td>{operation.detail}</td>
-                    <td className={operation.type === 'Expense'? 'expense': ''}>{operation.ammount}</td>
+                    <td className={operation.type === 'Expense'? 'expense': ''}>{operation.type === 'Expense'? '-'+operation.ammount: operation.ammount}</td>
                     <td>{moment(operation.date).format( 'DD-MMM-YYYY')}</td>
                     <td className='display-mobile'>{operation.type}</td>
                     <td className='display-mobile'>{operation.category}</td>

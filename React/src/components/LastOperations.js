@@ -59,7 +59,7 @@ function LastOperations() {
                 return (
                   <tr key={i}>
                     <td>{operation.detail}</td>
-                    <td className={operation.type === 'Expense'? 'expense': ''}>{operation.ammount}</td>
+                    <td className={operation.type === 'Expense'? 'expense': ''}>{operation.type === 'Expense'? '-'+operation.ammount: operation.ammount}</td>
                     <td>{moment(operation.date).format( 'DD-MMM-YYYY')}</td>
                   </tr>
                 )

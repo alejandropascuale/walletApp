@@ -57,25 +57,25 @@ const controller = {
             let isOkThePassword = bcrypt.compareSync(req.body.password, userToLogin.password);
             if (isOkThePassword) {
                 req.session.userLogged = userToLogin;
-                console.log(userToLogin);
                 return res.json(userToLogin);
-            } 
-            /* return res.render('login-form', {
+            }
+            return res.json({
                 oldData: req.body,
-                errors: {
+                backendErrors: {
                     password: {
-                        msg: 'Wrong password'
+                        msg: 'Contraseña incorrecta'
                     }
                 }
-            }); */
+            }); 
         }
-        /* return res.render('login-form', {
-            errors: {
+        return res.json({
+            oldData: req.body,
+            backendErrors: {
                 email: {
-                    msg: 'Check your email'
+                    msg: 'Revisá tu email'
                 }
             }
-        }); */
+        });
     },
     userAccountForm: async (req, res) => {
         const user = await db.User.findOne({
