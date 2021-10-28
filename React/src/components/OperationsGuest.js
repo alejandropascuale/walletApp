@@ -53,15 +53,16 @@ function OperationsGuest() {
     newOperations.map(operation => {
       if(operation.idOperation === operationSelect.idOperation){
         operation.detail = operationSelect.detail;
-        operation.ammount = operationSelect.ammount;
+        operation.ammount = Number(operationSelect.ammount);
         operation.date = operationSelect.date;
         operation.type = operationSelect.type;
         operation.category = operationSelect.category;
       }
+      return newOperations;
     })
+    localStorage.setItem('operationsUser', JSON.stringify(newOperations))
     setOperations(newOperations);
     setModalEditar(false);
-    localStorage.setItem('operationsUser', JSON.stringify(newOperations))
   }
 
   const deleteOp = () => {
@@ -100,7 +101,6 @@ function OperationsGuest() {
 
   const filter = () => {
     let index = document.getElementById("category-filter").options.selectedIndex;
-    localStorage.setItem("categoryValue", index);
     let operationsLocal = JSON.parse(localStorage.getItem('operationsUser'));
     if(index !== '0') {
       let option = document.querySelectorAll('#category-filter option')[index];

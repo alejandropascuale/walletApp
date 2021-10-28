@@ -56,11 +56,12 @@ function OperationsUser() {
     newOperations.map(operation => {
       if(operation.idOperation === operationSelect.idOperation){
         operation.detail = operationSelect.detail;
-        operation.ammount = operationSelect.ammount;
+        operation.ammount = Number(operationSelect.ammount);
         operation.date = operationSelect.date;
         operation.type = operationSelect.type;
         operation.category = operationSelect.category;
       }
+      return newOperations;
     })
     setOperations(newOperations);
     setModalEditar(false);
@@ -89,7 +90,6 @@ function OperationsUser() {
 
   const filter = () => {
     let index = document.getElementById("category-filter").options.selectedIndex;
-    localStorage.setItem("categoryValue", index);
     if(index !== '0') {
       let option = document.querySelectorAll('#category-filter option')[index];
       let filterOperations = operations.filter( o => o.category === option.value);

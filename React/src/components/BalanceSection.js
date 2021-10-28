@@ -29,7 +29,8 @@ function BalanceSection() {
     } else {
       setBalance(balanceStatus);
     }
-    }, [])
+    }, [balance, userLogin])
+    // ver porque no actualiza el saldo de la billetera en las operaciones locales
     if(balance !== 0){
       return (
         <>
