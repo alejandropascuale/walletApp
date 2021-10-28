@@ -16,7 +16,7 @@ import {Modal, ModalBody} from 'reactstrap'
 function OperationsUser() {
   const [operations, setOperations] = useState([]);
   const {userLogin} = useContext(UserContext);
-
+  
   useEffect(() => {
       fetch(`http://localhost:3001/api/operations/user/${userLogin.idUser}`)
       .then(response => response.json())
@@ -198,7 +198,7 @@ function OperationsUser() {
 
               <div>
                 <button onClick={() => setModalEditar(false)} className="btn btn-danger" type='button'><FontAwesomeIcon icon={faTimes} /></button>
-                <button onClick={()=> edit()} className="btn btn-primary" type='submit'><FontAwesomeIcon icon={faCheck} /></button>
+                <button onClick={()=> edit()} className="btn btn-success" type='submit'><FontAwesomeIcon icon={faCheck} /></button>
               </div>
               
             </form> 
@@ -275,11 +275,11 @@ function OperationsUser() {
                 <option >Salary</option>
               </select>
 
-              <input type="number" name="id_user" id="id_user" class="display-none" value={userLogin.idUser}></input>
+              <input type="number" name="id_user" id="id_user" className="display-none" value={userLogin.idUser}></input>
 
               <div>
                 <button type='button' onClick={() => setModalInsertar(false)} className="btn btn-danger"><FontAwesomeIcon icon={faTimes} /></button>
-                <button type='submit' onClick={()=> insert()} className="btn btn-primary"><FontAwesomeIcon icon={faCheck} /></button>
+                <button type='submit' onClick={()=> insert()} className="btn btn-success"><FontAwesomeIcon icon={faCheck} /></button>
               </div>
               
             </form> 

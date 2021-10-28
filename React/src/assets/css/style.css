@@ -229,7 +229,7 @@ body form div label {
     color: #eee;
     font-size: 1.7rem;
 }
-body form .button-check, body form .btn-cancel{
+body form .button-check, body form .btn-cancel, .btn-success{
     display: inline-block;
     margin-top: 1rem;
     margin-left: 1rem;
@@ -241,8 +241,8 @@ body form .button-check, body form .btn-cancel{
     cursor: pointer;
     text-align: center;
 }
-.button-check:hover {
-    background: rgb(1, 207, 1);
+.button-check:hover, .btn-success:hover {
+    background: rgb(1, 207, 1) !important;
     color:#fff;
     letter-spacing: .1rem;
 }

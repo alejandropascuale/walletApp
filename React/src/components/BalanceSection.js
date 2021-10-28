@@ -29,7 +29,7 @@ function BalanceSection() {
     } else {
       setBalance(balanceStatus);
     }
-    }, [opLocalStorage])
+    }, [opLocalStorage, userLogin])
     if(balance !== 0){
       return (
         <>
