@@ -92,9 +92,13 @@ function OperationsUser() {
     let index = document.getElementById("category-filter").options.selectedIndex;
     if(index !== '0') {
       let option = document.querySelectorAll('#category-filter option')[index];
-      let filterOperations = operations.filter( o => o.category === option.value);
-      let lastOperations = filterOperations.slice(filterOperations).reverse();
-      setOperations(lastOperations);
+      fetch(`http://localhost:3001/api/operations/user/${userLogin.idUser}`)
+      .then(response => response.json())
+      .then(op => {
+        let filterOperations = op.filter( o => o.category === option.value);
+        let lastOperations = filterOperations.slice(filterOperations).reverse();
+        setOperations(lastOperations)
+      })
     }
     if ( index === 0) {
       fetch(`http://localhost:3001/api/operations/user/${userLogin.idUser}`)
