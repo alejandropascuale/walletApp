@@ -5,6 +5,7 @@ import { UserContext } from '../App';
 function BalanceSection() {
   const [balance, setBalance] = useState([]);
   const {userLogin} = useContext(UserContext);
+  let opLocalStorage = JSON.parse(localStorage.getItem('operationsUser'));
   useEffect(()=>{
     let balanceStatus = 0;
     if(userLogin && typeof userLogin != 'undefined'){
@@ -18,10 +19,9 @@ function BalanceSection() {
           balanceStatus = (totalIncomes - totalExpenses).toFixed(2);
           setBalance(balanceStatus);
         })
-    } else if (localStorage.getItem('operationsUser')){
-      let op = JSON.parse(localStorage.getItem('operationsUser'));
-      let incomes =  op.filter(i => i.type === 'Income');
-      let expenses =  op.filter(i => i.type === 'Expense');
+    } else if (opLocalStorage){
+      let incomes =  opLocalStorage.filter(i => i.type === 'Income');
+      let expenses =  opLocalStorage.filter(i => i.type === 'Expense');
       let totalIncomes = incomes.reduce((sum, t) => {return sum + t.ammount}, 0);
       let totalExpenses = expenses.reduce((sum, t) => {return sum + t.ammount}, 0);
       balanceStatus = (totalIncomes - totalExpenses).toFixed(2);
@@ -29,8 +29,7 @@ function BalanceSection() {
     } else {
       setBalance(balanceStatus);
     }
-    }, [balance, userLogin])
-    // ver porque no actualiza el saldo de la billetera en las operaciones locales
+    }, [opLocalStorage])
     if(balance !== 0){
       return (
         <>

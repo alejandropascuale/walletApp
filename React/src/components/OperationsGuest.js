@@ -60,8 +60,8 @@ function OperationsGuest() {
       }
       return newOperations;
     })
-    localStorage.setItem('operationsUser', JSON.stringify(newOperations))
     setOperations(newOperations);
+    localStorage.setItem('operationsUser', JSON.stringify(newOperations))
     setModalEditar(false);
   }
 
