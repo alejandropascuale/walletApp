@@ -28,7 +28,7 @@ module.exports = function (sequelize, DataTypes) {
      }
     }
     let config = {
-        tableName: 'Operations',
+        tableName: 'operations',
         timestamps: false
     }
     let Operation = sequelize.define(alias, cols, config);
